@@ -57,11 +57,19 @@
 				91D70E9E20FDD9B800359571 /* AppDelegate.swift */,
 				91D70EA020FDD9B800359571 /* ViewController.swift */,
 				91D70EA220FDD9B800359571 /* Main.storyboard */,
+				91D70EB020FDDA0700359571 /* Supportting */,
+			);
+			path = 1to99;
+			sourceTree = "<group>";
+		};
+		91D70EB020FDDA0700359571 /* Supportting */ = {
+			isa = PBXGroup;
+			children = (
 				91D70EA520FDD9BB00359571 /* Assets.xcassets */,
 				91D70EA720FDD9BB00359571 /* LaunchScreen.storyboard */,
 				91D70EAA20FDD9BB00359571 /* Info.plist */,
 			);
-			path = 1to99;
+			path = Supportting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,11 +291,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MYUZ5TW9JQ;
 				INFOPLIST_FILE = 1to99/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ssf.-to99";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.1to99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -301,11 +310,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MYUZ5TW9JQ;
 				INFOPLIST_FILE = 1to99/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ssf.-to99";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.1to99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
