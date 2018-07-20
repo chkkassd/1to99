@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */; };
+		91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */; };
+		91AEF5E921018E7B00A800F0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E021018E7B00A800F0 /* Constant.swift */; };
+		91AEF5EA21018E7B00A800F0 /* NetWorkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E121018E7B00A800F0 /* NetWorkResource.swift */; };
+		91AEF5EB21018E7B00A800F0 /* ScreenShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E321018E7B00A800F0 /* ScreenShot.swift */; };
+		91AEF5EC21018E7B00A800F0 /* DirectoryPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E421018E7B00A800F0 /* DirectoryPath.swift */; };
+		91AEF5ED21018E7B00A800F0 /* FIFOQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E521018E7B00A800F0 /* FIFOQueue.swift */; };
+		91AEF5EE21018E7B00A800F0 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E621018E7B00A800F0 /* SwiftNotice.swift */; };
+		91AEF5EF21018E7B00A800F0 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E721018E7B00A800F0 /* Utility.swift */; };
+		91AEF5F021018E7B00A800F0 /* ResultDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E821018E7B00A800F0 /* ResultDescription.swift */; };
+		91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5F22101B6C200A800F0 /* PlanTableViewCell.swift */; };
+		91AEF5F72101C73C00A800F0 /* PlanHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5F62101C73C00A800F0 /* PlanHeaderFooterView.swift */; };
 		91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D70E9E20FDD9B800359571 /* AppDelegate.swift */; };
 		91D70EA420FDD9B800359571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA220FDD9B800359571 /* Main.storyboard */; };
 		91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA520FDD9BB00359571 /* Assets.xcassets */; };
@@ -14,6 +26,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFMainTabBarViewController.swift; sourceTree = "<group>"; };
+		91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFPlanViewController.swift; sourceTree = "<group>"; };
+		91AEF5E021018E7B00A800F0 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		91AEF5E121018E7B00A800F0 /* NetWorkResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkResource.swift; sourceTree = "<group>"; };
+		91AEF5E321018E7B00A800F0 /* ScreenShot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenShot.swift; sourceTree = "<group>"; };
+		91AEF5E421018E7B00A800F0 /* DirectoryPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryPath.swift; sourceTree = "<group>"; };
+		91AEF5E521018E7B00A800F0 /* FIFOQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIFOQueue.swift; sourceTree = "<group>"; };
+		91AEF5E621018E7B00A800F0 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
+		91AEF5E721018E7B00A800F0 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		91AEF5E821018E7B00A800F0 /* ResultDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDescription.swift; sourceTree = "<group>"; };
+		91AEF5F121018F5100A800F0 /* 1to99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "1to99-Bridging-Header.h"; sourceTree = "<group>"; };
+		91AEF5F22101B6C200A800F0 /* PlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
+		91AEF5F62101C73C00A800F0 /* PlanHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderFooterView.swift; sourceTree = "<group>"; };
 		91D70E9B20FDD9B800359571 /* 1to99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1to99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D70E9E20FDD9B800359571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D70EA320FDD9B800359571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -33,6 +58,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91AEF5DE21018E6600A800F0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */,
+				91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */,
+				91AEF5F22101B6C200A800F0 /* PlanTableViewCell.swift */,
+				91AEF5F62101C73C00A800F0 /* PlanHeaderFooterView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		91AEF5DF21018E7B00A800F0 /* Expand */ = {
+			isa = PBXGroup;
+			children = (
+				91AEF5E021018E7B00A800F0 /* Constant.swift */,
+				91AEF5E121018E7B00A800F0 /* NetWorkResource.swift */,
+				91AEF5E221018E7B00A800F0 /* Utility */,
+			);
+			path = Expand;
+			sourceTree = "<group>";
+		};
+		91AEF5E221018E7B00A800F0 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				91AEF5E721018E7B00A800F0 /* Utility.swift */,
+				91AEF5E321018E7B00A800F0 /* ScreenShot.swift */,
+				91AEF5E421018E7B00A800F0 /* DirectoryPath.swift */,
+				91AEF5E521018E7B00A800F0 /* FIFOQueue.swift */,
+				91AEF5E621018E7B00A800F0 /* SwiftNotice.swift */,
+				91AEF5E821018E7B00A800F0 /* ResultDescription.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		91D70E9220FDD9B800359571 = {
 			isa = PBXGroup;
 			children = (
@@ -52,8 +111,9 @@
 		91D70E9D20FDD9B800359571 /* 1to99 */ = {
 			isa = PBXGroup;
 			children = (
-				91D70E9E20FDD9B800359571 /* AppDelegate.swift */,
 				91D70EA220FDD9B800359571 /* Main.storyboard */,
+				91AEF5DE21018E6600A800F0 /* Main */,
+				91AEF5DF21018E7B00A800F0 /* Expand */,
 				91D70EB020FDDA0700359571 /* Supportting */,
 			);
 			path = 1to99;
@@ -63,8 +123,10 @@
 			isa = PBXGroup;
 			children = (
 				91D70EA520FDD9BB00359571 /* Assets.xcassets */,
+				91D70E9E20FDD9B800359571 /* AppDelegate.swift */,
 				91D70EA720FDD9BB00359571 /* LaunchScreen.storyboard */,
 				91D70EAA20FDD9BB00359571 /* Info.plist */,
+				91AEF5F121018F5100A800F0 /* 1to99-Bridging-Header.h */,
 			);
 			path = Supportting;
 			sourceTree = "<group>";
@@ -140,7 +202,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91AEF5EF21018E7B00A800F0 /* Utility.swift in Sources */,
+				91AEF5EC21018E7B00A800F0 /* DirectoryPath.swift in Sources */,
+				91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */,
+				91AEF5F72101C73C00A800F0 /* PlanHeaderFooterView.swift in Sources */,
+				91AEF5EB21018E7B00A800F0 /* ScreenShot.swift in Sources */,
+				91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */,
+				91AEF5ED21018E7B00A800F0 /* FIFOQueue.swift in Sources */,
+				91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */,
 				91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */,
+				91AEF5EE21018E7B00A800F0 /* SwiftNotice.swift in Sources */,
+				91AEF5E921018E7B00A800F0 /* Constant.swift in Sources */,
+				91AEF5F021018E7B00A800F0 /* ResultDescription.swift in Sources */,
+				91AEF5EA21018E7B00A800F0 /* NetWorkResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +368,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.1to99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/1to99/Supportting/1to99-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -313,6 +388,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssf.1to99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/1to99/Supportting/1to99-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
