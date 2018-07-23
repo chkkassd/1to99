@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
+            <connections>
+                <outlet property="planTitle" destination="jcI-57-EKs" id="Fu1-n9-D3v"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="52" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W8s-e1-Qgd" customClass="PlanTableView" customModule="_to99" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <view key="tableHeaderView" contentMode="scaleToFill" id="egU-Tb-LxJ" userLabel="tableHeadView">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swift study plan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcI-57-EKs">
+                        <rect key="frame" x="130" y="8" width="115" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" name="PrimaryTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eG-O6-0RH">
+                        <rect key="frame" x="338" y="7" width="23" height="22"/>
+                        <state key="normal" image="smallIndicator"/>
+                        <connections>
+                            <action selector="editButtonPressed:" destination="-1" eventType="touchUpInside" id="4Qn-RQ-7g9"/>
+                            <action selector="editButtonPressed:" destination="W8s-e1-Qgd" eventType="touchUpInside" id="5oF-o8-MCS"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" name="PlanTableColor"/>
+                <constraints>
+                    <constraint firstItem="jcI-57-EKs" firstAttribute="centerX" secondItem="egU-Tb-LxJ" secondAttribute="centerX" id="Zsn-bX-s88"/>
+                    <constraint firstAttribute="trailing" secondItem="6eG-O6-0RH" secondAttribute="trailing" constant="14" id="aQ7-rC-Dia"/>
+                    <constraint firstItem="6eG-O6-0RH" firstAttribute="centerY" secondItem="egU-Tb-LxJ" secondAttribute="centerY" id="odi-Kw-Pce"/>
+                    <constraint firstItem="jcI-57-EKs" firstAttribute="centerY" secondItem="egU-Tb-LxJ" secondAttribute="centerY" id="ovQ-NG-hX0"/>
+                </constraints>
+            </view>
+            <view key="tableFooterView" contentMode="scaleToFill" id="NQA-W0-nzx" userLabel="tableFootView">
+                <rect key="frame" x="0.0" y="984" width="375" height="36"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYO-FU-OyF">
+                        <rect key="frame" x="154.5" y="2" width="66" height="32"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="新建任务">
+                            <color key="titleColor" name="PrimaryTextColor"/>
+                        </state>
+                        <connections>
+                            <action selector="creatTaskButtonPressed:" destination="-1" eventType="touchUpInside" id="Jhi-oi-pCM"/>
+                            <action selector="creatTaskButtonPressed:" destination="W8s-e1-Qgd" eventType="touchUpInside" id="KjX-oJ-YF7"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" name="PlanTableColor"/>
+                <constraints>
+                    <constraint firstItem="OYO-FU-OyF" firstAttribute="centerX" secondItem="NQA-W0-nzx" secondAttribute="centerX" id="Oig-Pv-qMH"/>
+                    <constraint firstItem="OYO-FU-OyF" firstAttribute="centerY" secondItem="NQA-W0-nzx" secondAttribute="centerY" id="ShO-Mk-jkG"/>
+                    <constraint firstItem="OYO-FU-OyF" firstAttribute="centerX" secondItem="NQA-W0-nzx" secondAttribute="centerX" id="WHd-CV-FGm"/>
+                    <constraint firstItem="OYO-FU-OyF" firstAttribute="centerY" secondItem="NQA-W0-nzx" secondAttribute="centerY" id="WM6-Tu-foC"/>
+                </constraints>
+            </view>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="viewCornerRadius">
+                    <real key="value" value="8"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="planTitle" destination="jcI-57-EKs" id="GBc-Sg-xae"/>
+            </connections>
+        </tableView>
+    </objects>
+    <resources>
+        <image name="smallIndicator" width="23" height="5"/>
+        <namedColor name="PlanTableColor">
+            <color red="0.85098039219999999" green="0.78823529410000004" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryTextColor">
+            <color red="0.30588235289999999" green="0.36862745099999999" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

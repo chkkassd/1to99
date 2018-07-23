@@ -19,6 +19,10 @@
 		91AEF5F021018E7B00A800F0 /* ResultDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E821018E7B00A800F0 /* ResultDescription.swift */; };
 		91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5F22101B6C200A800F0 /* PlanTableViewCell.swift */; };
 		91AEF5F72101C73C00A800F0 /* PlanHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5F62101C73C00A800F0 /* PlanHeaderFooterView.swift */; };
+		91AEF5FB210579EF00A800F0 /* PlanTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91AEF5FA210579EF00A800F0 /* PlanTableView.xib */; };
+		91AEF5FD21057C3C00A800F0 /* PlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5FC21057C3C00A800F0 /* PlanTableView.swift */; };
+		91AEF6002105B68600A800F0 /* MainPlanView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91AEF5FF2105B68600A800F0 /* MainPlanView.xib */; };
+		91AEF6022105B7E200A800F0 /* SSFMutablePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF6012105B7E200A800F0 /* SSFMutablePlanView.swift */; };
 		91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D70E9E20FDD9B800359571 /* AppDelegate.swift */; };
 		91D70EA420FDD9B800359571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA220FDD9B800359571 /* Main.storyboard */; };
 		91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA520FDD9BB00359571 /* Assets.xcassets */; };
@@ -39,6 +43,10 @@
 		91AEF5F121018F5100A800F0 /* 1to99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "1to99-Bridging-Header.h"; sourceTree = "<group>"; };
 		91AEF5F22101B6C200A800F0 /* PlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
 		91AEF5F62101C73C00A800F0 /* PlanHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderFooterView.swift; sourceTree = "<group>"; };
+		91AEF5FA210579EF00A800F0 /* PlanTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanTableView.xib; sourceTree = "<group>"; };
+		91AEF5FC21057C3C00A800F0 /* PlanTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableView.swift; sourceTree = "<group>"; };
+		91AEF5FF2105B68600A800F0 /* MainPlanView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainPlanView.xib; sourceTree = "<group>"; };
+		91AEF6012105B7E200A800F0 /* SSFMutablePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFMutablePlanView.swift; sourceTree = "<group>"; };
 		91D70E9B20FDD9B800359571 /* 1to99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1to99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D70E9E20FDD9B800359571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D70EA320FDD9B800359571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,8 +71,7 @@
 			children = (
 				91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */,
 				91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */,
-				91AEF5F22101B6C200A800F0 /* PlanTableViewCell.swift */,
-				91AEF5F62101C73C00A800F0 /* PlanHeaderFooterView.swift */,
+				91AEF5FE2105B57B00A800F0 /* SSFMutablePlanView */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -90,6 +97,19 @@
 				91AEF5E821018E7B00A800F0 /* ResultDescription.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		91AEF5FE2105B57B00A800F0 /* SSFMutablePlanView */ = {
+			isa = PBXGroup;
+			children = (
+				91AEF5F22101B6C200A800F0 /* PlanTableViewCell.swift */,
+				91AEF5F62101C73C00A800F0 /* PlanHeaderFooterView.swift */,
+				91AEF5FC21057C3C00A800F0 /* PlanTableView.swift */,
+				91AEF5FA210579EF00A800F0 /* PlanTableView.xib */,
+				91AEF6012105B7E200A800F0 /* SSFMutablePlanView.swift */,
+				91AEF5FF2105B68600A800F0 /* MainPlanView.xib */,
+			);
+			name = SSFMutablePlanView;
 			sourceTree = "<group>";
 		};
 		91D70E9220FDD9B800359571 = {
@@ -189,6 +209,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91AEF6002105B68600A800F0 /* MainPlanView.xib in Resources */,
+				91AEF5FB210579EF00A800F0 /* PlanTableView.xib in Resources */,
 				91D70EA920FDD9BB00359571 /* LaunchScreen.storyboard in Resources */,
 				91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */,
 				91D70EA420FDD9B800359571 /* Main.storyboard in Resources */,
@@ -212,7 +234,9 @@
 				91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */,
 				91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */,
 				91AEF5EE21018E7B00A800F0 /* SwiftNotice.swift in Sources */,
+				91AEF5FD21057C3C00A800F0 /* PlanTableView.swift in Sources */,
 				91AEF5E921018E7B00A800F0 /* Constant.swift in Sources */,
+				91AEF6022105B7E200A800F0 /* SSFMutablePlanView.swift in Sources */,
 				91AEF5F021018E7B00A800F0 /* ResultDescription.swift in Sources */,
 				91AEF5EA21018E7B00A800F0 /* NetWorkResource.swift in Sources */,
 			);
