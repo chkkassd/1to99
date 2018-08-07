@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9162FF6921194858006F0C4C /* SSFGraphKit.framework */; };
 		91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */; };
 		91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */; };
 		91AEF5E921018E7B00A800F0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E021018E7B00A800F0 /* Constant.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9162FF6921194858006F0C4C /* SSFGraphKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSFGraphKit.framework; path = Carthage/Build/iOS/SSFGraphKit.framework; sourceTree = "<group>"; };
 		91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFMainTabBarViewController.swift; sourceTree = "<group>"; };
 		91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFPlanViewController.swift; sourceTree = "<group>"; };
 		91AEF5E021018E7B00A800F0 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -60,12 +62,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9162FF6821194858006F0C4C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9162FF6921194858006F0C4C /* SSFGraphKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		91AEF5DE21018E6600A800F0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +128,7 @@
 			children = (
 				91D70E9D20FDD9B800359571 /* 1to99 */,
 				91D70E9C20FDD9B800359571 /* Products */,
+				9162FF6821194858006F0C4C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +173,7 @@
 				91D70E9720FDD9B800359571 /* Sources */,
 				91D70E9820FDD9B800359571 /* Frameworks */,
 				91D70E9920FDD9B800359571 /* Resources */,
+				9162FF6B21194887006F0C4C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -218,6 +231,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9162FF6B21194887006F0C4C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SSFGraphKit.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		91D70E9720FDD9B800359571 /* Sources */ = {
@@ -384,6 +414,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MYUZ5TW9JQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/1to99/Supportting/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -404,6 +438,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MYUZ5TW9JQ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/1to99/Supportting/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

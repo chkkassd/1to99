@@ -9,7 +9,8 @@
 import UIKit
 
 class SSFMutablePlanView: UIView {
-    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var containView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,18 +24,10 @@ class SSFMutablePlanView: UIView {
     
     func commonInit() {
         Bundle.main.loadNibNamed("MainPlanView", owner: self, options: nil)
-        scrollView.frame = self.bounds
-        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(scrollView)
-        
-//        let a = UIView(frame: self.bounds)
-//        a.backgroundColor = UIColor.red
-//
-//        let b = UIView(frame: self.bounds.offsetBy(dx: self.bounds.width, dy: 0))
-//        b.backgroundColor = UIColor.blue
-//        
-//        scrollView.addSubview(a)
-//        scrollView.addSubview(b)
+        containView.frame = self.bounds
+        containView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(containView)
+
         scrollView.contentSize = CGSize(width: 1000.0, height:0)
     }
 }

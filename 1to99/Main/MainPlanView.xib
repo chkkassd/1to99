@@ -5,22 +5,42 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SSFMutablePlanView" customModule="_to99" customModuleProvider="target">
             <connections>
-                <outlet property="scrollView" destination="fv4-KM-zaS" id="exS-9z-SXv"/>
+                <outlet property="containView" destination="xhj-OO-8oM" id="axD-og-wLx"/>
+                <outlet property="scrollView" destination="yI8-DR-ahK" id="Nmf-n9-jhO"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" id="fv4-KM-zaS">
+        <view contentMode="scaleToFill" id="xhj-OO-8oM">
             <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yI8-DR-ahK">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="380"/>
+                    <color key="backgroundColor" name="PrimaryBackgroundColor"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" name="PrimaryBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="yI8-DR-ahK" firstAttribute="top" secondItem="9al-Vj-31Z" secondAttribute="top" id="2ol-qq-9Ce"/>
+                <constraint firstItem="yI8-DR-ahK" firstAttribute="leading" secondItem="9al-Vj-31Z" secondAttribute="leading" id="Eds-Qy-RyB"/>
+                <constraint firstItem="yI8-DR-ahK" firstAttribute="trailing" secondItem="9al-Vj-31Z" secondAttribute="trailing" id="UCv-5i-VBB"/>
+                <constraint firstItem="9al-Vj-31Z" firstAttribute="bottom" secondItem="yI8-DR-ahK" secondAttribute="bottom" constant="20" id="fDz-kV-zuj"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="Kyb-BO-KqJ"/>
-            <point key="canvasLocation" x="-6" y="52"/>
-        </scrollView>
+            <viewLayoutGuide key="safeArea" id="9al-Vj-31Z"/>
+            <point key="canvasLocation" x="-81" y="-252"/>
+        </view>
     </objects>
+    <resources>
+        <namedColor name="PrimaryBackgroundColor">
+            <color red="0.83921568627450982" green="0.87450980392156863" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
