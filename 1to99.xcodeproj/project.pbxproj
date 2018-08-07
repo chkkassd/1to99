@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9162FF6921194858006F0C4C /* SSFGraphKit.framework */; };
+		9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162FF6F21194DFF006F0C4C /* IndicatorView.swift */; };
 		91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */; };
 		91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */; };
 		91AEF5E921018E7B00A800F0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E021018E7B00A800F0 /* Constant.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		9162FF6921194858006F0C4C /* SSFGraphKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSFGraphKit.framework; path = Carthage/Build/iOS/SSFGraphKit.framework; sourceTree = "<group>"; };
+		9162FF6F21194DFF006F0C4C /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFMainTabBarViewController.swift; sourceTree = "<group>"; };
 		91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFPlanViewController.swift; sourceTree = "<group>"; };
 		91AEF5E021018E7B00A800F0 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -77,12 +79,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		91AEF5DE21018E6600A800F0 /* Main */ = {
+		9162FF6D21194D85006F0C4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				91AEF5FE2105B57B00A800F0 /* SSFMutablePlanView */,
+				9162FF6F21194DFF006F0C4C /* IndicatorView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9162FF6E21194DA9006F0C4C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */,
 				91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */,
-				91AEF5FE2105B57B00A800F0 /* SSFMutablePlanView */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		91AEF5DE21018E6600A800F0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9162FF6E21194DA9006F0C4C /* Controller */,
+				9162FF6D21194D85006F0C4C /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -260,6 +279,7 @@
 				91AEF5F72101C73C00A800F0 /* PlanHeaderFooterView.swift in Sources */,
 				91AEF5EB21018E7B00A800F0 /* ScreenShot.swift in Sources */,
 				91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */,
+				9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */,
 				91AEF5ED21018E7B00A800F0 /* FIFOQueue.swift in Sources */,
 				91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */,
 				91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */,

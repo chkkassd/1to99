@@ -285,7 +285,19 @@
                     <view key="view" contentMode="scaleToFill" id="e4i-tS-WWU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMH-93-YLV" customClass="SSFMutablePlanView" customModule="_to99" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="150" width="375" height="314"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JvP-F5-aQL" firstAttribute="bottom" secondItem="IMH-93-YLV" secondAttribute="bottom" constant="154" id="EAQ-4G-Yi1"/>
+                            <constraint firstItem="IMH-93-YLV" firstAttribute="leading" secondItem="JvP-F5-aQL" secondAttribute="leading" id="RRS-Vk-ZKI"/>
+                            <constraint firstItem="IMH-93-YLV" firstAttribute="trailing" secondItem="JvP-F5-aQL" secondAttribute="trailing" id="iE7-aI-2MG"/>
+                            <constraint firstItem="IMH-93-YLV" firstAttribute="top" secondItem="JvP-F5-aQL" secondAttribute="top" constant="86" id="zxb-RK-ryM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JvP-F5-aQL"/>
                     </view>
                     <navigationItem key="navigationItem" title="test" id="Lo6-7A-JBW"/>

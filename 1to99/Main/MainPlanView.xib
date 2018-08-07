@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SSFMutablePlanView" customModule="_to99" customModuleProvider="target">
             <connections>
                 <outlet property="containView" destination="xhj-OO-8oM" id="axD-og-wLx"/>
+                <outlet property="indicatorView" destination="fzJ-Hi-xG8" id="DlS-bf-gX8"/>
                 <outlet property="scrollView" destination="yI8-DR-ahK" id="Nmf-n9-jhO"/>
             </connections>
         </placeholder>
@@ -24,14 +25,25 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yI8-DR-ahK">
                     <rect key="frame" x="0.0" y="0.0" width="400" height="380"/>
                     <color key="backgroundColor" name="PrimaryBackgroundColor"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="kQn-iT-ddE"/>
+                    </connections>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzJ-Hi-xG8" customClass="IndicatorView" customModule="_to99" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="380" width="400" height="20"/>
+                    <color key="backgroundColor" name="PrimaryBackgroundColor"/>
+                </view>
             </subviews>
             <color key="backgroundColor" name="PrimaryBackgroundColor"/>
             <constraints>
                 <constraint firstItem="yI8-DR-ahK" firstAttribute="top" secondItem="9al-Vj-31Z" secondAttribute="top" id="2ol-qq-9Ce"/>
                 <constraint firstItem="yI8-DR-ahK" firstAttribute="leading" secondItem="9al-Vj-31Z" secondAttribute="leading" id="Eds-Qy-RyB"/>
+                <constraint firstItem="fzJ-Hi-xG8" firstAttribute="leading" secondItem="9al-Vj-31Z" secondAttribute="leading" id="Jj1-oo-1Vy"/>
                 <constraint firstItem="yI8-DR-ahK" firstAttribute="trailing" secondItem="9al-Vj-31Z" secondAttribute="trailing" id="UCv-5i-VBB"/>
+                <constraint firstItem="fzJ-Hi-xG8" firstAttribute="top" secondItem="yI8-DR-ahK" secondAttribute="bottom" id="d3n-4R-p2y"/>
                 <constraint firstItem="9al-Vj-31Z" firstAttribute="bottom" secondItem="yI8-DR-ahK" secondAttribute="bottom" constant="20" id="fDz-kV-zuj"/>
+                <constraint firstItem="fzJ-Hi-xG8" firstAttribute="bottom" secondItem="9al-Vj-31Z" secondAttribute="bottom" id="fVG-Uo-Vn8"/>
+                <constraint firstItem="fzJ-Hi-xG8" firstAttribute="trailing" secondItem="9al-Vj-31Z" secondAttribute="trailing" id="j0V-29-V4u"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="9al-Vj-31Z"/>
