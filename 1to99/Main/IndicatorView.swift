@@ -26,7 +26,6 @@ class IndicatorView: UIView {
         self.count = count
     }
     
-    
     var count: Int = 0 {
         didSet{
             if count != oldValue {
@@ -34,6 +33,7 @@ class IndicatorView: UIView {
             }
         }
     }
+    
     var selectedIndex: Int = 0 {
         didSet{
             if selectedIndex != oldValue {

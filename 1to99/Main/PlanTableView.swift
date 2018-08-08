@@ -10,6 +10,10 @@ import UIKit
 
 class PlanTableView: UITableView {
     
+    class func getAPlanTableView() -> PlanTableView {
+        return Bundle.main.loadNibNamed("PlanTableView", owner: nil, options: nil)?.first as! PlanTableView
+    }
+    
     @IBOutlet weak var planTitle: UILabel!
     
     override init(frame: CGRect, style: UITableViewStyle) {
