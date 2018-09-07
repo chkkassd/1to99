@@ -11,9 +11,11 @@ import UIKit
 class SSFMutablePlanView: UIView {
     
     @IBOutlet var containView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var indicatorView: IndicatorView!
+    @IBOutlet weak var planCollectionView: UICollectionView!
     var allPlanTables: [PlanTableView] = []
+    
+    // MARK: Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,36 +28,44 @@ class SSFMutablePlanView: UIView {
     }
     
     private func commonInit() {
+        //1.load nib
         Bundle.main.loadNibNamed("MainPlanView", owner: self, options: nil)
         containView.frame = self.bounds
         containView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(containView)
-        
-        creatAPlanTable()
+        //2.set collectionview
+        configureCollectionView()
         
         
         indicatorView.count = allPlanTables.count
 
         
-        scrollView.contentSize = CGSize(width: 1000.0, height:0)
+    }
+    // MARK: Private method
+    
+    
+
+    
+    // MARK: Public API
+    
+    public func configureCollectionView() {
+        let collectionCellNib = UINib(nibName: "PlanCollectionViewCell", bundle: Bundle.main)
+        planCollectionView.register(collectionCellNib, forCellWithReuseIdentifier: "PlanCollectionViewCell")
+        planCollectionView.delegate = self
+        planCollectionView.dataSource = self
     }
     
-    public func creatAPlanTable() {
+    public func creatAPlanTable() -> PlanTableView {
         let planTable = PlanTableView.getAPlanTableView()
-//        planTable.translatesAutoresizingMaskIntoConstraints = false
         let cellNib = UINib(nibName: "PlanTableViewCell", bundle: Bundle.main)
         planTable.register(cellNib, forCellReuseIdentifier: "PlanTableViewCell")
         planTable.delegate = self
         planTable.dataSource = self
-        scrollView.addSubview(planTable)
         
-        
-        planTable.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 15.0).isActive = true
-        planTable.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0.0).isActive = true
-        planTable.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0.0).isActive = true
-        planTable.widthAnchor.constraint(equalToConstant: scrollView.frame.width - 30.0).isActive = true
-        
+       
         allPlanTables.append(planTable)
+        
+        return planTable
     }
     
     public func addTaskInPlanTable() {
@@ -63,10 +73,27 @@ class SSFMutablePlanView: UIView {
     }
 }
 
-extension SSFMutablePlanView: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("=====contentOffset:\(scrollView.contentOffset)==========\n")
-        indicatorView.selectedIndex = Int(floor(scrollView.contentOffset.x/scrollView.frame.size.width))
+extension SSFMutablePlanView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanCollectionViewCell", for: indexPath) as! PlanCollectionViewCell
+        
+        let cellNib = UINib(nibName: "PlanTableViewCell", bundle: Bundle.main)
+        cell.planTable.register(cellNib, forCellReuseIdentifier: "PlanTableViewCell")
+        cell.planTable.delegate = self
+        cell.planTable.dataSource = self
+        cell.planTable.reloadData()
+
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.bounds.width - (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing
+        let height = collectionView.bounds.height
+        return CGSize(width: width, height: height)
     }
 }
 
@@ -79,6 +106,4 @@ extension SSFMutablePlanView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlanTableViewCell", for: indexPath) as! PlanTableViewCell
         return cell
     }
-    
-    
 }

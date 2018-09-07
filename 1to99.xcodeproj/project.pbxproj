@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		910A85992141135900FBFD83 /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A85972141135900FBFD83 /* PlanCollectionViewCell.swift */; };
+		910A859A2141135900FBFD83 /* PlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910A85982141135900FBFD83 /* PlanCollectionViewCell.xib */; };
+		911E9468213FCB590081A241 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E9467213FCB590081A241 /* testViewController.swift */; };
 		9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9162FF6921194858006F0C4C /* SSFGraphKit.framework */; };
 		9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162FF6F21194DFF006F0C4C /* IndicatorView.swift */; };
 		9162FF72211A6E3E006F0C4C /* PlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9162FF71211A6E3E006F0C4C /* PlanTableViewCell.xib */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		910A85972141135900FBFD83 /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
+		910A85982141135900FBFD83 /* PlanCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanCollectionViewCell.xib; sourceTree = "<group>"; };
+		911E9467213FCB590081A241 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		9162FF6921194858006F0C4C /* SSFGraphKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSFGraphKit.framework; path = Carthage/Build/iOS/SSFGraphKit.framework; sourceTree = "<group>"; };
 		9162FF6F21194DFF006F0C4C /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		9162FF71211A6E3E006F0C4C /* PlanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanTableViewCell.xib; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 			children = (
 				91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */,
 				91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */,
+				911E9467213FCB590081A241 /* testViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -136,6 +143,8 @@
 				9162FF71211A6E3E006F0C4C /* PlanTableViewCell.xib */,
 				91AEF5FC21057C3C00A800F0 /* PlanTableView.swift */,
 				91AEF5FA210579EF00A800F0 /* PlanTableView.xib */,
+				910A85972141135900FBFD83 /* PlanCollectionViewCell.swift */,
+				910A85982141135900FBFD83 /* PlanCollectionViewCell.xib */,
 				91AEF6012105B7E200A800F0 /* SSFMutablePlanView.swift */,
 				91AEF5FF2105B68600A800F0 /* MainPlanView.xib */,
 			);
@@ -242,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91AEF6002105B68600A800F0 /* MainPlanView.xib in Resources */,
+				910A859A2141135900FBFD83 /* PlanCollectionViewCell.xib in Resources */,
 				91AEF5FB210579EF00A800F0 /* PlanTableView.xib in Resources */,
 				91D70EA920FDD9BB00359571 /* LaunchScreen.storyboard in Resources */,
 				91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */,
@@ -276,6 +286,7 @@
 			files = (
 				91AEF5EF21018E7B00A800F0 /* Utility.swift in Sources */,
 				91AEF5EC21018E7B00A800F0 /* DirectoryPath.swift in Sources */,
+				911E9468213FCB590081A241 /* testViewController.swift in Sources */,
 				91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */,
 				91AEF5EB21018E7B00A800F0 /* ScreenShot.swift in Sources */,
 				91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */,
@@ -286,6 +297,7 @@
 				91AEF5EE21018E7B00A800F0 /* SwiftNotice.swift in Sources */,
 				91AEF5FD21057C3C00A800F0 /* PlanTableView.swift in Sources */,
 				91AEF5E921018E7B00A800F0 /* Constant.swift in Sources */,
+				910A85992141135900FBFD83 /* PlanCollectionViewCell.swift in Sources */,
 				91AEF6022105B7E200A800F0 /* SSFMutablePlanView.swift in Sources */,
 				91AEF5F021018E7B00A800F0 /* ResultDescription.swift in Sources */,
 				91AEF5EA21018E7B00A800F0 /* NetWorkResource.swift in Sources */,

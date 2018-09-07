@@ -149,26 +149,37 @@
         <!--test-->
         <scene sceneID="xL7-eG-hPs">
             <objects>
-                <viewController id="PJk-mQ-jQ2" sceneMemberID="viewController">
+                <viewController id="PJk-mQ-jQ2" customClass="testViewController" customModule="_to99" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e4i-tS-WWU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMH-93-YLV" customClass="SSFMutablePlanView" customModule="_to99" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="150" width="375" height="314"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTA-z2-I3P">
+                                <rect key="frame" x="118" y="78" width="110" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addAPlan:" destination="PJk-mQ-jQ2" eventType="touchUpInside" id="r82-g3-FWR"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HIv-lm-7rE" customClass="SSFMutablePlanView" customModule="_to99" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="116" width="375" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="JvP-F5-aQL" firstAttribute="bottom" secondItem="IMH-93-YLV" secondAttribute="bottom" constant="154" id="EAQ-4G-Yi1"/>
-                            <constraint firstItem="IMH-93-YLV" firstAttribute="leading" secondItem="JvP-F5-aQL" secondAttribute="leading" id="RRS-Vk-ZKI"/>
-                            <constraint firstItem="IMH-93-YLV" firstAttribute="trailing" secondItem="JvP-F5-aQL" secondAttribute="trailing" id="iE7-aI-2MG"/>
-                            <constraint firstItem="IMH-93-YLV" firstAttribute="top" secondItem="JvP-F5-aQL" secondAttribute="top" constant="86" id="zxb-RK-ryM"/>
+                            <constraint firstItem="HIv-lm-7rE" firstAttribute="trailing" secondItem="JvP-F5-aQL" secondAttribute="trailing" id="EFz-DP-j0o"/>
+                            <constraint firstItem="JvP-F5-aQL" firstAttribute="bottom" secondItem="HIv-lm-7rE" secondAttribute="bottom" constant="82" id="NTm-zD-cze"/>
+                            <constraint firstItem="HIv-lm-7rE" firstAttribute="top" secondItem="JvP-F5-aQL" secondAttribute="top" constant="52" id="yeP-P6-EXn"/>
+                            <constraint firstItem="HIv-lm-7rE" firstAttribute="leading" secondItem="JvP-F5-aQL" secondAttribute="leading" id="zyI-VC-31c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JvP-F5-aQL"/>
                     </view>
                     <navigationItem key="navigationItem" title="test" id="Lo6-7A-JBW"/>
+                    <connections>
+                        <outlet property="mpv" destination="HIv-lm-7rE" id="QqU-Xh-vjJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGy-8Y-sxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
