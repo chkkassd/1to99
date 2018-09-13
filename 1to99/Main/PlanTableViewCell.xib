@@ -24,6 +24,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8I-oX-aS7">
                                 <rect key="frame" x="8" y="12" width="24" height="24"/>
                                 <state key="normal" image="Checkbox_uncheck"/>
+                                <state key="selected" image="Checkbox_check"/>
                                 <connections>
                                     <action selector="checkButtonPressed:" destination="uER-J0-Yxg" eventType="touchUpInside" id="bW0-nM-Mc1"/>
                                 </connections>
@@ -80,6 +81,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Checkbox_check" width="24" height="24"/>
         <image name="Checkbox_uncheck" width="24" height="24"/>
         <image name="list" width="23" height="16"/>
         <namedColor name="LightTextColor">

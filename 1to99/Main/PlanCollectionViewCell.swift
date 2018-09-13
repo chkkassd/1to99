@@ -10,7 +10,6 @@ import UIKit
 
 class PlanCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var planTable: PlanTableView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

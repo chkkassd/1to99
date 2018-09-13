@@ -17,24 +17,9 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                <subviews>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Blq-fg-pxs" customClass="PlanTableView" customModule="_to99" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tableView>
-                </subviews>
             </view>
             <color key="backgroundColor" red="0.34509803919999998" green="0.70980392160000005" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="Blq-fg-pxs" secondAttribute="trailing" id="MaK-w1-qZK"/>
-                <constraint firstItem="Blq-fg-pxs" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="U76-Eg-XPB"/>
-                <constraint firstItem="Blq-fg-pxs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="az9-ZT-Nvz"/>
-                <constraint firstAttribute="bottom" secondItem="Blq-fg-pxs" secondAttribute="bottom" id="k9S-GF-yvl"/>
-            </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <connections>
-                <outlet property="planTable" destination="Blq-fg-pxs" id="Yve-23-Ksu"/>
-            </connections>
+            <viewLayoutGuide key="safeArea" id="BHm-b8-CrS"/>
         </collectionViewCell>
     </objects>
 </document>

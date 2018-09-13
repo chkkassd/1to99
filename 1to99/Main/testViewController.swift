@@ -11,10 +11,15 @@ import UIKit
 class testViewController: UIViewController {
 
     @IBOutlet weak var mpv: SSFMutablePlanView!
+    let dataArr = [[["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true]],
+                   [["title":"python学习","process":"2/9","check": false],["title":"python学习","process":"2/9","check": false]],
+                   [["title":"java学习","process":"2/3","check": true],["title":"java学习","process":"2/3","check": true]],
+                   [["title":"c++学习","process":"1/4","check": false],["title":"c++学习","process":"1/4","check": false]],
+                   [["title":"go学习","process":"1/5","check": true],["title":"go学习","process":"1/5","check": true]]]
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        mpv.dataSource = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -26,5 +31,20 @@ class testViewController: UIViewController {
     @IBAction func addAPlan(_ sender: UIButton) {
         mpv.creatAPlanTable()
 
+    }
+}
+
+extension testViewController: SSFMutablePlanViewDataSource {
+    func numberOfPlansInMutablePlanView(_ mutablePlanView: SSFMutablePlanView) -> Int {
+        return dataArr.count
+    }
+    
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int {
+        return dataArr[planIndex].count
+    }
+    
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic {
+        let dataDic = dataArr[indexPath.0][indexPath.1]
+        return [MutablePlanViewCellDicKey.title: (dataDic["title"] as! String),MutablePlanViewCellDicKey.process: (dataDic["process"] as! String),MutablePlanViewCellDicKey.check: (dataDic["check"] as! Bool)]
     }
 }

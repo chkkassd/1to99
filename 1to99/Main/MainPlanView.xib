@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SSFMutablePlanView" customModule="_to99" customModuleProvider="target">
             <connections>
                 <outlet property="containView" destination="xhj-OO-8oM" id="axD-og-wLx"/>
-                <outlet property="indicatorView" destination="fzJ-Hi-xG8" id="DlS-bf-gX8"/>
+                <outlet property="pageControl" destination="UEi-3i-W8w" id="u1y-nZ-bCu"/>
                 <outlet property="planCollectionView" destination="n6a-vj-fzY" id="1RS-3Q-oWW"/>
             </connections>
         </placeholder>
@@ -22,31 +22,30 @@
             <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzJ-Hi-xG8" customClass="IndicatorView" customModule="_to99" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="380" width="400" height="20"/>
-                    <color key="backgroundColor" name="PrimaryBackgroundColor"/>
-                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="n6a-vj-fzY">
-                    <rect key="frame" x="0.0" y="0.0" width="400" height="380"/>
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="363"/>
                     <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hEi-gC-t5O">
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hEi-gC-t5O">
                         <size key="itemSize" width="300" height="380"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="UEi-3i-W8w">
+                    <rect key="frame" x="181" y="363" width="39" height="37"/>
+                    <color key="pageIndicatorTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="currentPageIndicatorTintColor" name="PrimaryColor"/>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" name="PrimaryBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fzJ-Hi-xG8" firstAttribute="leading" secondItem="9al-Vj-31Z" secondAttribute="leading" id="6Ny-Kq-5Du"/>
-                <constraint firstItem="fzJ-Hi-xG8" firstAttribute="top" secondItem="n6a-vj-fzY" secondAttribute="bottom" id="9QN-W8-0xg"/>
+                <constraint firstItem="UEi-3i-W8w" firstAttribute="top" secondItem="n6a-vj-fzY" secondAttribute="bottom" id="Sk8-u7-AzR"/>
                 <constraint firstItem="n6a-vj-fzY" firstAttribute="leading" secondItem="9al-Vj-31Z" secondAttribute="leading" id="Uaq-3N-oCg"/>
-                <constraint firstItem="fzJ-Hi-xG8" firstAttribute="bottom" secondItem="9al-Vj-31Z" secondAttribute="bottom" id="aE9-Nz-J3L"/>
                 <constraint firstItem="n6a-vj-fzY" firstAttribute="top" secondItem="9al-Vj-31Z" secondAttribute="top" id="elR-NK-ChE"/>
-                <constraint firstItem="9al-Vj-31Z" firstAttribute="bottom" secondItem="n6a-vj-fzY" secondAttribute="bottom" constant="20" id="gv9-7w-4MB"/>
+                <constraint firstItem="9al-Vj-31Z" firstAttribute="bottom" secondItem="n6a-vj-fzY" secondAttribute="bottom" constant="37" id="gv9-7w-4MB"/>
                 <constraint firstItem="n6a-vj-fzY" firstAttribute="trailing" secondItem="9al-Vj-31Z" secondAttribute="trailing" id="qNO-AA-Qrk"/>
-                <constraint firstItem="fzJ-Hi-xG8" firstAttribute="trailing" secondItem="9al-Vj-31Z" secondAttribute="trailing" id="uxh-SA-Jq7"/>
+                <constraint firstItem="UEi-3i-W8w" firstAttribute="centerX" secondItem="xhj-OO-8oM" secondAttribute="centerX" id="xp3-5H-nhB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="9al-Vj-31Z"/>
@@ -56,6 +55,9 @@
     <resources>
         <namedColor name="PrimaryBackgroundColor">
             <color red="0.83921568627450982" green="0.87450980392156863" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryColor">
+            <color red="0.0" green="0.53725490196078429" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

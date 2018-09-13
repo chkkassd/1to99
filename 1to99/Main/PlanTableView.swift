@@ -15,6 +15,7 @@ class PlanTableView: UITableView {
     }
     
     @IBOutlet weak var planTitle: UILabel!
+    var planTableIndex: Int = 0
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)

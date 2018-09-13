@@ -8,12 +8,27 @@
 
 import UIKit
 
+typealias MutablePlanViewIndex = (Int, Int)//first para is plan index, second para is task index
+
+typealias MutablePlanViewCellDic = [MutablePlanViewCellDicKey : Any]
+
+enum MutablePlanViewCellDicKey {
+    case title
+    case process
+    case check
+}
+
 class SSFMutablePlanView: UIView {
     
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet var containView: UIView!
-    @IBOutlet weak var indicatorView: IndicatorView!
     @IBOutlet weak var planCollectionView: UICollectionView!
     var allPlanTables: [PlanTableView] = []
+    weak var dataSource: SSFMutablePlanViewDataSource? {
+        didSet {
+            pageControl.numberOfPages = dataSource?.numberOfPlansInMutablePlanView(self) ?? 0
+        }
+    }
     
     // MARK: Initialization
     
@@ -36,24 +51,21 @@ class SSFMutablePlanView: UIView {
         //2.set collectionview
         configureCollectionView()
         
-        
-        indicatorView.count = allPlanTables.count
-
-        
     }
+    
     // MARK: Private method
-    
-    
-
-    
-    // MARK: Public API
-    
-    public func configureCollectionView() {
+    private func configureCollectionView() {
         let collectionCellNib = UINib(nibName: "PlanCollectionViewCell", bundle: Bundle.main)
         planCollectionView.register(collectionCellNib, forCellWithReuseIdentifier: "PlanCollectionViewCell")
         planCollectionView.delegate = self
         planCollectionView.dataSource = self
     }
+    
+
+    
+    // MARK: Public API
+    
+    
     
     public func creatAPlanTable() -> PlanTableView {
         let planTable = PlanTableView.getAPlanTableView()
@@ -63,7 +75,7 @@ class SSFMutablePlanView: UIView {
         planTable.dataSource = self
         
        
-        allPlanTables.append(planTable)
+//        allPlanTables.append(planTable)
         
         return planTable
     }
@@ -74,36 +86,72 @@ class SSFMutablePlanView: UIView {
 }
 
 extension SSFMutablePlanView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    
+    //datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        guard let dataSource = self.dataSource else { return 0 }
+        return dataSource.numberOfPlansInMutablePlanView(self)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanCollectionViewCell", for: indexPath) as! PlanCollectionViewCell
+        //clear subview
+        cell.contentView.subviews.forEach {$0.removeFromSuperview()}
+        //add subview
+        let planTable = creatAPlanTable()
+        planTable.planTableIndex = indexPath.row
+        cell.contentView.addSubview(planTable)
+        //layout subview
+        planTable.translatesAutoresizingMaskIntoConstraints = false
+        let collectionCellSafeArea = cell.safeAreaLayoutGuide
+        planTable.topAnchor.constraint(equalTo: collectionCellSafeArea.topAnchor).isActive = true
+        planTable.bottomAnchor.constraint(equalTo: collectionCellSafeArea.bottomAnchor).isActive = true
+        planTable.leadingAnchor.constraint(equalTo: collectionCellSafeArea.leadingAnchor).isActive = true
+        planTable.trailingAnchor.constraint(equalTo: collectionCellSafeArea.trailingAnchor).isActive = true
         
-        let cellNib = UINib(nibName: "PlanTableViewCell", bundle: Bundle.main)
-        cell.planTable.register(cellNib, forCellReuseIdentifier: "PlanTableViewCell")
-        cell.planTable.delegate = self
-        cell.planTable.dataSource = self
-        cell.planTable.reloadData()
-
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.bounds.width - (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing
+        let width = collectionView.bounds.width
         let height = collectionView.bounds.height
         return CGSize(width: width, height: height)
     }
+    
+    //delegate
+
 }
 
 extension SSFMutablePlanView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        guard let dataSource = self.dataSource else { return 0 }
+        return dataSource.mutablePlanView(self, numberOfTasksInPlan: (tableView as! PlanTableView).planTableIndex)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlanTableViewCell", for: indexPath) as! PlanTableViewCell
+        guard let dataSource = self.dataSource else { return cell }
+        let dataDic = dataSource.mutablePlanView(self, taskForPlanAt: ((tableView as! PlanTableView).planTableIndex, indexPath.row))
+        cell.titleLabel.text = dataDic[.title] as? String
+        cell.processLable.text = dataDic[.process] as? String
+        cell.checkButton.isSelected = dataDic[.check] as! Bool
         return cell
     }
+}
+
+extension SSFMutablePlanView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("=====\(scrollView.contentOffset)==\n")
+        let result = floor(abs(scrollView.contentOffset.x)/scrollView.bounds.width)
+        print("=====result:\(result)=====\n")
+        pageControl.currentPage = Int(result)
+        print("=====IntResult:\(Int(result))=====\n")
+        print("=====page:\(pageControl.currentPage)=====\n")
+    }
+}
+
+protocol SSFMutablePlanViewDataSource: AnyObject {
+    func numberOfPlansInMutablePlanView(_ mutablePlanView: SSFMutablePlanView) -> Int
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic
 }
