@@ -61,22 +61,13 @@ class SSFMutablePlanView: UIView {
         planCollectionView.dataSource = self
     }
     
-
-    
     // MARK: Public API
-    
-    
-    
     public func creatAPlanTable() -> PlanTableView {
         let planTable = PlanTableView.getAPlanTableView()
         let cellNib = UINib(nibName: "PlanTableViewCell", bundle: Bundle.main)
         planTable.register(cellNib, forCellReuseIdentifier: "PlanTableViewCell")
         planTable.delegate = self
         planTable.dataSource = self
-        
-       
-//        allPlanTables.append(planTable)
-        
         return planTable
     }
     
@@ -113,7 +104,7 @@ extension SSFMutablePlanView: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width
+        let width = collectionView.bounds.width - 40.0
         let height = collectionView.bounds.height
         return CGSize(width: width, height: height)
     }
@@ -141,12 +132,8 @@ extension SSFMutablePlanView: UITableViewDelegate, UITableViewDataSource {
 
 extension SSFMutablePlanView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("=====\(scrollView.contentOffset)==\n")
-        let result = floor(abs(scrollView.contentOffset.x)/scrollView.bounds.width)
-        print("=====result:\(result)=====\n")
+        let result = round(abs(scrollView.contentOffset.x)/scrollView.bounds.width)
         pageControl.currentPage = Int(result)
-        print("=====IntResult:\(Int(result))=====\n")
-        print("=====page:\(pageControl.currentPage)=====\n")
     }
 }
 
