@@ -18,7 +18,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             </view>
-            <color key="backgroundColor" red="0.34509803919999998" green="0.70980392160000005" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="BHm-b8-CrS"/>
         </collectionViewCell>
     </objects>

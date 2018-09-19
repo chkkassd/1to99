@@ -8,51 +8,44 @@
 
 import UIKit
 
-class SSFPlanViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SSFPlanViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var planView: SSFMutablePlanView!
+    
+    var dataArr = [[["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true]],
+                   [["title":"python学习","process":"2/9","check": false],["title":"python学习","process":"2/9","check": false]],
+                   [["title":"java学习","process":"2/3","check": true],["title":"java学习","process":"2/3","check": true]],
+                   [["title":"c++学习","process":"1/4","check": false],["title":"c++学习","process":"1/4","check": false]]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.tableView.register(PlanHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "PlanHeaderFooterView")
+        planView.dataSource = self
     }
     
-
+    @IBAction func creatPlanButtonPressed(_ sender: UIBarButtonItem) {
+        //Update the data
+        dataArr.insert([], at: 0)
+        //Update the plan view
+        planView.creatPlanView(at: 0)
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
+}
 
-    // MARK: - TableView datasource
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+extension SSFPlanViewController: SSFMutablePlanViewDataSource {
+    func numberOfPlansInMutablePlanView(_ mutablePlanView: SSFMutablePlanView) -> Int {
+        return dataArr.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let CellIdentifier = "PlanTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath)
-        return cell
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int {
+        return dataArr[planIndex].count
     }
     
-    // MARK: - Tableview delegate
-    
-    /*
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PlanHeaderFooterView")
-        return headerView
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic {
+        let dataDic = dataArr[indexPath.0][indexPath.1]
+        return [MutablePlanViewCellDicKey.title: (dataDic["title"] as! String),MutablePlanViewCellDicKey.process: (dataDic["process"] as! String),MutablePlanViewCellDicKey.check: (dataDic["check"] as! Bool)]
     }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PlanHeaderFooterView")
-        return footerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 36.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 36.0
-    }
- */
 }

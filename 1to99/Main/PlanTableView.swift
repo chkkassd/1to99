@@ -15,7 +15,12 @@ class PlanTableView: UITableView {
     }
     
     @IBOutlet weak var planTitle: UILabel!
+    
     var planTableIndex: Int = 0
+    
+    var creatTask: (Int) -> Void = {_ in }
+    
+    var editPlan: (Int) -> Void = {_ in }
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -32,9 +37,11 @@ class PlanTableView: UITableView {
     }
     
     @IBAction func creatTaskButtonPressed(_ sender: UIButton) {
+        creatTask(planTableIndex)
     }
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
+        editPlan(planTableIndex)
     }
     
 }

@@ -40,16 +40,34 @@
                                     <constraint firstItem="bhw-id-Vbh" firstAttribute="top" secondItem="Yd3-Gh-YUV" secondAttribute="top" id="vSt-Ou-Aof"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHh-YU-lmd" customClass="SSFMutablePlanView" customModule="_to99" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="246" width="375" height="372"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="PrimaryBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Yd3-Gh-YUV" firstAttribute="leading" secondItem="0fL-Lq-3kl" secondAttribute="leading" id="CKN-cD-djh"/>
                             <constraint firstItem="Yd3-Gh-YUV" firstAttribute="top" secondItem="0fL-Lq-3kl" secondAttribute="top" id="bHj-RX-lPf"/>
+                            <constraint firstItem="tHh-YU-lmd" firstAttribute="bottom" secondItem="0fL-Lq-3kl" secondAttribute="bottom" id="dg0-VC-9r5"/>
                             <constraint firstItem="Yd3-Gh-YUV" firstAttribute="trailing" secondItem="0fL-Lq-3kl" secondAttribute="trailing" id="fan-hs-B2Y"/>
+                            <constraint firstItem="tHh-YU-lmd" firstAttribute="trailing" secondItem="0fL-Lq-3kl" secondAttribute="trailing" id="nam-XR-wJp"/>
+                            <constraint firstItem="tHh-YU-lmd" firstAttribute="leading" secondItem="0fL-Lq-3kl" secondAttribute="leading" id="omz-O7-LnI"/>
+                            <constraint firstItem="tHh-YU-lmd" firstAttribute="top" secondItem="Yd3-Gh-YUV" secondAttribute="bottom" constant="8" id="wud-s2-lde"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0fL-Lq-3kl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="计划" id="4yf-HK-Kmg"/>
+                    <navigationItem key="navigationItem" title="计划" id="4yf-HK-Kmg">
+                        <barButtonItem key="rightBarButtonItem" title="新建计划" id="kRb-Bc-XBg">
+                            <color key="tintColor" name="PrimaryColor"/>
+                            <connections>
+                                <action selector="creatPlanButtonPressed:" destination="cqk-c1-kKw" id="aH0-ZF-gZ0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="planView" destination="tHh-YU-lmd" id="bc5-jH-ssy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HjJ-cX-PBM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -231,6 +249,9 @@
         <image name="Tabbar_today" width="20" height="22"/>
         <namedColor name="PrimaryBackgroundColor">
             <color red="0.83921568627450982" green="0.87450980392156863" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryColor">
+            <color red="0.0" green="0.53725490196078429" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryColor">
             <color red="0.0" green="0.53725490196078429" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

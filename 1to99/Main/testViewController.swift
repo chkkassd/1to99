@@ -29,7 +29,7 @@ class testViewController: UIViewController {
     }
 
     @IBAction func addAPlan(_ sender: UIButton) {
-        mpv.creatAPlanTable()
+//        mpv.creatAPlanTable()
 
     }
 }

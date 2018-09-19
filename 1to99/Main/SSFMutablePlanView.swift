@@ -50,7 +50,6 @@ class SSFMutablePlanView: UIView {
         addSubview(containView)
         //2.set collectionview
         configureCollectionView()
-        
     }
     
     // MARK: Private method
@@ -61,8 +60,7 @@ class SSFMutablePlanView: UIView {
         planCollectionView.dataSource = self
     }
     
-    // MARK: Public API
-    public func creatAPlanTable() -> PlanTableView {
+    private func creatAPlanTable() -> PlanTableView {
         let planTable = PlanTableView.getAPlanTableView()
         let cellNib = UINib(nibName: "PlanTableViewCell", bundle: Bundle.main)
         planTable.register(cellNib, forCellReuseIdentifier: "PlanTableViewCell")
@@ -71,7 +69,24 @@ class SSFMutablePlanView: UIView {
         return planTable
     }
     
+    // MARK: Public API
+    public func creatPlanView(at item: Int) {
+        let indexPath = IndexPath(item: item, section: 0)
+        planCollectionView.insertItems(at: [indexPath])
+        pageControl.numberOfPages += 1
+    }
+    
+    public func removePlanView(at item: Int) {
+        let indexPath = IndexPath(item: item, section: 0)
+        planCollectionView.deleteItems(at: [indexPath])
+        pageControl.numberOfPages -= 1
+    }
+    
     public func addTaskInPlanTable() {
+        
+    }
+    
+    public func removeTaskInPlanTable() {
         
     }
 }
@@ -137,6 +152,7 @@ extension SSFMutablePlanView: UIScrollViewDelegate {
     }
 }
 
+// Provide the data which plan view use to display
 protocol SSFMutablePlanViewDataSource: AnyObject {
     func numberOfPlansInMutablePlanView(_ mutablePlanView: SSFMutablePlanView) -> Int
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int
