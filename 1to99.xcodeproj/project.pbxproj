@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		910A85992141135900FBFD83 /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A85972141135900FBFD83 /* PlanCollectionViewCell.swift */; };
 		910A859A2141135900FBFD83 /* PlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910A85982141135900FBFD83 /* PlanCollectionViewCell.xib */; };
+		910A85A62153A67400FBFD83 /* SSFTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */; };
 		911E9468213FCB590081A241 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E9467213FCB590081A241 /* testViewController.swift */; };
 		9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9162FF6921194858006F0C4C /* SSFGraphKit.framework */; };
 		9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162FF6F21194DFF006F0C4C /* IndicatorView.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		910A85972141135900FBFD83 /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		910A85982141135900FBFD83 /* PlanCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanCollectionViewCell.xib; sourceTree = "<group>"; };
+		910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFTaskTableViewController.swift; sourceTree = "<group>"; };
 		911E9467213FCB590081A241 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		9162FF6921194858006F0C4C /* SSFGraphKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSFGraphKit.framework; path = Carthage/Build/iOS/SSFGraphKit.framework; sourceTree = "<group>"; };
 		9162FF6F21194DFF006F0C4C /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */,
 				91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */,
 				911E9467213FCB590081A241 /* testViewController.swift */,
+				910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */,
 				91AEF5EB21018E7B00A800F0 /* ScreenShot.swift in Sources */,
 				91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */,
+				910A85A62153A67400FBFD83 /* SSFTaskTableViewController.swift in Sources */,
 				9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */,
 				91AEF5ED21018E7B00A800F0 /* FIFOQueue.swift in Sources */,
 				91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */,
