@@ -10,6 +10,8 @@
 		910A85992141135900FBFD83 /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A85972141135900FBFD83 /* PlanCollectionViewCell.swift */; };
 		910A859A2141135900FBFD83 /* PlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910A85982141135900FBFD83 /* PlanCollectionViewCell.xib */; };
 		910A85A62153A67400FBFD83 /* SSFTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */; };
+		911671D3215B683F008FC4D6 /* TaskCheckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911671D2215B683F008FC4D6 /* TaskCheckTableViewCell.swift */; };
+		911671D7215B77BA008FC4D6 /* TaskCheckTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 911671D6215B77BA008FC4D6 /* TaskCheckTableViewCell.xib */; };
 		911E9468213FCB590081A241 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E9467213FCB590081A241 /* testViewController.swift */; };
 		9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9162FF6921194858006F0C4C /* SSFGraphKit.framework */; };
 		9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162FF6F21194DFF006F0C4C /* IndicatorView.swift */; };
@@ -39,6 +41,8 @@
 		910A85972141135900FBFD83 /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		910A85982141135900FBFD83 /* PlanCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanCollectionViewCell.xib; sourceTree = "<group>"; };
 		910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFTaskTableViewController.swift; sourceTree = "<group>"; };
+		911671D2215B683F008FC4D6 /* TaskCheckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCheckTableViewCell.swift; sourceTree = "<group>"; };
+		911671D6215B77BA008FC4D6 /* TaskCheckTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCheckTableViewCell.xib; sourceTree = "<group>"; };
 		911E9467213FCB590081A241 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		9162FF6921194858006F0C4C /* SSFGraphKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSFGraphKit.framework; path = Carthage/Build/iOS/SSFGraphKit.framework; sourceTree = "<group>"; };
 		9162FF6F21194DFF006F0C4C /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 			children = (
 				91AEF5FE2105B57B00A800F0 /* SSFMutablePlanView */,
 				9162FF6F21194DFF006F0C4C /* IndicatorView.swift */,
+				911671D2215B683F008FC4D6 /* TaskCheckTableViewCell.swift */,
+				911671D6215B77BA008FC4D6 /* TaskCheckTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 				91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */,
 				9162FF72211A6E3E006F0C4C /* PlanTableViewCell.xib in Resources */,
 				91D70EA420FDD9B800359571 /* Main.storyboard in Resources */,
+				911671D7215B77BA008FC4D6 /* TaskCheckTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +298,7 @@
 				91AEF5EC21018E7B00A800F0 /* DirectoryPath.swift in Sources */,
 				911E9468213FCB590081A241 /* testViewController.swift in Sources */,
 				91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */,
+				911671D3215B683F008FC4D6 /* TaskCheckTableViewCell.swift in Sources */,
 				91AEF5EB21018E7B00A800F0 /* ScreenShot.swift in Sources */,
 				91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */,
 				910A85A62153A67400FBFD83 /* SSFTaskTableViewController.swift in Sources */,

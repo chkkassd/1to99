@@ -29,6 +29,10 @@ class SSFPlanViewController: UIViewController {
         planView.creatPlanView(at: 0)
     }
     
+    @IBAction func leftButtonPressed(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "showTaskView", sender: self)
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
