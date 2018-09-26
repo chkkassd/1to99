@@ -213,7 +213,7 @@ extension UIImage {
         UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
         self.draw(in: rect)
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
-        guard let imageData = UIImageJPEGRepresentation(image, compressionQuality) else { return nil }
+        guard let imageData = image.jpegData(compressionQuality: compressionQuality) else { return nil }
         return UIImage(data: imageData)
     }
 }
