@@ -84,12 +84,12 @@
         <scene sceneID="xNW-SB-Brc">
             <objects>
                 <tableViewController id="jep-Yx-Tow" customClass="SSFTaskTableViewController" customModule="_to99" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pCQ-hB-NCh">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pCQ-hB-NCh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="PrimaryBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="NYG-mO-n8f">
-                            <rect key="frame" x="0.0" y="208" width="375" height="88"/>
+                            <rect key="frame" x="0.0" y="212" width="375" height="88"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDR-wG-Luh">
@@ -171,19 +171,19 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="nPd-t9-nIm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="80" id="nPd-t9-nIm">
                                         <rect key="frame" x="0.0" y="40" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nPd-t9-nIm" id="YPc-Pu-QVW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="我是大家放松了对飞机上的风景世界的方式对肌肤的水分老师的" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3aR-lc-Hz6">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="我是大家放松了对飞机上的风景世界的方式对肌肤的水分老师的" translatesAutoresizingMaskIntoConstraints="NO" id="3aR-lc-Hz6">
                                                     <rect key="frame" x="16" y="4" width="343" height="72"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" name="PrimaryTextColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 </textView>
                                             </subviews>
                                             <color key="backgroundColor" name="PrimaryBackgroundColor"/>
@@ -199,11 +199,11 @@
                             </tableViewSection>
                             <tableViewSection id="i3Q-Tf-i0x">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uJE-QH-yBC">
-                                        <rect key="frame" x="0.0" y="120" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="48" id="uJE-QH-yBC">
+                                        <rect key="frame" x="0.0" y="120" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uJE-QH-yBC" id="LKc-Aa-uY3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GS-rM-Wqn">
@@ -241,7 +241,7 @@
                                                 <constraint firstItem="1GS-rM-Wqn" firstAttribute="top" secondItem="LKc-Aa-uY3" secondAttribute="top" constant="4" id="CE0-fr-Cfh"/>
                                                 <constraint firstItem="1GS-rM-Wqn" firstAttribute="leading" secondItem="LKc-Aa-uY3" secondAttribute="leading" constant="16" id="L7j-HW-WTa"/>
                                                 <constraint firstAttribute="trailing" secondItem="1GS-rM-Wqn" secondAttribute="trailing" constant="16" id="eBa-Tm-xjG"/>
-                                                <constraint firstAttribute="bottom" secondItem="1GS-rM-Wqn" secondAttribute="bottom" constant="4" id="rzr-iP-W0G"/>
+                                                <constraint firstAttribute="bottom" secondItem="1GS-rM-Wqn" secondAttribute="bottom" constant="8" id="rzr-iP-W0G"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -249,8 +249,8 @@
                             </tableViewSection>
                             <tableViewSection id="m3x-7N-XCj">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nW1-bq-GjZ">
-                                        <rect key="frame" x="0.0" y="164" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TaskCheckTableViewCell" id="nW1-bq-GjZ">
+                                        <rect key="frame" x="0.0" y="168" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nW1-bq-GjZ" id="Vmp-Hu-Qxk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

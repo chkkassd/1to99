@@ -41,10 +41,6 @@ class SSFTaskTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 3
-//    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == TaskSectionType.taskTips.rawValue {
             return checkTips.count
@@ -74,5 +70,11 @@ class SSFTaskTableViewController: UITableViewController {
             return 44.0
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("===you select section:\(indexPath.section),row:\(indexPath.row)=====\n")
     }
 }

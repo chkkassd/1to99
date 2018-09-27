@@ -107,8 +107,8 @@
 			children = (
 				91AEF5DA210186DA00A800F0 /* SSFMainTabBarViewController.swift */,
 				91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */,
-				911E9467213FCB590081A241 /* testViewController.swift */,
 				910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */,
+				911E9467213FCB590081A241 /* testViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

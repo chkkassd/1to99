@@ -12,6 +12,7 @@ class TaskCheckTableViewCell: UITableViewCell {
 
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var contentLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +25,6 @@ class TaskCheckTableViewCell: UITableViewCell {
     }
 
     @IBAction func checkButtonPressed(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
 }
