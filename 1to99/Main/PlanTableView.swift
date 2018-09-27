@@ -22,6 +22,8 @@ class PlanTableView: UITableView {
     
     var editPlan: (Int) -> Void = {_ in }
     
+    var renamePlan: (Int) -> Void = {_ in }
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         commonInit()
@@ -44,4 +46,7 @@ class PlanTableView: UITableView {
         editPlan(planTableIndex)
     }
     
+    @IBAction func tapPlanTitle(_ sender: UITapGestureRecognizer) {
+        renamePlan(planTableIndex)
+    }
 }

@@ -19,6 +19,7 @@ class PlanTableViewCell: UITableViewCell {
     }
 
     @IBAction func checkButtonPressed(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

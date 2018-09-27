@@ -12,6 +12,8 @@
 		910A85A62153A67400FBFD83 /* SSFTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */; };
 		911671D3215B683F008FC4D6 /* TaskCheckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911671D2215B683F008FC4D6 /* TaskCheckTableViewCell.swift */; };
 		911671D7215B77BA008FC4D6 /* TaskCheckTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 911671D6215B77BA008FC4D6 /* TaskCheckTableViewCell.xib */; };
+		911671D9215CC9E3008FC4D6 /* MainThemeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911671D8215CC9E3008FC4D6 /* MainThemeNavigationViewController.swift */; };
+		911671DB215CDCC6008FC4D6 /* SSFSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911671DA215CDCC6008FC4D6 /* SSFSettingTableViewController.swift */; };
 		911E9468213FCB590081A241 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E9467213FCB590081A241 /* testViewController.swift */; };
 		9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9162FF6921194858006F0C4C /* SSFGraphKit.framework */; };
 		9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162FF6F21194DFF006F0C4C /* IndicatorView.swift */; };
@@ -43,6 +45,8 @@
 		910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFTaskTableViewController.swift; sourceTree = "<group>"; };
 		911671D2215B683F008FC4D6 /* TaskCheckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCheckTableViewCell.swift; sourceTree = "<group>"; };
 		911671D6215B77BA008FC4D6 /* TaskCheckTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCheckTableViewCell.xib; sourceTree = "<group>"; };
+		911671D8215CC9E3008FC4D6 /* MainThemeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThemeNavigationViewController.swift; sourceTree = "<group>"; };
+		911671DA215CDCC6008FC4D6 /* SSFSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFSettingTableViewController.swift; sourceTree = "<group>"; };
 		911E9467213FCB590081A241 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		9162FF6921194858006F0C4C /* SSFGraphKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSFGraphKit.framework; path = Carthage/Build/iOS/SSFGraphKit.framework; sourceTree = "<group>"; };
 		9162FF6F21194DFF006F0C4C /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */,
 				910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */,
 				911E9467213FCB590081A241 /* testViewController.swift */,
+				911671D8215CC9E3008FC4D6 /* MainThemeNavigationViewController.swift */,
+				911671DA215CDCC6008FC4D6 /* SSFSettingTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -310,7 +316,9 @@
 				91AEF5FD21057C3C00A800F0 /* PlanTableView.swift in Sources */,
 				91AEF5E921018E7B00A800F0 /* Constant.swift in Sources */,
 				910A85992141135900FBFD83 /* PlanCollectionViewCell.swift in Sources */,
+				911671DB215CDCC6008FC4D6 /* SSFSettingTableViewController.swift in Sources */,
 				91AEF6022105B7E200A800F0 /* SSFMutablePlanView.swift in Sources */,
+				911671D9215CC9E3008FC4D6 /* MainThemeNavigationViewController.swift in Sources */,
 				91AEF5F021018E7B00A800F0 /* ResultDescription.swift in Sources */,
 				91AEF5EA21018E7B00A800F0 /* NetWorkResource.swift in Sources */,
 			);
