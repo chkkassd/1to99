@@ -10,17 +10,33 @@ import Foundation
 import RealmSwift
 
 class Plan: Object {
+    @objc dynamic var id = NSUUID().uuidString
     @objc dynamic var title = ""
     let tasks = List<Task>()
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 class Task: Object {
+    @objc dynamic var id = NSUUID().uuidString
     @objc dynamic var summary = ""
-    @objc dynamic var owner: Plan?
     let checkItems = List<CheckItem>()
+    let owner = LinkingObjects(fromType: Plan.self, property: "tasks")
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 class CheckItem: Object {
+    @objc dynamic var id = NSUUID().uuidString
     @objc dynamic var content = ""
     @objc dynamic var isDone = false
+    let owner = LinkingObjects(fromType: Task.self, property: "checkItems")
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }
