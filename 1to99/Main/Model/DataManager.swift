@@ -15,6 +15,8 @@ class DataManager {
     private init() {}
     
     // MARK: - Public Api
+    
+    //set default configuration
     public func setDefaultRealmConfiguration(_ userId: String) {
         var config = Realm.Configuration()
         config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("\(userId).realm")
@@ -41,6 +43,4 @@ class DataManager {
             }
         }
     }
-    
-    
 }

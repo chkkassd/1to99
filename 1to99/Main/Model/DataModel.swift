@@ -40,3 +40,54 @@ class CheckItem: Object {
         return "id"
     }
 }
+
+extension Plan {
+    //creat
+    class func creatPlan(_ title: String) -> Plan {
+        let plan = Plan()
+        plan.title = title
+        return plan
+    }
+    
+    //save and update
+    func saveAndUpdateToRealm() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(self, update: true)
+        }
+    }
+}
+
+extension Task {
+    //creat
+    class func creatTask(_ summary: String) -> Task {
+        let task = Task()
+        task.summary = summary
+        return task
+    }
+    
+    //save and update
+    func saveAndUpdateToRealm() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(self, update: true)
+        }
+    }
+}
+
+extension CheckItem {
+    //creat
+    class func creatCheckItem(_ content: String) -> CheckItem {
+        let checkItem = CheckItem()
+        checkItem.content = content
+        return checkItem
+    }
+    
+    //save and update
+    func saveAndUpdateToRealm() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(self, update: true)
+        }
+    }
+}
