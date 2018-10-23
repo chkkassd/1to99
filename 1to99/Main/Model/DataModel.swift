@@ -22,6 +22,7 @@ class Plan: Object {
 class Task: Object {
     @objc dynamic var id = NSUUID().uuidString
     @objc dynamic var summary = ""
+    @objc dynamic var isDone = false
     let checkItems = List<CheckItem>()
     let owner = LinkingObjects(fromType: Plan.self, property: "tasks")
     
@@ -33,7 +34,7 @@ class Task: Object {
 class CheckItem: Object {
     @objc dynamic var id = NSUUID().uuidString
     @objc dynamic var content = ""
-    @objc dynamic var isDone = false
+    @objc dynamic var isCheck = false
     let owner = LinkingObjects(fromType: Task.self, property: "checkItems")
     
     override class func primaryKey() -> String? {
@@ -56,6 +57,14 @@ extension Plan {
             realm.add(self, update: true)
         }
     }
+    
+    //delete
+    func deletePlan() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(self)
+        }
+    }
 }
 
 extension Task {
@@ -73,6 +82,14 @@ extension Task {
             realm.add(self, update: true)
         }
     }
+    
+    //delete
+    func deleteTask() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(self)
+        }
+    }
 }
 
 extension CheckItem {
@@ -88,6 +105,14 @@ extension CheckItem {
         let realm = try! Realm()
         try! realm.write {
             realm.add(self, update: true)
+        }
+    }
+    
+    //delete
+    func deleteCheckItem() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(self)
         }
     }
 }

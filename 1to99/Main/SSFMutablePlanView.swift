@@ -82,6 +82,10 @@ class SSFMutablePlanView: UIView {
         pageControl.numberOfPages -= 1
     }
     
+    public func reloadMutablePlanView() {
+        self.planCollectionView.reloadData()
+    }
+    
     public func addTaskInPlanTable() {
         
     }

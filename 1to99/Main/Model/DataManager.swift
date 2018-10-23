@@ -43,4 +43,18 @@ class DataManager {
             }
         }
     }
+    
+    //delete all objects
+    public func deleteAllOfCurrentRealm() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
+    }
+    
+    //all plans in current realm
+    public func allplans() -> Results<Plan> {
+        let realm = try! Realm()
+        return realm.objects(Plan.self)
+    }
 }

@@ -7,19 +7,37 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SSFPlanViewController: UIViewController {
 
     @IBOutlet weak var planView: SSFMutablePlanView!
     
-    var dataArr: [[[String: String]]] = []/*[[["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true]],
+    /*var dataArr: [[[String: String]]] = [] [[["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true]],
                    [["title":"python学习","process":"2/9","check": false],["title":"python学习","process":"2/9","check": false]],
                    [["title":"java学习","process":"2/3","check": true],["title":"java学习","process":"2/3","check": true]],
                    [["title":"c++学习","process":"1/4","check": false],["title":"c++学习","process":"1/4","check": false]]]*/
+    let allPlans = DataManager.sharedDataManager.allplans()
+    
+    var notificationToken: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         planView.dataSource = self
+        
+        //receive data update nofitication and update UI
+//        notificationToken = allPlans.observe { [weak self] changes in
+//            switch changes {
+//            case .initial:
+//                self?.planView.reloadMutablePlanView()
+//                case .update(_, let deletions, let insertions, let modifications)
+//
+//            }
+//        }
+    }
+    
+    deinit {
+        notificationToken?.invalidate()
     }
     
     //MARK: - Action
@@ -39,8 +57,7 @@ class SSFPlanViewController: UIViewController {
     //MARK: - Private methods
     private func presentAlert() {
         let alert = UIAlertController(title: "你好", message: "请输入名称", preferredStyle: .alert)
-        alert.addTextField { textfield in
-        }
+        alert.addTextField { textfield in }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in
             alert.dismiss(animated: true, completion: nil)
         }
@@ -59,15 +76,15 @@ class SSFPlanViewController: UIViewController {
 
 extension SSFPlanViewController: SSFMutablePlanViewDataSource {
     func numberOfPlansInMutablePlanView(_ mutablePlanView: SSFMutablePlanView) -> Int {
-        return dataArr.count
+        return allPlans.count//dataArr.count
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int {
-        return dataArr[planIndex].count
+        return allPlans[planIndex].tasks.count//dataArr[planIndex].count
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic {
-        let dataDic = dataArr[indexPath.0][indexPath.1]
-        return [MutablePlanViewCellDicKey.title: (dataDic["title"] as! String),MutablePlanViewCellDicKey.process: (dataDic["process"] as! String),MutablePlanViewCellDicKey.check: (dataDic["check"] as! Bool)]
+        let task = (allPlans[indexPath.0].tasks)[indexPath.1]//dataArr[indexPath.0][indexPath.1]
+        return [MutablePlanViewCellDicKey.title: task.summary,MutablePlanViewCellDicKey.process: "\(task.checkItems.filter("isCheck == YES").count)/\(task.checkItems.count)",MutablePlanViewCellDicKey.check: task.isDone]
     }
 }
