@@ -43,6 +43,10 @@ extension testViewController: SSFMutablePlanViewDataSource {
         return dataArr[planIndex].count
     }
     
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, titleForPlan planIndex: Int) -> String {
+        return ""
+    }
+    
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic {
         let dataDic = dataArr[indexPath.0][indexPath.1]
         return [MutablePlanViewCellDicKey.title: (dataDic["title"] as! String),MutablePlanViewCellDicKey.process: (dataDic["process"] as! String),MutablePlanViewCellDicKey.check: (dataDic["check"] as! Bool)]

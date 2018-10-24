@@ -17,7 +17,7 @@ class SSFPlanViewController: UIViewController {
                    [["title":"python学习","process":"2/9","check": false],["title":"python学习","process":"2/9","check": false]],
                    [["title":"java学习","process":"2/3","check": true],["title":"java学习","process":"2/3","check": true]],
                    [["title":"c++学习","process":"1/4","check": false],["title":"c++学习","process":"1/4","check": false]]]*/
-    let allPlans = DataManager.sharedDataManager.allplans()
+    lazy var allPlans = DataManager.sharedDataManager.allplans()
     
     var notificationToken: NotificationToken?
     
@@ -26,14 +26,24 @@ class SSFPlanViewController: UIViewController {
         planView.dataSource = self
         
         //receive data update nofitication and update UI
-//        notificationToken = allPlans.observe { [weak self] changes in
-//            switch changes {
-//            case .initial:
-//                self?.planView.reloadMutablePlanView()
-//                case .update(_, let deletions, let insertions, let modifications)
-//
-//            }
-//        }
+        notificationToken = allPlans.observe { [weak self] changes in
+            switch changes {
+            case .initial:
+                self?.planView.reloadMutablePlanView()
+            case .update(_, let deletions, let insertions, let modifications):
+                //1.update the collectionview
+                self?.planView.planCollectionView.performBatchUpdates({
+                    self?.planView.planCollectionView.deleteItems(at: deletions.map{IndexPath(row:$0, section: 0)})
+                    self?.planView.planCollectionView.insertItems(at: insertions.map{IndexPath(row: $0, section: 0)})
+                    self?.planView.planCollectionView.reloadItems(at: modifications.map{IndexPath(row: $0, section: 0)})
+                }, completion: nil)
+                //2.update the page control
+                self?.planView.updatePageControl(deletions, insertions)
+            case .error(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
     }
     
     deinit {
@@ -58,15 +68,11 @@ class SSFPlanViewController: UIViewController {
     private func presentAlert() {
         let alert = UIAlertController(title: "你好", message: "请输入名称", preferredStyle: .alert)
         alert.addTextField { textfield in }
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in
-            alert.dismiss(animated: true, completion: nil)
-        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in }
         let okAction = UIAlertAction(title: "确定", style: .default) { _ in
-            //update data
+            //add a plan
             let titleText = alert.textFields?.first?.text ?? ""
             Plan.creatPlan(titleText).saveAndUpdateToRealm()
-            //Update the plan view
-            self.planView.creatPlanView(at: 0)
         }
         alert.addAction(cancelAction)
         alert.addAction(okAction)
@@ -81,6 +87,10 @@ extension SSFPlanViewController: SSFMutablePlanViewDataSource {
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int {
         return allPlans[planIndex].tasks.count//dataArr[planIndex].count
+    }
+    
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, titleForPlan planIndex: Int) -> String {
+        return allPlans[planIndex].title
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic {

@@ -86,6 +86,11 @@ class SSFMutablePlanView: UIView {
         self.planCollectionView.reloadData()
     }
     
+    public func updatePageControl(_ deletions: [Int], _ insertions: [Int]) {
+        let num = insertions.count - deletions.count
+        pageControl.numberOfPages += num
+    }
+    
     public func addTaskInPlanTable() {
         
     }
@@ -105,11 +110,13 @@ extension SSFMutablePlanView: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanCollectionViewCell", for: indexPath) as! PlanCollectionViewCell
+        guard let dataSource = self.dataSource else { return cell }
         //clear subview
         cell.contentView.subviews.forEach {$0.removeFromSuperview()}
         //add subview
         let planTable = creatAPlanTable()
         planTable.planTableIndex = indexPath.row
+        planTable.planTitle.text = dataSource.mutablePlanView(self, titleForPlan: indexPath.item)
         cell.contentView.addSubview(planTable)
         //layout subview
         planTable.translatesAutoresizingMaskIntoConstraints = false
@@ -160,5 +167,6 @@ extension SSFMutablePlanView: UIScrollViewDelegate {
 protocol SSFMutablePlanViewDataSource: AnyObject {
     func numberOfPlansInMutablePlanView(_ mutablePlanView: SSFMutablePlanView) -> Int
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, titleForPlan planIndex: Int) -> String
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic
 }
