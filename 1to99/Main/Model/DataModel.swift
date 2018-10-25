@@ -12,6 +12,7 @@ import RealmSwift
 class Plan: Object {
     @objc dynamic var id = NSUUID().uuidString
     @objc dynamic var title = ""
+    @objc dynamic var date = Date.init()
     let tasks = List<Task>()
     
     override class func primaryKey() -> String? {

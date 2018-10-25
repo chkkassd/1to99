@@ -13,11 +13,7 @@ class SSFPlanViewController: UIViewController {
 
     @IBOutlet weak var planView: SSFMutablePlanView!
     
-    /*var dataArr: [[[String: String]]] = [] [[["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true]],
-                   [["title":"python学习","process":"2/9","check": false],["title":"python学习","process":"2/9","check": false]],
-                   [["title":"java学习","process":"2/3","check": true],["title":"java学习","process":"2/3","check": true]],
-                   [["title":"c++学习","process":"1/4","check": false],["title":"c++学习","process":"1/4","check": false]]]*/
-    lazy var allPlans = DataManager.sharedDataManager.allplans()
+    lazy var allPlans = DataManager.sharedDataManager.allplans().sorted(byKeyPath: "date", ascending: false)
     
     var notificationToken: NotificationToken?
     
@@ -43,7 +39,6 @@ class SSFPlanViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        
     }
     
     deinit {
@@ -70,13 +65,42 @@ class SSFPlanViewController: UIViewController {
         alert.addTextField { textfield in }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in }
         let okAction = UIAlertAction(title: "确定", style: .default) { _ in
-            //add a plan
+            //add a plan,interface-driven write
             let titleText = alert.textFields?.first?.text ?? ""
-            Plan.creatPlan(titleText).saveAndUpdateToRealm()
+            let addedPlan = Plan.creatPlan(titleText)
+            self.addPlanForInterfaceDriven(true, addedPlan, IndexPath(item: 0, section: 0))
         }
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    //Interface-driven write
+    private func addPlanForInterfaceDriven(_ isAdd: Bool, _ plan: Plan, _ indexPath: IndexPath) {
+        let realm = try! Realm()
+        realm.beginWrite()
+        // add data
+        if isAdd {
+            realm.add(plan, update: true)
+        } else {
+            realm.delete(plan)
+        }
+        //mirror it instantly in the UI
+        self.planView.planCollectionView.performBatchUpdates({
+            if isAdd {
+                self.planView.planCollectionView.insertItems(at: [indexPath])
+            } else {
+                self.planView.planCollectionView.deleteItems(at: [indexPath])
+            }
+        }, completion: { _ in
+            if isAdd {
+                self.planView.pageControl.numberOfPages += 1
+                self.planView.planCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionView.ScrollPosition.right, animated: false)
+            } else {
+                self.planView.pageControl.numberOfPages -= 1
+            }
+        })
+        try! realm.commitWrite(withoutNotifying: [notificationToken!])
     }
 }
 
