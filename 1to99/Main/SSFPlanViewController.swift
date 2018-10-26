@@ -87,6 +87,11 @@ class SSFPlanViewController: UIViewController {
         if isAdd {
             realm.add(plan, update: true)
         } else {
+            //cascading delete
+            for task in plan.tasks {
+                realm.delete(task.checkItems)
+            }
+            realm.delete(plan.tasks)
             realm.delete(plan)
         }
         //mirror it instantly in the UI
@@ -110,10 +115,10 @@ class SSFPlanViewController: UIViewController {
     //Interface-driven write for task
     private func addTaskForInterfaceDriven(_ isAdd: Bool, _ planIndex: Int, _ task: Task) {
         let realm = try! Realm()
-        let plan = allPlans[planIndex]
         realm.beginWrite()
         // add data
         if isAdd {
+            let plan = allPlans[planIndex]
             realm.add(task, update: true)
             plan.tasks.append(task)
         } else {
@@ -153,4 +158,9 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
             self.addTaskForInterfaceDriven(true, planIndex, task)
         }
     }
+    
+//    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex) {
+//        let task = (allPlans[index.0].tasks)[index.1]
+//        addTaskForInterfaceDriven(false, index.0, task)
+//    }
 }

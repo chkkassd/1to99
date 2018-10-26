@@ -160,6 +160,25 @@ extension SSFMutablePlanView: UITableViewDelegate, UITableViewDataSource {
         cell.checkButton.isSelected = dataDic[.check] as! Bool
         return cell
     }
+    
+//    //edite model
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        return UITableViewCell.EditingStyle.delete
+//    }
+//
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            self.delegate?.mutablePlanView(self, deleteTaskAt: ((tableView as! PlanTableView).planTableIndex, indexPath.row))
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+//        return "删除任务"
+//    }
 }
 
 extension SSFMutablePlanView: UIScrollViewDelegate {
@@ -180,4 +199,5 @@ protocol SSFMutablePlanViewDataSource: AnyObject {
 //Provide interaction with plan
 protocol SSFMutablePlanViewDelegate: AnyObject {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, creatTaskAt planIndex: Int)
+//    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex)
 }

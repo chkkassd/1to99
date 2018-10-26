@@ -45,8 +45,4 @@ class PlanTableView: UITableView {
     @IBAction func editButtonPressed(_ sender: UIButton) {
         editPlan(planTableIndex)
     }
-    
-    @IBAction func tapPlanTitle(_ sender: UITapGestureRecognizer) {
-        renamePlan(planTableIndex)
-    }
 }

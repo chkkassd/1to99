@@ -26,9 +26,6 @@
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" name="PrimaryTextColor"/>
                         <nil key="highlightedColor"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="gZo-nT-tcs" appends="YES" id="2td-ZF-6yK"/>
-                        </connections>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eG-O6-0RH">
                         <rect key="frame" x="338" y="7" width="23" height="22"/>
@@ -78,11 +75,6 @@
                 <outlet property="planTitle" destination="jcI-57-EKs" id="fTK-N1-iDa"/>
             </connections>
         </tableView>
-        <tapGestureRecognizer id="gZo-nT-tcs">
-            <connections>
-                <action selector="tapPlanTitle:" destination="W8s-e1-Qgd" id="2MI-C6-RjE"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="smallIndicator" width="23" height="5"/>
