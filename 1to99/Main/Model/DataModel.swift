@@ -24,6 +24,7 @@ class Task: Object {
     @objc dynamic var id = NSUUID().uuidString
     @objc dynamic var summary = ""
     @objc dynamic var isDone = false
+    @objc dynamic var date = Date()
     let checkItems = List<CheckItem>()
     let owner = LinkingObjects(fromType: Plan.self, property: "tasks")
     

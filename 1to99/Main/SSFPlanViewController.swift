@@ -20,21 +20,22 @@ class SSFPlanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         planView.dataSource = self
+        planView.delegate = self
         
         //receive data update nofitication and update UI
-        notificationToken = allPlans.observe { [weak self] changes in
+        notificationToken = allPlans.observe { [unowned self] changes in
             switch changes {
             case .initial:
-                self?.planView.reloadMutablePlanView()
+                self.planView.reloadMutablePlanView()
             case .update(_, let deletions, let insertions, let modifications):
                 //1.update the collectionview
-                self?.planView.planCollectionView.performBatchUpdates({
-                    self?.planView.planCollectionView.deleteItems(at: deletions.map{IndexPath(row:$0, section: 0)})
-                    self?.planView.planCollectionView.insertItems(at: insertions.map{IndexPath(row: $0, section: 0)})
-                    self?.planView.planCollectionView.reloadItems(at: modifications.map{IndexPath(row: $0, section: 0)})
+                self.planView.planCollectionView.performBatchUpdates({
+                    self.planView.planCollectionView.deleteItems(at: deletions.map{IndexPath(row:$0, section: 0)})
+                    self.planView.planCollectionView.insertItems(at: insertions.map{IndexPath(row: $0, section: 0)})
+                    self.planView.planCollectionView.reloadItems(at: modifications.map{IndexPath(row: $0, section: 0)})
                 }, completion: nil)
                 //2.update the page control
-                self?.planView.updatePageControl(deletions, insertions)
+                self.planView.updatePageControl(deletions, insertions)
             case .error(let error):
                 print(error.localizedDescription)
             }
@@ -47,7 +48,10 @@ class SSFPlanViewController: UIViewController {
     
     //MARK: - Action
     @IBAction func creatPlanButtonPressed(_ sender: UIBarButtonItem) {
-        presentAlert()
+        presentAlert { text in
+            let addedPlan = Plan.creatPlan(text)
+            self.addPlanForInterfaceDriven(true, addedPlan, IndexPath(item: 0, section: 0))
+        }
     }
     
     @IBAction func leftButtonPressed(_ sender: UIBarButtonItem) {
@@ -60,22 +64,22 @@ class SSFPlanViewController: UIViewController {
     }
     
     //MARK: - Private methods
-    private func presentAlert() {
+    private func presentAlert(handler: ((String) -> Void)? = nil) {
         let alert = UIAlertController(title: "你好", message: "请输入名称", preferredStyle: .alert)
         alert.addTextField { textfield in }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in }
         let okAction = UIAlertAction(title: "确定", style: .default) { _ in
+            guard let okHandler = handler else { return }
             //add a plan,interface-driven write
             let titleText = alert.textFields?.first?.text ?? ""
-            let addedPlan = Plan.creatPlan(titleText)
-            self.addPlanForInterfaceDriven(true, addedPlan, IndexPath(item: 0, section: 0))
+            okHandler(titleText)
         }
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
     
-    //Interface-driven write
+    //Interface-driven write for plan
     private func addPlanForInterfaceDriven(_ isAdd: Bool, _ plan: Plan, _ indexPath: IndexPath) {
         let realm = try! Realm()
         realm.beginWrite()
@@ -86,13 +90,13 @@ class SSFPlanViewController: UIViewController {
             realm.delete(plan)
         }
         //mirror it instantly in the UI
-        self.planView.planCollectionView.performBatchUpdates({
+        self.planView.planCollectionView.performBatchUpdates({[unowned self] in
             if isAdd {
                 self.planView.planCollectionView.insertItems(at: [indexPath])
             } else {
                 self.planView.planCollectionView.deleteItems(at: [indexPath])
             }
-        }, completion: { _ in
+        }, completion: { [unowned self] _ in
             if isAdd {
                 self.planView.pageControl.numberOfPages += 1
                 self.planView.planCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionView.ScrollPosition.right, animated: false)
@@ -100,6 +104,25 @@ class SSFPlanViewController: UIViewController {
                 self.planView.pageControl.numberOfPages -= 1
             }
         })
+        try! realm.commitWrite(withoutNotifying: [notificationToken!])
+    }
+    
+    //Interface-driven write for task
+    private func addTaskForInterfaceDriven(_ isAdd: Bool, _ planIndex: Int, _ task: Task) {
+        let realm = try! Realm()
+        let plan = allPlans[planIndex]
+        realm.beginWrite()
+        // add data
+        if isAdd {
+            realm.add(task, update: true)
+            plan.tasks.append(task)
+        } else {
+            realm.delete(task)
+        }
+        //mirror it instantly in the UI
+        self.planView.planCollectionView.performBatchUpdates({[unowned self] in
+            self.planView.planCollectionView.reloadItems(at: [IndexPath(item: planIndex, section: 0)])
+            }, completion: nil)
         try! realm.commitWrite(withoutNotifying: [notificationToken!])
     }
 }
@@ -120,5 +143,14 @@ extension SSFPlanViewController: SSFMutablePlanViewDataSource {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic {
         let task = (allPlans[indexPath.0].tasks)[indexPath.1]//dataArr[indexPath.0][indexPath.1]
         return [MutablePlanViewCellDicKey.title: task.summary,MutablePlanViewCellDicKey.process: "\(task.checkItems.filter("isCheck == YES").count)/\(task.checkItems.count)",MutablePlanViewCellDicKey.check: task.isDone]
+    }
+}
+
+extension SSFPlanViewController: SSFMutablePlanViewDelegate {
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, creatTaskAt planIndex: Int) {
+        presentAlert { [unowned self] text in
+            let task = Task.creatTask(text)
+            self.addTaskForInterfaceDriven(true, planIndex, task)
+        }
     }
 }

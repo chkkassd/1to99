@@ -24,11 +24,14 @@ class SSFMutablePlanView: UIView {
     @IBOutlet var containView: UIView!
     @IBOutlet weak var planCollectionView: UICollectionView!
     var allPlanTables: [PlanTableView] = []
+    
     weak var dataSource: SSFMutablePlanViewDataSource? {
         didSet {
             pageControl.numberOfPages = dataSource?.numberOfPlansInMutablePlanView(self) ?? 0
         }
     }
+    
+    weak var delegate: SSFMutablePlanViewDelegate?
     
     // MARK: Initialization
     
@@ -117,6 +120,9 @@ extension SSFMutablePlanView: UICollectionViewDataSource, UICollectionViewDelega
         let planTable = creatAPlanTable()
         planTable.planTableIndex = indexPath.row
         planTable.planTitle.text = dataSource.mutablePlanView(self, titleForPlan: indexPath.item)
+        planTable.creatTask = { [unowned self] index in self.delegate?.mutablePlanView(self, creatTaskAt: index)}
+        planTable.editPlan = { index in }
+        planTable.renamePlan = { index in }
         cell.contentView.addSubview(planTable)
         //layout subview
         planTable.translatesAutoresizingMaskIntoConstraints = false
@@ -169,4 +175,9 @@ protocol SSFMutablePlanViewDataSource: AnyObject {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, titleForPlan planIndex: Int) -> String
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic
+}
+
+//Provide interaction with plan
+protocol SSFMutablePlanViewDelegate: AnyObject {
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, creatTaskAt planIndex: Int)
 }
