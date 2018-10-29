@@ -121,8 +121,7 @@ extension SSFMutablePlanView: UICollectionViewDataSource, UICollectionViewDelega
         planTable.planTableIndex = indexPath.row
         planTable.planTitle.text = dataSource.mutablePlanView(self, titleForPlan: indexPath.item)
         planTable.creatTask = { [unowned self] index in self.delegate?.mutablePlanView(self, creatTaskAt: index)}
-        planTable.editPlan = { index in }
-        planTable.renamePlan = { index in }
+        planTable.editPlan = { [unowned self] index in self.delegate?.mutablePlanView(self, editePlanAt: index)}
         cell.contentView.addSubview(planTable)
         //layout subview
         planTable.translatesAutoresizingMaskIntoConstraints = false
@@ -200,4 +199,5 @@ protocol SSFMutablePlanViewDataSource: AnyObject {
 protocol SSFMutablePlanViewDelegate: AnyObject {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, creatTaskAt planIndex: Int)
 //    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex)
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, editePlanAt planIndex: Int)
 }

@@ -122,6 +122,8 @@ class SSFPlanViewController: UIViewController {
             realm.add(task, update: true)
             plan.tasks.append(task)
         } else {
+            //cascading delete
+            realm.delete(task.checkItems)
             realm.delete(task)
         }
         //mirror it instantly in the UI
@@ -163,4 +165,8 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
 //        let task = (allPlans[index.0].tasks)[index.1]
 //        addTaskForInterfaceDriven(false, index.0, task)
 //    }
+    
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, editePlanAt planIndex: Int) {
+        
+    }
 }
