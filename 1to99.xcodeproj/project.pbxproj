@@ -40,6 +40,8 @@
 		91B6DAE5216B4FEB00318DE8 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91B6DAE4216B4FEA00318DE8 /* RealmSwift.framework */; };
 		91B6DAEB217735EF00318DE8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B6DAEA217735EF00318DE8 /* DataModel.swift */; };
 		91B6DAED2177360100318DE8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B6DAEC2177360100318DE8 /* DataManager.swift */; };
+		91B6DAF32187F18D00318DE8 /* SSFPopoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B6DAF22187F18D00318DE8 /* SSFPopoverTableViewController.swift */; };
+		91B6DAF521882FBD00318DE8 /* AlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B6DAF421882FBD00318DE8 /* AlertUtility.swift */; };
 		91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D70E9E20FDD9B800359571 /* AppDelegate.swift */; };
 		91D70EA420FDD9B800359571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA220FDD9B800359571 /* Main.storyboard */; };
 		91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA520FDD9BB00359571 /* Assets.xcassets */; };
@@ -81,6 +83,8 @@
 		91B6DAE4216B4FEA00318DE8 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		91B6DAEA217735EF00318DE8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		91B6DAEC2177360100318DE8 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		91B6DAF22187F18D00318DE8 /* SSFPopoverTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFPopoverTableViewController.swift; sourceTree = "<group>"; };
+		91B6DAF421882FBD00318DE8 /* AlertUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtility.swift; sourceTree = "<group>"; };
 		91D70E9B20FDD9B800359571 /* 1to99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1to99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D70E9E20FDD9B800359571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D70EA320FDD9B800359571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 			children = (
 				91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */,
 				910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */,
+				91B6DAF22187F18D00318DE8 /* SSFPopoverTableViewController.swift */,
 			);
 			name = Plan;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 				91AEF5E521018E7B00A800F0 /* FIFOQueue.swift */,
 				91AEF5E621018E7B00A800F0 /* SwiftNotice.swift */,
 				91AEF5E821018E7B00A800F0 /* ResultDescription.swift */,
+				91B6DAF421882FBD00318DE8 /* AlertUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				91B6DAEB217735EF00318DE8 /* DataModel.swift in Sources */,
 				91AEF5EB21018E7B00A800F0 /* ScreenShot.swift in Sources */,
 				91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */,
+				91B6DAF32187F18D00318DE8 /* SSFPopoverTableViewController.swift in Sources */,
 				911671E6215E2DEA008FC4D6 /* TodayTableViewCell.swift in Sources */,
 				910A85A62153A67400FBFD83 /* SSFTaskTableViewController.swift in Sources */,
 				9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */,
@@ -381,6 +388,7 @@
 				91AEF5ED21018E7B00A800F0 /* FIFOQueue.swift in Sources */,
 				91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */,
 				91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */,
+				91B6DAF521882FBD00318DE8 /* AlertUtility.swift in Sources */,
 				91AEF5EE21018E7B00A800F0 /* SwiftNotice.swift in Sources */,
 				91AEF5FD21057C3C00A800F0 /* PlanTableView.swift in Sources */,
 				91AEF5E921018E7B00A800F0 /* Constant.swift in Sources */,

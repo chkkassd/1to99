@@ -9,9 +9,16 @@
 import UIKit
 import RealmSwift
 
+enum PlanOperation {
+    case add
+    case update([String: Any])
+    case delete
+}
+
 class SSFPlanViewController: UIViewController {
 
     @IBOutlet weak var planView: SSFMutablePlanView!
+    @IBOutlet weak var rightBarbuttonItem: UIBarButtonItem!
     
     lazy var allPlans = DataManager.sharedDataManager.allplans().sorted(byKeyPath: "date", ascending: false)
     
@@ -48,10 +55,11 @@ class SSFPlanViewController: UIViewController {
     
     //MARK: - Action
     @IBAction func creatPlanButtonPressed(_ sender: UIBarButtonItem) {
-        presentAlert { text in
+        let alert = UIAlertController.presentAlertWithTextField(title: "你好", message: "请输入计划名称") { text in
             let addedPlan = Plan.creatPlan(text)
-            self.addPlanForInterfaceDriven(true, addedPlan, IndexPath(item: 0, section: 0))
+            self.operatePlanForInterfaceDriven(.add, addedPlan, IndexPath(item: 0, section: 0))
         }
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func leftButtonPressed(_ sender: UIBarButtonItem) {
@@ -64,67 +72,63 @@ class SSFPlanViewController: UIViewController {
     }
     
     //MARK: - Private methods
-    private func presentAlert(handler: ((String) -> Void)? = nil) {
-        let alert = UIAlertController(title: "你好", message: "请输入名称", preferredStyle: .alert)
-        alert.addTextField { textfield in }
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in }
-        let okAction = UIAlertAction(title: "确定", style: .default) { _ in
-            guard let okHandler = handler else { return }
-            //add a plan,interface-driven write
-            let titleText = alert.textFields?.first?.text ?? ""
-            okHandler(titleText)
-        }
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
     
     //Interface-driven write for plan
-    private func addPlanForInterfaceDriven(_ isAdd: Bool, _ plan: Plan, _ indexPath: IndexPath) {
+    private func operatePlanForInterfaceDriven(_ operation: PlanOperation, _ plan: Plan, _ indexPath: IndexPath) {
         let realm = try! Realm()
         realm.beginWrite()
-        // add data
-        if isAdd {
+        switch operation {
+        case .add:
+            //add data
             realm.add(plan, update: true)
-        } else {
+            //mirror it instantly in the UI
+            self.planView.planCollectionView.performBatchUpdates({[unowned self] in
+                self.planView.planCollectionView.insertItems(at: [indexPath])
+                }, completion: { [unowned self] _ in
+                    self.planView.pageControl.numberOfPages += 1
+                    self.planView.planCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionView.ScrollPosition.right, animated: false)
+            })
+        case .delete:
             //cascading delete
             for task in plan.tasks {
                 realm.delete(task.checkItems)
             }
             realm.delete(plan.tasks)
             realm.delete(plan)
-        }
-        //mirror it instantly in the UI
-        self.planView.planCollectionView.performBatchUpdates({[unowned self] in
-            if isAdd {
-                self.planView.planCollectionView.insertItems(at: [indexPath])
-            } else {
+            //mirror it instantly in the UI
+            self.planView.planCollectionView.performBatchUpdates({[unowned self] in
                 self.planView.planCollectionView.deleteItems(at: [indexPath])
-            }
-        }, completion: { [unowned self] _ in
-            if isAdd {
-                self.planView.pageControl.numberOfPages += 1
-                self.planView.planCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionView.ScrollPosition.right, animated: false)
-            } else {
-                self.planView.pageControl.numberOfPages -= 1
-            }
-        })
+                }, completion: { [unowned self] _ in
+                    self.planView.pageControl.numberOfPages -= 1
+            })
+        case .update(let dic):
+            plan.setValuesForKeys(dic)
+            realm.add(plan, update: true)
+            //mirror it instantly in the UI
+            self.planView.planCollectionView.performBatchUpdates({[unowned self] in
+                self.planView.planCollectionView.reloadItems(at: [indexPath])
+                }, completion: nil)
+        }
         try! realm.commitWrite(withoutNotifying: [notificationToken!])
     }
     
     //Interface-driven write for task
-    private func addTaskForInterfaceDriven(_ isAdd: Bool, _ planIndex: Int, _ task: Task) {
+    private func operateTaskForInterfaceDriven(_ operation: PlanOperation, _ planIndex: Int, _ task: Task) {
         let realm = try! Realm()
         realm.beginWrite()
-        // add data
-        if isAdd {
+        // add or delete or update data
+        switch operation {
+        case .add:
             let plan = allPlans[planIndex]
             realm.add(task, update: true)
             plan.tasks.append(task)
-        } else {
+        case .delete:
             //cascading delete
             realm.delete(task.checkItems)
             realm.delete(task)
+        case .update(let dic):
+            task.setValuesForKeys(dic)
+            realm.add(task, update: true)
         }
         //mirror it instantly in the UI
         self.planView.planCollectionView.performBatchUpdates({[unowned self] in
@@ -140,7 +144,7 @@ extension SSFPlanViewController: SSFMutablePlanViewDataSource {
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int {
-        return allPlans[planIndex].tasks.count//dataArr[planIndex].count
+        return allPlans[planIndex].tasks.count
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, titleForPlan planIndex: Int) -> String {
@@ -155,10 +159,11 @@ extension SSFPlanViewController: SSFMutablePlanViewDataSource {
 
 extension SSFPlanViewController: SSFMutablePlanViewDelegate {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, creatTaskAt planIndex: Int) {
-        presentAlert { [unowned self] text in
+        let alert = UIAlertController.presentAlertWithTextField(title: "你好", message: "请输入任务简述") { [unowned self] text in
             let task = Task.creatTask(text)
-            self.addTaskForInterfaceDriven(true, planIndex, task)
+            self.operateTaskForInterfaceDriven(.add, planIndex, task)
         }
+        self.present(alert, animated: true, completion: nil)
     }
     
 //    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex) {
@@ -167,6 +172,35 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
 //    }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, editePlanAt planIndex: Int) {
-        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let popoverVC = storyBoard.instantiateViewController(withIdentifier: "SSFPopoverTableViewController") as! SSFPopoverTableViewController
+        popoverVC.planIndex = planIndex
+        popoverVC.deletePlan = { index in
+            self.operatePlanForInterfaceDriven(.delete, self.allPlans[index], IndexPath(item: index, section: 0))
+            self.dismiss(animated: true, completion: nil)
+        }
+        popoverVC.rename = { index in
+            let alert = UIAlertController.presentAlertWithTextField(title: "你好", message: "请输入计划名称") { text in
+                let plan = self.allPlans[index]
+                self.operatePlanForInterfaceDriven(.update(["title": text]), plan, IndexPath(item: index, section: 0))
+            }
+            self.dismiss(animated: true, completion: {
+                self.present(alert, animated: true, completion: nil)
+            })
+        }
+        popoverVC.preferredContentSize = CGSize(width: 200, height: 200)
+        popoverVC.modalPresentationStyle = .popover
+        popoverVC.popoverPresentationController?.delegate = self
+        popoverVC.popoverPresentationController?.sourceView = planView
+        popoverVC.popoverPresentationController?.sourceRect = CGRect(x: planView.bounds.size.width - 25 - 35, y: 5, width: 25, height: 25)
+        popoverVC.popoverPresentationController?.permittedArrowDirections = .right
+        self.present(popoverVC, animated: true, completion: nil)
+    }
+}
+
+extension SSFPlanViewController: UIPopoverPresentationControllerDelegate {
+    //取消popover的自适应
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
