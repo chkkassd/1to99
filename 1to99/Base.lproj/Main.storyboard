@@ -59,11 +59,6 @@
                         <viewLayoutGuide key="safeArea" id="0fL-Lq-3kl"/>
                     </view>
                     <navigationItem key="navigationItem" title="计划" id="4yf-HK-Kmg">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="xoS-QK-uph">
-                            <connections>
-                                <action selector="leftButtonPressed:" destination="cqk-c1-kKw" id="3Mo-On-Efa"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="新建计划" id="kRb-Bc-XBg">
                             <color key="tintColor" name="PrimaryColor"/>
                             <connections>

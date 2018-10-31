@@ -60,6 +60,14 @@ extension Plan {
         }
     }
     
+    //subset update
+    class func subsetUpdate(dic: [String: Any]) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.create(self, value: dic, update: true)
+        }
+    }
+    
     //delete
     func deletePlan() {
         let realm = try! Realm()
@@ -85,6 +93,14 @@ extension Task {
         }
     }
     
+    //subset update
+    class func subsetUpdate(dic: [String: Any]) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.create(self, value: dic, update: true)
+        }
+    }
+    
     //delete
     func deleteTask() {
         let realm = try! Realm()
@@ -107,6 +123,14 @@ extension CheckItem {
         let realm = try! Realm()
         try! realm.write {
             realm.add(self, update: true)
+        }
+    }
+    
+    //subset update
+    class func subsetUpdate(dic: [String: Any]) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.create(self, value: dic, update: true)
         }
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 enum TaskSectionType: Int {
     case taskTips = 2//任务检查项
@@ -17,11 +18,14 @@ class SSFTaskTableViewController: UITableViewController {
     @IBOutlet weak var taskSummaryTextView: UITextView!
     @IBOutlet weak var planLabel: UILabel!
     @IBOutlet weak var creatOrUpdateButton: UIButton!
-    var checkTips = [["isDone": true, "title": "map用法"],["isDone": false, "title": "filter用法"],["isDone": true, "title": "reduce用法"]]
+
+    var displayedTask: Task?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTaskCell()
+        self.taskSummaryTextView.text = displayedTask?.summary
+        self.planLabel.text = displayedTask?.owner.first?.title
     }
 
     // MARK - Private Methods
@@ -31,19 +35,55 @@ class SSFTaskTableViewController: UITableViewController {
         self.tableView.register(taskCellNib, forCellReuseIdentifier: "TaskCheckTableViewCell")
     }
     
+    //Interface-driven write for checkItem
+    private func operateCheckItemForInterfaceDriven(_ operation: PlanOperation, _ checkItem: CheckItem, _ indexPath: IndexPath) {
+        let realm = try! Realm()
+        realm.beginWrite()
+        switch operation {
+        case .add:
+            //add data
+            realm.add(checkItem, update: true)
+            displayedTask?.checkItems.append(checkItem)
+            //mirror it instantly in the UI
+            self.tableView.insertRows(at: [indexPath], with: .automatic)
+        case .delete:
+            //delete
+            realm.delete(checkItem)
+            //mirror it instantly in the UI
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        case .update(let dic):
+            checkItem.setValuesForKeys(dic)
+            realm.add(checkItem, update: true)
+            //mirror it instantly in the UI
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        try! realm.commitWrite()
+    }
+    
+    //update task's summary
+    private func updateTask(with text: String) {
+        guard let task = self.displayedTask else {return}
+        Task.subsetUpdate(dic: ["id": task.id, "summary": text])
+    }
+    
     // MARK: - Interaction
     
     @IBAction func creatOrUpdateButtonPressed(_ sender: UIButton) {
     }
     
     @IBAction func addCheckTipsPressed(_ sender: UITapGestureRecognizer) {
+        let alert = UIAlertController.presentAlertWithTextField(title: "你好", message: "请输入检查项") { text in
+            let checkItem = CheckItem.creatCheckItem(text)
+            self.operateCheckItemForInterfaceDriven(.add, checkItem, IndexPath(row: self.displayedTask!.checkItems.count, section: TaskSectionType.taskTips.rawValue))
+        }
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == TaskSectionType.taskTips.rawValue {
-            return checkTips.count
+            return (displayedTask?.checkItems.count) ?? 0
         }
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
@@ -51,8 +91,13 @@ class SSFTaskTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == TaskSectionType.taskTips.rawValue {
            let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCheckTableViewCell", for: indexPath) as! TaskCheckTableViewCell
-            cell.checkButton.isSelected = checkTips[indexPath.row]["isDone"] as! Bool
-            cell.contentLabel.text = checkTips[indexPath.row]["title"] as? String
+            guard let task = displayedTask else {return cell}
+            let checkItem = task.checkItems[indexPath.row]
+            cell.checkButton.isSelected = checkItem.isCheck
+            cell.contentLabel.text = checkItem.content
+            cell.pressCheck = { [unowned self] isSeclect in
+                self.operateCheckItemForInterfaceDriven(.update(["isCheck": isSeclect]), checkItem, indexPath)
+            }
             return cell
         }
         return super.tableView(tableView, cellForRowAt: indexPath)
@@ -83,6 +128,7 @@ extension SSFTaskTableViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             textView.resignFirstResponder()
+            updateTask(with: taskSummaryTextView.text)
             return false
         }
         return true

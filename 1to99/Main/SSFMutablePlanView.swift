@@ -139,9 +139,6 @@ extension SSFMutablePlanView: UICollectionViewDataSource, UICollectionViewDelega
         let height = collectionView.bounds.height
         return CGSize(width: width, height: height)
     }
-    
-    //delegate
-
 }
 
 extension SSFMutablePlanView: UITableViewDelegate, UITableViewDataSource {
@@ -160,24 +157,11 @@ extension SSFMutablePlanView: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-//    //edite model
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
-//
-//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        return UITableViewCell.EditingStyle.delete
-//    }
-//
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            self.delegate?.mutablePlanView(self, deleteTaskAt: ((tableView as! PlanTableView).planTableIndex, indexPath.row))
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-//        return "删除任务"
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let planIndex = (tableView as! PlanTableView).planTableIndex
+        self.delegate?.mutablePlanView(self, didSelectTaskAt: (planIndex, indexPath.row))
+    }
 }
 
 extension SSFMutablePlanView: UIScrollViewDelegate {
@@ -200,4 +184,5 @@ protocol SSFMutablePlanViewDelegate: AnyObject {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, creatTaskAt planIndex: Int)
 //    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, editePlanAt planIndex: Int)
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didSelectTaskAt index: MutablePlanViewIndex)
 }

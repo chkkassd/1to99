@@ -24,6 +24,8 @@ class SSFPlanViewController: UIViewController {
     
     var notificationToken: NotificationToken?
     
+    var selectedTask: Task?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         planView.dataSource = self
@@ -62,13 +64,12 @@ class SSFPlanViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func leftButtonPressed(_ sender: UIBarButtonItem) {
-        self.performSegue(withIdentifier: "showTaskView", sender: self)
-    }
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "showTaskView" {
+            let taskVC = segue.destination as! SSFTaskTableViewController
+            taskVC.displayedTask = selectedTask
+        }
     }
     
     //MARK: - Private methods
@@ -195,6 +196,11 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
         popoverVC.popoverPresentationController?.sourceRect = CGRect(x: planView.bounds.size.width - 25 - 35, y: 5, width: 25, height: 25)
         popoverVC.popoverPresentationController?.permittedArrowDirections = .right
         self.present(popoverVC, animated: true, completion: nil)
+    }
+    
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didSelectTaskAt index: MutablePlanViewIndex) {
+        self.selectedTask = allPlans[index.0].tasks[index.1]
+        self.performSegue(withIdentifier: "showTaskView", sender: self)
     }
 }
 
