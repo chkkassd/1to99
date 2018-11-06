@@ -165,10 +165,10 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-//    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex) {
-//        let task = (allPlans[index.0].tasks)[index.1]
-//        addTaskForInterfaceDriven(false, index.0, task)
-//    }
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex) {
+        let task = (allPlans[index.0].tasks)[index.1]
+        operateTaskForInterfaceDriven(.delete, index.0, task)
+    }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, editePlanAt planIndex: Int) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -199,6 +199,11 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didSelectTaskAt index: MutablePlanViewIndex) {
         self.selectedTask = allPlans[index.0].tasks[index.1]
         self.performSegue(withIdentifier: "showTaskView", sender: self)
+    }
+    
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didPressTaskCheckAt index: MutablePlanViewIndex, selected: Bool) {
+        let task = allPlans[index.0].tasks[index.1]
+        operateTaskForInterfaceDriven(.update(["isDone": selected]), index.0, task)
     }
 }
 

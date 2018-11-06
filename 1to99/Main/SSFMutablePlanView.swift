@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 typealias MutablePlanViewIndex = (Int, Int)//first para is plan index, second para is task index
 
@@ -149,11 +150,14 @@ extension SSFMutablePlanView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlanTableViewCell", for: indexPath) as! PlanTableViewCell
+        cell.delegate = self
         guard let dataSource = self.dataSource else { return cell }
-        let dataDic = dataSource.mutablePlanView(self, taskForPlanAt: ((tableView as! PlanTableView).planTableIndex, indexPath.row))
+        let planViewIndex = ((tableView as! PlanTableView).planTableIndex, indexPath.row)
+        let dataDic = dataSource.mutablePlanView(self, taskForPlanAt: planViewIndex)
         cell.titleLabel.text = dataDic[.title] as? String
         cell.processLable.text = dataDic[.process] as? String
         cell.checkButton.isSelected = dataDic[.check] as! Bool
+        cell.pressCheck = { [unowned self] isSelected in self.delegate?.mutablePlanView(self, didPressTaskCheckAt: planViewIndex, selected: isSelected)}
         return cell
     }
     
@@ -170,6 +174,18 @@ extension SSFMutablePlanView: UIScrollViewDelegate {
         pageControl.currentPage = Int(result)
     }
 }
+extension SSFMutablePlanView: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        let planIndex = (tableView as! PlanTableView).planTableIndex
+        let cell = tableView.cellForRow(at: indexPath) as! PlanTableViewCell
+        let deleteAction = SwipeAction(style: .destructive, title: "删除") { (action, index) in
+            self.delegate?.mutablePlanView(self, deleteTaskAt: (planIndex, index.row))
+            cell.hideSwipe(animated: true, completion: nil)
+        }
+        return [deleteAction]
+    }
+}
 
 // Provide the data which plan view use to display
 protocol SSFMutablePlanViewDataSource: AnyObject {
@@ -182,7 +198,8 @@ protocol SSFMutablePlanViewDataSource: AnyObject {
 //Provide interaction with plan
 protocol SSFMutablePlanViewDelegate: AnyObject {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, creatTaskAt planIndex: Int)
-//    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex)
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, editePlanAt planIndex: Int)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didSelectTaskAt index: MutablePlanViewIndex)
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didPressTaskCheckAt index: MutablePlanViewIndex, selected: Bool)
 }
