@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
 enum TaskSectionType: Int {
     case taskTips = 2//任务检查项
@@ -53,7 +54,6 @@ class SSFTaskTableViewController: UITableViewController {
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         case .update(let dic):
             checkItem.setValuesForKeys(dic)
-            realm.add(checkItem, update: true)
             //mirror it instantly in the UI
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
         }
@@ -91,6 +91,7 @@ class SSFTaskTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == TaskSectionType.taskTips.rawValue {
            let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCheckTableViewCell", for: indexPath) as! TaskCheckTableViewCell
+            cell.delegate = self
             guard let task = displayedTask else {return cell}
             let checkItem = task.checkItems[indexPath.row]
             cell.checkButton.isSelected = checkItem.isCheck
@@ -132,5 +133,27 @@ extension SSFTaskTableViewController: UITextViewDelegate {
             return false
         }
         return true
+    }
+}
+
+extension SSFTaskTableViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        guard let task = displayedTask else { return nil }
+        let cell = tableView.cellForRow(at: indexPath) as! TaskCheckTableViewCell
+        let deleteAction = SwipeAction(style: .destructive, title: "删除") { (action, index) in
+            let checkItem = task.checkItems[index.row]
+            self.operateCheckItemForInterfaceDriven(.delete, checkItem, index)
+            cell.hideSwipe(animated: true, completion: nil)
+        }
+        let reInputAction = SwipeAction(style: .default, title: "修改") { (action, index) in
+            let checkItem = task.checkItems[index.row]
+            let alert = UIAlertController.presentAlertWithTextField(title: "你好", message: "请输入检查项内容", handler: { text in
+                self.operateCheckItemForInterfaceDriven(.update(["content": text]), checkItem, index)
+            })
+            cell.hideSwipe(animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
+        }
+        return [deleteAction, reInputAction]
     }
 }

@@ -42,6 +42,7 @@
 		91B6DAED2177360100318DE8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B6DAEC2177360100318DE8 /* DataManager.swift */; };
 		91B6DAF32187F18D00318DE8 /* SSFPopoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B6DAF22187F18D00318DE8 /* SSFPopoverTableViewController.swift */; };
 		91B6DAF521882FBD00318DE8 /* AlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B6DAF421882FBD00318DE8 /* AlertUtility.swift */; };
+		91BB32D5218FEEA9004CC189 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91BB32D4218FEEA9004CC189 /* SwipeCellKit.framework */; };
 		91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D70E9E20FDD9B800359571 /* AppDelegate.swift */; };
 		91D70EA420FDD9B800359571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA220FDD9B800359571 /* Main.storyboard */; };
 		91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA520FDD9BB00359571 /* Assets.xcassets */; };
@@ -85,6 +86,7 @@
 		91B6DAEC2177360100318DE8 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		91B6DAF22187F18D00318DE8 /* SSFPopoverTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFPopoverTableViewController.swift; sourceTree = "<group>"; };
 		91B6DAF421882FBD00318DE8 /* AlertUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtility.swift; sourceTree = "<group>"; };
+		91BB32D4218FEEA9004CC189 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		91D70E9B20FDD9B800359571 /* 1to99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1to99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D70E9E20FDD9B800359571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D70EA320FDD9B800359571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */,
 				91B6DAE3216B4FE500318DE8 /* Realm.framework in Frameworks */,
 				91B6DAE5216B4FEB00318DE8 /* RealmSwift.framework in Frameworks */,
+				91BB32D5218FEEA9004CC189 /* SwipeCellKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +150,7 @@
 		9162FF6821194858006F0C4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91BB32D4218FEEA9004CC189 /* SwipeCellKit.framework */,
 				91B6DAE4216B4FEA00318DE8 /* RealmSwift.framework */,
 				91B6DAE2216B4FE500318DE8 /* Realm.framework */,
 				9162FF6921194858006F0C4C /* SSFGraphKit.framework */,
@@ -357,6 +361,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SSFGraphKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwipeCellKit.framework",
 			);
 			outputPaths = (
 			);

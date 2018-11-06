@@ -1,2 +1,3 @@
 github "chkkassd/SSFGraph" ~>1.0.0
 github "realm/realm-cocoa"
+github "SwipeCellKit/SwipeCellKit"

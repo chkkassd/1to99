@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class TaskCheckTableViewCell: UITableViewCell {
+class TaskCheckTableViewCell: SwipeTableViewCell {
 
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var contentLabel: UILabel!

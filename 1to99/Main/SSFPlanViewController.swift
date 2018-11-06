@@ -104,7 +104,6 @@ class SSFPlanViewController: UIViewController {
             })
         case .update(let dic):
             plan.setValuesForKeys(dic)
-            realm.add(plan, update: true)
             //mirror it instantly in the UI
             self.planView.planCollectionView.performBatchUpdates({[unowned self] in
                 self.planView.planCollectionView.reloadItems(at: [indexPath])
@@ -129,7 +128,6 @@ class SSFPlanViewController: UIViewController {
             realm.delete(task)
         case .update(let dic):
             task.setValuesForKeys(dic)
-            realm.add(task, update: true)
         }
         //mirror it instantly in the UI
         self.planView.planCollectionView.performBatchUpdates({[unowned self] in
