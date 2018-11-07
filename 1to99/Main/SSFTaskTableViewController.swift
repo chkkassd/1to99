@@ -117,12 +117,6 @@ class SSFTaskTableViewController: UITableViewController {
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
-    
-    // MARK: - Table view delegate
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("===you select section:\(indexPath.section),row:\(indexPath.row)=====\n")
-    }
 }
 
 extension SSFTaskTableViewController: UITextViewDelegate {
