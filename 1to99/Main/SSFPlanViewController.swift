@@ -19,6 +19,7 @@ class SSFPlanViewController: UIViewController {
 
     @IBOutlet weak var planView: SSFMutablePlanView!
     @IBOutlet weak var rightBarbuttonItem: UIBarButtonItem!
+    @IBOutlet weak var taskPoolImageView: UIImageView!
     
     lazy var allPlans = DataManager.sharedDataManager.allplans().sorted(byKeyPath: "date", ascending: false)
     
@@ -28,8 +29,7 @@ class SSFPlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        planView.dataSource = self
-        planView.delegate = self
+        prepareForLoad()
         
         //receive data update nofitication and update UI
         notificationToken = allPlans.observe { [unowned self] changes in
@@ -73,6 +73,13 @@ class SSFPlanViewController: UIViewController {
     }
     
     //MARK: - Private methods
+    
+    //prepare for show
+    func prepareForLoad() {
+        planView.dataSource = self
+        planView.delegate = self
+        customEnableDropping(on: taskPoolImageView, dropInteractionDelegate: self)
+    }
     
     //Interface-driven write for plan
     private func operatePlanForInterfaceDriven(_ operation: PlanOperation, _ plan: Plan, _ indexPath: IndexPath) {
@@ -151,8 +158,12 @@ extension SSFPlanViewController: SSFMutablePlanViewDataSource {
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic {
-        let task = (allPlans[indexPath.0].tasks)[indexPath.1]//dataArr[indexPath.0][indexPath.1]
+        let task = (allPlans[indexPath.0].tasks)[indexPath.1]
         return [MutablePlanViewCellDicKey.title: task.summary,MutablePlanViewCellDicKey.process: "\(task.checkItems.filter("isCheck == YES").count)/\(task.checkItems.count)",MutablePlanViewCellDicKey.check: task.isDone]
+    }
+    
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, dragTaskForPlanAt indexPath: MutablePlanViewIndex) -> Task {
+        return allPlans[indexPath.0].tasks[indexPath.1]
     }
 }
 

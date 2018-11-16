@@ -24,7 +24,6 @@ class SSFMutablePlanView: UIView {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet var containView: UIView!
     @IBOutlet weak var planCollectionView: UICollectionView!
-    var allPlanTables: [PlanTableView] = []
     
     weak var dataSource: SSFMutablePlanViewDataSource? {
         didSet {
@@ -70,6 +69,8 @@ class SSFMutablePlanView: UIView {
         planTable.register(cellNib, forCellReuseIdentifier: "PlanTableViewCell")
         planTable.delegate = self
         planTable.dataSource = self
+        planTable.dragDelegate = self
+        planTable.dragInteractionEnabled = true//By default, on iPad is true,on iPhone is false
         return planTable
     }
     
@@ -193,6 +194,7 @@ protocol SSFMutablePlanViewDataSource: AnyObject {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, titleForPlan planIndex: Int) -> String
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, dragTaskForPlanAt indexPath: MutablePlanViewIndex) -> Task
 }
 
 //Provide interaction with plan

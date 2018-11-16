@@ -8,47 +8,44 @@
 
 import UIKit
 
-class testViewController: UIViewController {
+class testViewController: UIViewController, UITableViewDataSource, UITableViewDragDelegate {
 
-    @IBOutlet weak var mpv: SSFMutablePlanView!
-    let dataArr = [[["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true],["title":"swift学习","process":"1/3","check": true]],
-                   [["title":"python学习","process":"2/9","check": false],["title":"python学习","process":"2/9","check": false]],
-                   [["title":"java学习","process":"2/3","check": true],["title":"java学习","process":"2/3","check": true]],
-                   [["title":"c++学习","process":"1/4","check": false],["title":"c++学习","process":"1/4","check": false]],
-                   [["title":"go学习","process":"1/5","check": true],["title":"go学习","process":"1/5","check": true]]]
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        mpv.dataSource = self
+        tableView.dataSource = self
+        tableView.dragDelegate = self
+        tableView.dragInteractionEnabled = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        print("=========contentsize:\(mpv.scrollView.contentSize)===========\n==============stackframe:\(mpv.stackView.frame)=============\n==============scrollframe\(mpv.scrollView.frame)=============")
         
     }
-
-    @IBAction func addAPlan(_ sender: UIButton) {
-//        mpv.creatAPlanTable()
-
+    
+    func customEnableDragging(on view: UIView, dragInteractionDelegate: UIDragInteractionDelegate) {
+        let dragInteraction = UIDragInteraction(delegate: dragInteractionDelegate)
+        view.addInteraction(dragInteraction)
+    }
+    
+    func customEnableDropping(on view: UIView, dropInteractionDelegate: UIDropInteractionDelegate) {
+        let dropInteraction = UIDropInteraction(delegate: dropInteractionDelegate)
+        view.addInteraction(dropInteraction)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "xxxxidentifier", for: indexPath)
+        cell.textLabel?.text = "hahaha"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider(object: "xxx" as NSString))]
     }
 }
 
-extension testViewController: SSFMutablePlanViewDataSource {
-    func numberOfPlansInMutablePlanView(_ mutablePlanView: SSFMutablePlanView) -> Int {
-        return dataArr.count
-    }
-    
-    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, numberOfTasksInPlan planIndex: Int) -> Int {
-        return dataArr[planIndex].count
-    }
-    
-    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, titleForPlan planIndex: Int) -> String {
-        return ""
-    }
-    
-    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic {
-        let dataDic = dataArr[indexPath.0][indexPath.1]
-        return [MutablePlanViewCellDicKey.title: (dataDic["title"] as! String),MutablePlanViewCellDicKey.process: (dataDic["process"] as! String),MutablePlanViewCellDicKey.check: (dataDic["check"] as! Bool)]
-    }
-}
