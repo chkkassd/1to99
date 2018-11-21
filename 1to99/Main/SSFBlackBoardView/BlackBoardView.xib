@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SSFBlackBoardView" customModule="_to99" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="Dlc-sT-CSB" id="AJc-1a-80F"/>
+                <outlet property="containView" destination="QUz-8O-Rl3" id="L0o-te-XfG"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="QUz-8O-Rl3">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umw-QR-L3e" userLabel="backgroundView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Dlc-sT-CSB">
+                            <rect key="frame" x="5" y="5" width="365" height="102"/>
+                            <color key="backgroundColor" red="0.792156862745098" green="0.87450980392156863" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UVs-db-s8V">
+                                <size key="itemSize" width="30" height="30"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" name="PlanTableColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Dlc-sT-CSB" secondAttribute="trailing" constant="5" id="Bv3-G2-3RO"/>
+                        <constraint firstItem="Dlc-sT-CSB" firstAttribute="leading" secondItem="umw-QR-L3e" secondAttribute="leading" constant="5" id="INo-Gh-gHU"/>
+                        <constraint firstAttribute="bottom" secondItem="Dlc-sT-CSB" secondAttribute="bottom" constant="5" id="wiv-x4-fJu"/>
+                        <constraint firstItem="Dlc-sT-CSB" firstAttribute="top" secondItem="umw-QR-L3e" secondAttribute="top" constant="5" id="zzk-HW-B3d"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="viewBorderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="viewBorderColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12E-LU-r2h">
+                    <rect key="frame" x="20" y="112" width="10" height="10"/>
+                    <color key="backgroundColor" name="PlanTableColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="12E-LU-r2h" secondAttribute="height" multiplier="1:1" id="hQM-Ff-mtd"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="viewBorderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zoo-gL-912">
+                    <rect key="frame" x="182.5" y="112" width="10" height="10"/>
+                    <color key="backgroundColor" name="PlanTableColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Zoo-gL-912" secondAttribute="height" multiplier="1:1" id="TrZ-JU-3xw"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="viewBorderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWl-eK-A7Y">
+                    <rect key="frame" x="345" y="112" width="10" height="10"/>
+                    <color key="backgroundColor" name="PlanTableColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="xWl-eK-A7Y" secondAttribute="height" multiplier="1:1" id="9jW-0Y-5BW"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="viewBorderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" name="PrimaryBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="12E-LU-r2h" firstAttribute="leading" secondItem="H9n-Ek-joZ" secondAttribute="leading" constant="20" id="1gq-zi-9Bc"/>
+                <constraint firstItem="umw-QR-L3e" firstAttribute="trailing" secondItem="H9n-Ek-joZ" secondAttribute="trailing" id="6rQ-Le-bvl"/>
+                <constraint firstItem="H9n-Ek-joZ" firstAttribute="bottom" secondItem="umw-QR-L3e" secondAttribute="bottom" constant="10" id="8sM-TR-kQf"/>
+                <constraint firstItem="12E-LU-r2h" firstAttribute="bottom" secondItem="H9n-Ek-joZ" secondAttribute="bottom" id="C3l-vb-Y96"/>
+                <constraint firstItem="Zoo-gL-912" firstAttribute="centerX" secondItem="QUz-8O-Rl3" secondAttribute="centerX" id="D2L-U1-mKU"/>
+                <constraint firstItem="12E-LU-r2h" firstAttribute="top" secondItem="umw-QR-L3e" secondAttribute="bottom" id="Jex-dn-dGB"/>
+                <constraint firstItem="xWl-eK-A7Y" firstAttribute="bottom" secondItem="H9n-Ek-joZ" secondAttribute="bottom" id="Pen-70-Gy1"/>
+                <constraint firstItem="umw-QR-L3e" firstAttribute="top" secondItem="H9n-Ek-joZ" secondAttribute="top" id="rzf-5L-VtU"/>
+                <constraint firstItem="umw-QR-L3e" firstAttribute="leading" secondItem="H9n-Ek-joZ" secondAttribute="leading" id="tDJ-Ga-Hdc"/>
+                <constraint firstItem="Zoo-gL-912" firstAttribute="top" secondItem="umw-QR-L3e" secondAttribute="bottom" id="v7d-ni-cUH"/>
+                <constraint firstItem="H9n-Ek-joZ" firstAttribute="trailing" secondItem="xWl-eK-A7Y" secondAttribute="trailing" constant="20" id="xc3-EF-h2q"/>
+                <constraint firstItem="xWl-eK-A7Y" firstAttribute="top" secondItem="umw-QR-L3e" secondAttribute="bottom" id="xqd-WO-1YA"/>
+                <constraint firstItem="Zoo-gL-912" firstAttribute="bottom" secondItem="H9n-Ek-joZ" secondAttribute="bottom" id="z9L-vw-qof"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="H9n-Ek-joZ"/>
+            <point key="canvasLocation" x="144.80000000000001" y="34.182908545727138"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="PlanTableColor">
+            <color red="0.85098039215686272" green="0.78823529411764703" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryBackgroundColor">
+            <color red="0.83921568627450982" green="0.87450980392156863" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -43,9 +43,13 @@
 		91B6DAF32187F18D00318DE8 /* SSFPopoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B6DAF22187F18D00318DE8 /* SSFPopoverTableViewController.swift */; };
 		91B6DAF521882FBD00318DE8 /* AlertUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B6DAF421882FBD00318DE8 /* AlertUtility.swift */; };
 		91BB32D5218FEEA9004CC189 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91BB32D4218FEEA9004CC189 /* SwipeCellKit.framework */; };
-		91BB3319219C1A1F004CC189 /* SSFPlanViewController+Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB3318219C1A1F004CC189 /* SSFPlanViewController+Drag.swift */; };
 		91BB331B219C1A3B004CC189 /* SSFPlanViewController+Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB331A219C1A3B004CC189 /* SSFPlanViewController+Drop.swift */; };
 		91BB331D219C1BF0004CC189 /* SSFMutablePlanView+Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB331C219C1BF0004CC189 /* SSFMutablePlanView+Drag.swift */; };
+		91BB332521A50EC1004CC189 /* SSFBlackBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB332421A50EC1004CC189 /* SSFBlackBoardView.swift */; };
+		91BB332721A50EE9004CC189 /* BlackBoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91BB332621A50EE9004CC189 /* BlackBoardView.xib */; };
+		91BB332B21A547D1004CC189 /* BlackBoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB332921A547D1004CC189 /* BlackBoardCollectionViewCell.swift */; };
+		91BB332C21A547D1004CC189 /* BlackBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91BB332A21A547D1004CC189 /* BlackBoardCollectionViewCell.xib */; };
+		91BB332E21A54F55004CC189 /* SSFBlackBoardView+Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB332D21A54F55004CC189 /* SSFBlackBoardView+Drop.swift */; };
 		91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D70E9E20FDD9B800359571 /* AppDelegate.swift */; };
 		91D70EA420FDD9B800359571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA220FDD9B800359571 /* Main.storyboard */; };
 		91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA520FDD9BB00359571 /* Assets.xcassets */; };
@@ -90,9 +94,13 @@
 		91B6DAF22187F18D00318DE8 /* SSFPopoverTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFPopoverTableViewController.swift; sourceTree = "<group>"; };
 		91B6DAF421882FBD00318DE8 /* AlertUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtility.swift; sourceTree = "<group>"; };
 		91BB32D4218FEEA9004CC189 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
-		91BB3318219C1A1F004CC189 /* SSFPlanViewController+Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSFPlanViewController+Drag.swift"; sourceTree = "<group>"; };
 		91BB331A219C1A3B004CC189 /* SSFPlanViewController+Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSFPlanViewController+Drop.swift"; sourceTree = "<group>"; };
 		91BB331C219C1BF0004CC189 /* SSFMutablePlanView+Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSFMutablePlanView+Drag.swift"; sourceTree = "<group>"; };
+		91BB332421A50EC1004CC189 /* SSFBlackBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFBlackBoardView.swift; sourceTree = "<group>"; };
+		91BB332621A50EE9004CC189 /* BlackBoardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlackBoardView.xib; sourceTree = "<group>"; };
+		91BB332921A547D1004CC189 /* BlackBoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBoardCollectionViewCell.swift; sourceTree = "<group>"; };
+		91BB332A21A547D1004CC189 /* BlackBoardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlackBoardCollectionViewCell.xib; sourceTree = "<group>"; };
+		91BB332D21A54F55004CC189 /* SSFBlackBoardView+Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSFBlackBoardView+Drop.swift"; sourceTree = "<group>"; };
 		91D70E9B20FDD9B800359571 /* 1to99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1to99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D70E9E20FDD9B800359571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D70EA320FDD9B800359571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				91AEF5DC2101871D00A800F0 /* SSFPlanViewController.swift */,
-				91BB3318219C1A1F004CC189 /* SSFPlanViewController+Drag.swift */,
 				91BB331A219C1A3B004CC189 /* SSFPlanViewController+Drop.swift */,
 				910A85A52153A67400FBFD83 /* SSFTaskTableViewController.swift */,
 				91B6DAF22187F18D00318DE8 /* SSFPopoverTableViewController.swift */,
@@ -170,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				9162FF6F21194DFF006F0C4C /* IndicatorView.swift */,
+				91BB332821A54770004CC189 /* SSFBlackBoardView */,
 				91AEF5FE2105B57B00A800F0 /* SSFMutablePlanView */,
 				911671E4215E2DB2008FC4D6 /* TableViewCell */,
 			);
@@ -246,6 +254,18 @@
 				91B6DAEC2177360100318DE8 /* DataManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		91BB332821A54770004CC189 /* SSFBlackBoardView */ = {
+			isa = PBXGroup;
+			children = (
+				91BB332D21A54F55004CC189 /* SSFBlackBoardView+Drop.swift */,
+				91BB332421A50EC1004CC189 /* SSFBlackBoardView.swift */,
+				91BB332621A50EE9004CC189 /* BlackBoardView.xib */,
+				91BB332921A547D1004CC189 /* BlackBoardCollectionViewCell.swift */,
+				91BB332A21A547D1004CC189 /* BlackBoardCollectionViewCell.xib */,
+			);
+			path = SSFBlackBoardView;
 			sourceTree = "<group>";
 		};
 		91D70E9220FDD9B800359571 = {
@@ -348,12 +368,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				91AEF6002105B68600A800F0 /* MainPlanView.xib in Resources */,
+				91BB332721A50EE9004CC189 /* BlackBoardView.xib in Resources */,
 				910A859A2141135900FBFD83 /* PlanCollectionViewCell.xib in Resources */,
 				91AEF5FB210579EF00A800F0 /* PlanTableView.xib in Resources */,
 				91D70EA920FDD9BB00359571 /* LaunchScreen.storyboard in Resources */,
 				91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */,
 				9162FF72211A6E3E006F0C4C /* PlanTableViewCell.xib in Resources */,
 				91D70EA420FDD9B800359571 /* Main.storyboard in Resources */,
+				91BB332C21A547D1004CC189 /* BlackBoardCollectionViewCell.xib in Resources */,
 				911671D7215B77BA008FC4D6 /* TaskCheckTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91AEF5EF21018E7B00A800F0 /* Utility.swift in Sources */,
+				91BB332E21A54F55004CC189 /* SSFBlackBoardView+Drop.swift in Sources */,
 				91AEF5EC21018E7B00A800F0 /* DirectoryPath.swift in Sources */,
 				911E9468213FCB590081A241 /* testViewController.swift in Sources */,
 				91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */,
@@ -393,11 +416,11 @@
 				91B6DAEB217735EF00318DE8 /* DataModel.swift in Sources */,
 				91AEF5EB21018E7B00A800F0 /* ScreenShot.swift in Sources */,
 				91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */,
+				91BB332B21A547D1004CC189 /* BlackBoardCollectionViewCell.swift in Sources */,
 				91B6DAF32187F18D00318DE8 /* SSFPopoverTableViewController.swift in Sources */,
 				911671E6215E2DEA008FC4D6 /* TodayTableViewCell.swift in Sources */,
 				910A85A62153A67400FBFD83 /* SSFTaskTableViewController.swift in Sources */,
 				9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */,
-				91BB3319219C1A1F004CC189 /* SSFPlanViewController+Drag.swift in Sources */,
 				91B6DAED2177360100318DE8 /* DataManager.swift in Sources */,
 				911671DD215DD81B008FC4D6 /* SSFTodayViewController.swift in Sources */,
 				91AEF5ED21018E7B00A800F0 /* FIFOQueue.swift in Sources */,
@@ -415,6 +438,7 @@
 				911671DF215E03B0008FC4D6 /* TodaySearchResultsViewController.swift in Sources */,
 				911671D9215CC9E3008FC4D6 /* MainThemeNavigationViewController.swift in Sources */,
 				91AEF5F021018E7B00A800F0 /* ResultDescription.swift in Sources */,
+				91BB332521A50EC1004CC189 /* SSFBlackBoardView.swift in Sources */,
 				91AEF5EA21018E7B00A800F0 /* NetWorkResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

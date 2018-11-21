@@ -19,9 +19,11 @@ class SSFPlanViewController: UIViewController {
 
     @IBOutlet weak var planView: SSFMutablePlanView!
     @IBOutlet weak var rightBarbuttonItem: UIBarButtonItem!
-    @IBOutlet weak var taskPoolImageView: UIImageView!
+    @IBOutlet weak var blackBoardView: SSFBlackBoardView!
     
     lazy var allPlans = DataManager.sharedDataManager.allplans().sorted(byKeyPath: "date", ascending: false)
+    
+    var tasksForToday: [Task] = []
     
     var notificationToken: NotificationToken?
     
@@ -78,7 +80,7 @@ class SSFPlanViewController: UIViewController {
     func prepareForLoad() {
         planView.dataSource = self
         planView.delegate = self
-        customEnableDropping(on: taskPoolImageView, dropInteractionDelegate: self)
+        blackBoardView.dataSource = self
     }
     
     //Interface-driven write for plan
@@ -222,5 +224,20 @@ extension SSFPlanViewController: UIPopoverPresentationControllerDelegate {
     //取消popover的自适应
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+}
+
+extension SSFPlanViewController: SSFBlackBoardViewDatasource {
+    func numberOfItems(in blackBoardView: SSFBlackBoardView) -> Int {
+        return tasksForToday.count
+    }
+    
+    func blackBoardView(_ blackBoardView: SSFBlackBoardView, updateDataSourceAt index: Int, updateModel: BlackBoardViewUpdateModel, updatedData: Task) {
+        switch updateModel {
+        case .insert:
+            tasksForToday.insert(updatedData, at: index)
+        case .delet:
+            tasksForToday.remove(at: index)
+        }
     }
 }

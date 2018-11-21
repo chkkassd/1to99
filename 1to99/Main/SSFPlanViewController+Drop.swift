@@ -30,6 +30,5 @@ extension SSFPlanViewController: UIDropInteractionDelegate {
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         guard let locaDrag = session.localDragSession else {return}
         let task = locaDrag.items.first?.localObject as! Task
-        print("==========\(task)=========\n")
     }
 }

@@ -248,6 +248,24 @@ extension UIView {
             return self.layer.cornerRadius
         }
     }
+    
+    @IBInspectable var viewBorderWidth: CGFloat {
+        set {
+            self.layer.borderWidth = newValue
+        }
+        get {
+            return self.layer.borderWidth
+        }
+    }
+    
+    @IBInspectable var viewBorderColor: UIColor {
+        set {
+            self.layer.borderColor = newValue.cgColor
+        }
+        get {
+            return UIColor(cgColor:self.layer.borderColor!)
+        }
+    }
 }
 
 //MARK:- CustomOperator
