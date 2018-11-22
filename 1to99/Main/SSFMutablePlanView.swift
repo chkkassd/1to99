@@ -184,7 +184,11 @@ extension SSFMutablePlanView: SwipeTableViewCellDelegate {
             self.delegate?.mutablePlanView(self, deleteTaskAt: (planIndex, index.row))
             cell.hideSwipe(animated: true, completion: nil)
         }
-        return [deleteAction]
+        let addTodayAction = SwipeAction(style: .default, title: "今日做") { (action, index) in
+            self.delegate?.mutablePlanView(self, addTaskTodayAt: (planIndex, index.row))
+            cell.hideSwipe(animated: true, completion: nil)
+        }
+        return [deleteAction, addTodayAction]
     }
 }
 
@@ -201,6 +205,7 @@ protocol SSFMutablePlanViewDataSource: AnyObject {
 protocol SSFMutablePlanViewDelegate: AnyObject {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, creatTaskAt planIndex: Int)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex)
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, addTaskTodayAt index: MutablePlanViewIndex)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, editePlanAt planIndex: Int)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didSelectTaskAt index: MutablePlanViewIndex)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didPressTaskCheckAt index: MutablePlanViewIndex, selected: Bool)

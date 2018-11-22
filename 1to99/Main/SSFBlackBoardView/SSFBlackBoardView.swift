@@ -61,5 +61,5 @@ extension SSFBlackBoardView: UICollectionViewDataSource {
 
 protocol SSFBlackBoardViewDatasource: AnyObject {
     func numberOfItems(in blackBoardView: SSFBlackBoardView) -> Int
-    func blackBoardView(_ blackBoardView: SSFBlackBoardView, updateDataSourceAt index: Int, updateModel: BlackBoardViewUpdateModel, updatedData: Task)
+    func blackBoardView(_ blackBoardView: SSFBlackBoardView, updateDataSourceAt index: IndexPath, updateModel: BlackBoardViewUpdateModel, updatedData: Task)
 }

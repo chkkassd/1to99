@@ -23,9 +23,11 @@ class SSFPlanViewController: UIViewController {
     
     lazy var allPlans = DataManager.sharedDataManager.allplans().sorted(byKeyPath: "date", ascending: false)
     
-    var tasksForToday: [Task] = []
-    
     var notificationToken: NotificationToken?
+    
+    lazy var tasksForToday = DataManager.sharedDataManager.allTasks().filter(NSPredicate(format: "joinToday == %@", NSNumber(booleanLiteral: true))).sorted(byKeyPath: "isDone", ascending: true)
+    
+    var tasksForTodayNotificationToken: NotificationToken?
     
     var selectedTask: Task?
     
@@ -33,7 +35,7 @@ class SSFPlanViewController: UIViewController {
         super.viewDidLoad()
         prepareForLoad()
         
-        //receive data update nofitication and update UI
+        //receive plandata update nofitication and update UI
         notificationToken = allPlans.observe { [unowned self] changes in
             switch changes {
             case .initial:
@@ -51,10 +53,28 @@ class SSFPlanViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
+        
+        //receive taskdata update nofitication and update UI
+        tasksForTodayNotificationToken = tasksForToday.observe { [unowned self] changes in
+            switch changes {
+            case .initial:
+                self.blackBoardView.collectionView.reloadData()
+            case .update(_, let deletions, let insertions, let modifications):
+                //1.update the collectionview
+                self.blackBoardView.collectionView.performBatchUpdates({
+                    self.blackBoardView.collectionView.deleteItems(at: deletions.map{IndexPath(row:$0, section: 0)})
+                    self.blackBoardView.collectionView.insertItems(at: insertions.map{IndexPath(row: $0, section: 0)})
+                    self.blackBoardView.collectionView.reloadItems(at: modifications.map{IndexPath(row: $0, section: 0)})
+                }, completion: nil)
+            case .error(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     deinit {
         notificationToken?.invalidate()
+        tasksForTodayNotificationToken?.invalidate()
     }
     
     //MARK: - Action
@@ -118,7 +138,7 @@ class SSFPlanViewController: UIViewController {
                 self.planView.planCollectionView.reloadItems(at: [indexPath])
                 }, completion: nil)
         }
-        try! realm.commitWrite(withoutNotifying: [notificationToken!])
+        try! realm.commitWrite(withoutNotifying: [notificationToken!, tasksForTodayNotificationToken!])
     }
     
     //Interface-driven write for task
@@ -142,7 +162,29 @@ class SSFPlanViewController: UIViewController {
         self.planView.planCollectionView.performBatchUpdates({[unowned self] in
             self.planView.planCollectionView.reloadItems(at: [IndexPath(item: planIndex, section: 0)])
             }, completion: nil)
-        try! realm.commitWrite(withoutNotifying: [notificationToken!])
+        try! realm.commitWrite(withoutNotifying: [notificationToken!,tasksForTodayNotificationToken!])
+    }
+    
+    //Interface-driven write for today's task
+    private func operateTodayTaskForInterfaceDriven(_ operation: PlanOperation, _ task: Task, repeatAddHandler: () ->Void) {
+        if task.joinToday {
+            repeatAddHandler()
+        } else {
+            let realm = try! Realm()
+            realm.beginWrite()
+            // add or delete or update data
+            switch operation {
+            case .add:
+                task.joinToday = true
+            case .delete:
+                task.joinToday = false
+            default:
+                task.joinToday = true
+            }
+            //mirror it instantly in the UI
+            self.blackBoardView.collectionView.reloadData()
+            try! realm.commitWrite(withoutNotifying: [notificationToken!, tasksForTodayNotificationToken!])
+        }
     }
 }
 
@@ -181,6 +223,13 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex) {
         let task = (allPlans[index.0].tasks)[index.1]
         operateTaskForInterfaceDriven(.delete, index.0, task)
+    }
+    
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, addTaskTodayAt index: MutablePlanViewIndex) {
+        let task = (allPlans[index.0].tasks)[index.1]
+        operateTodayTaskForInterfaceDriven(.add, task) {
+            SwiftNotice.showNoticeWithText(.info, text: "此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
+        }
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, editePlanAt planIndex: Int) {
@@ -232,12 +281,9 @@ extension SSFPlanViewController: SSFBlackBoardViewDatasource {
         return tasksForToday.count
     }
     
-    func blackBoardView(_ blackBoardView: SSFBlackBoardView, updateDataSourceAt index: Int, updateModel: BlackBoardViewUpdateModel, updatedData: Task) {
-        switch updateModel {
-        case .insert:
-            tasksForToday.insert(updatedData, at: index)
-        case .delet:
-            tasksForToday.remove(at: index)
+    func blackBoardView(_ blackBoardView: SSFBlackBoardView, updateDataSourceAt index: IndexPath, updateModel: BlackBoardViewUpdateModel, updatedData: Task) {
+        operateTodayTaskForInterfaceDriven(.add, updatedData) {
+            SwiftNotice.showNoticeWithText(.info, text: "此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
         }
     }
 }

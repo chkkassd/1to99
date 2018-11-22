@@ -58,4 +58,10 @@ class DataManager {
         let realm = try! Realm()
         return realm.objects(Plan.self)
     }
+    
+    //all tasks in current realm
+    public func allTasks() -> Results<Task> {
+        let realm = try! Realm()
+        return realm.objects(Task.self)
+    }
 }

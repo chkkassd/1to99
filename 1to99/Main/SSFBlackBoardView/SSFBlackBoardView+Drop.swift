@@ -34,7 +34,7 @@ extension SSFBlackBoardView: UICollectionViewDropDelegate {
             let item = collectionView.numberOfItems(inSection: 0)
             destinationIndexPath = IndexPath(item: item, section: 0)
         }
-        self.dataSource?.blackBoardView(self, updateDataSourceAt: destinationIndexPath.item, updateModel: .insert, updatedData: task)
-        collectionView.insertItems(at: [destinationIndexPath])
+        self.dataSource?.blackBoardView(self, updateDataSourceAt: destinationIndexPath, updateModel: .insert, updatedData: task)
+        }
     }
-}
+
