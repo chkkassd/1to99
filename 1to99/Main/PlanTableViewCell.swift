@@ -13,6 +13,8 @@ class PlanTableViewCell: SwipeTableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var processLable: UILabel!
+    @IBOutlet weak var todayToDoLabel: UILabel!
+    
     var pressCheck: (Bool) -> Void = {_ in }
     
     override func awakeFromNib() {

@@ -17,6 +17,7 @@ enum MutablePlanViewCellDicKey {
     case title
     case process
     case check
+    case isTodayToDo
 }
 
 class SSFMutablePlanView: UIView {
@@ -158,6 +159,7 @@ extension SSFMutablePlanView: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = dataDic[.title] as? String
         cell.processLable.text = dataDic[.process] as? String
         cell.checkButton.isSelected = dataDic[.check] as! Bool
+        cell.todayToDoLabel.isHidden = !(dataDic[.isTodayToDo] as! Bool)
         cell.pressCheck = { [unowned self] isSelected in self.delegate?.mutablePlanView(self, didPressTaskCheckAt: planViewIndex, selected: isSelected)}
         return cell
     }
@@ -184,11 +186,22 @@ extension SSFMutablePlanView: SwipeTableViewCellDelegate {
             self.delegate?.mutablePlanView(self, deleteTaskAt: (planIndex, index.row))
             cell.hideSwipe(animated: true, completion: nil)
         }
-        let addTodayAction = SwipeAction(style: .default, title: "今日做") { (action, index) in
-            self.delegate?.mutablePlanView(self, addTaskTodayAt: (planIndex, index.row))
-            cell.hideSwipe(animated: true, completion: nil)
+        
+        if cell.todayToDoLabel.isHidden {
+            //add to today list
+            let addTodayAction = SwipeAction(style: .default, title: "今日做") { (action, index) in
+                self.delegate?.mutablePlanView(self, addTaskTodayAt: (planIndex, index.row))
+                cell.hideSwipe(animated: true, completion: nil)
+            }
+            return [deleteAction, addTodayAction]
+        } else {
+            //remove from today list
+            let removeTodayAction = SwipeAction(style: .default, title: "延后") { (action, index) in
+                self.delegate?.mutablePlanView(self, removeTaskFromTodayAt: (planIndex, index.row))
+                cell.hideSwipe(animated: true, completion: nil)
+            }
+            return [deleteAction, removeTodayAction]
         }
-        return [deleteAction, addTodayAction]
     }
 }
 
@@ -206,6 +219,7 @@ protocol SSFMutablePlanViewDelegate: AnyObject {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, creatTaskAt planIndex: Int)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, deleteTaskAt index: MutablePlanViewIndex)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, addTaskTodayAt index: MutablePlanViewIndex)
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, removeTaskFromTodayAt index: MutablePlanViewIndex)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, editePlanAt planIndex: Int)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didSelectTaskAt index: MutablePlanViewIndex)
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didPressTaskCheckAt index: MutablePlanViewIndex, selected: Bool)

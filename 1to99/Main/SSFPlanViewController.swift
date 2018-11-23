@@ -167,24 +167,33 @@ class SSFPlanViewController: UIViewController {
     
     //Interface-driven write for today's task
     private func operateTodayTaskForInterfaceDriven(_ operation: PlanOperation, _ task: Task, repeatAddHandler: () ->Void) {
-        if task.joinToday {
-            repeatAddHandler()
-        } else {
-            let realm = try! Realm()
-            realm.beginWrite()
-            // add or delete or update data
-            switch operation {
-            case .add:
-                task.joinToday = true
-            case .delete:
-                task.joinToday = false
-            default:
-                task.joinToday = true
+
+        let realm = try! Realm()
+        realm.beginWrite()
+        // add or delete or update data
+        switch operation {
+        case .add:
+            if task.joinToday {
+                repeatAddHandler()
+                try! realm.commitWrite(withoutNotifying: [notificationToken!, tasksForTodayNotificationToken!])
+                return
+            } else {
+               task.joinToday = true
             }
-            //mirror it instantly in the UI
-            self.blackBoardView.collectionView.reloadData()
-            try! realm.commitWrite(withoutNotifying: [notificationToken!, tasksForTodayNotificationToken!])
+        case .delete:
+            if !task.joinToday {
+                repeatAddHandler()
+                try! realm.commitWrite(withoutNotifying: [notificationToken!, tasksForTodayNotificationToken!])
+                return
+            } else {
+                task.joinToday = false
+            }
+        default:
+            task.joinToday = true
         }
+        //mirror it instantly in the UI
+        self.blackBoardView.collectionView.reloadData()
+        try! realm.commitWrite(withoutNotifying: [tasksForTodayNotificationToken!])
     }
 }
 
@@ -203,7 +212,7 @@ extension SSFPlanViewController: SSFMutablePlanViewDataSource {
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, taskForPlanAt indexPath: MutablePlanViewIndex) -> MutablePlanViewCellDic {
         let task = (allPlans[indexPath.0].tasks)[indexPath.1]
-        return [MutablePlanViewCellDicKey.title: task.summary,MutablePlanViewCellDicKey.process: "\(task.checkItems.filter("isCheck == YES").count)/\(task.checkItems.count)",MutablePlanViewCellDicKey.check: task.isDone]
+        return [MutablePlanViewCellDicKey.title: task.summary,MutablePlanViewCellDicKey.process: "\(task.checkItems.filter("isCheck == YES").count)/\(task.checkItems.count)",MutablePlanViewCellDicKey.check: task.isDone, MutablePlanViewCellDicKey.isTodayToDo: task.joinToday]
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, dragTaskForPlanAt indexPath: MutablePlanViewIndex) -> Task {
@@ -229,6 +238,13 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
         let task = (allPlans[index.0].tasks)[index.1]
         operateTodayTaskForInterfaceDriven(.add, task) {
             SwiftNotice.showNoticeWithText(.info, text: "此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
+        }
+    }
+    
+    func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, removeTaskFromTodayAt index: MutablePlanViewIndex) {
+        let task = (allPlans[index.0].tasks)[index.1]
+        operateTodayTaskForInterfaceDriven(.delete, task) {
+            SwiftNotice.showNoticeWithText(.info, text: "此任务已延后", autoClear: true, autoClearTime: 2)
         }
     }
     
