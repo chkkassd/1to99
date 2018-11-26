@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class TodayTableViewCell: UITableViewCell {
+class TodayTableViewCell: SwipeTableViewCell {
 
     @IBOutlet weak var planTitleLabel: UILabel!
     @IBOutlet weak var taskSummaryLabel: UILabel!
     @IBOutlet weak var processLabel: UILabel!
+    @IBOutlet weak var checkButton: UIButton!
+    
+    var pressCheck: (Bool) -> Void = {_ in }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,5 +31,6 @@ class TodayTableViewCell: UITableViewCell {
 
     @IBAction func checkButtonPressed(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        pressCheck(sender.isSelected)
     }
 }

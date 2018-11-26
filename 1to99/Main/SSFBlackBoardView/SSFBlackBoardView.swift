@@ -17,6 +17,7 @@ class SSFBlackBoardView: UIView {
 
     @IBOutlet var containView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var todayProcessLabel: UILabel!
     weak var dataSource: SSFBlackBoardViewDatasource?
 
     // MARK: Initialization

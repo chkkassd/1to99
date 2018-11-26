@@ -464,6 +464,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="PrimaryBackgroundColor"/>
                                         <connections>
+                                            <outlet property="checkButton" destination="mFc-OJ-g81" id="zPW-sC-emM"/>
                                             <outlet property="planTitleLabel" destination="2Dd-fd-zKC" id="OZB-8N-miH"/>
                                             <outlet property="processLabel" destination="dhV-Mn-eju" id="JOS-Iy-zE2"/>
                                             <outlet property="taskSummaryLabel" destination="tyP-HO-l20" id="8HZ-Su-LGs"/>
@@ -486,20 +487,11 @@
                         <viewLayoutGuide key="safeArea" id="NkA-FN-otB"/>
                     </view>
                     <navigationItem key="navigationItem" title="今日任务" id="7DD-fO-W74">
-                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="VyB-4n-60G">
-                            <connections>
-                                <action selector="addBarButtonItemPressed:" destination="VHT-W0-qF1" id="S7h-G8-9r2"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="DfC-xS-qoC">
-                            <connections>
-                                <action selector="editBarButtonItemPressed:" destination="VHT-W0-qF1" id="Xr6-Q1-Zti"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" image="NavigationBar_edit" style="plain" id="VyB-4n-60G">
+                            <color key="tintColor" name="PrimaryColor"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addBarButtonItem" destination="VyB-4n-60G" id="hie-f2-kaF"/>
-                        <outlet property="editBarButtonItem" destination="DfC-xS-qoC" id="4ZL-3n-f1J"/>
                         <outlet property="tableView" destination="HDN-g5-xx4" id="IRA-qr-09d"/>
                     </connections>
                 </viewController>
@@ -829,6 +821,7 @@
         <image name="AddIcon" width="20" height="20"/>
         <image name="Checkbox_check" width="24" height="24"/>
         <image name="Checkbox_uncheck" width="24" height="24"/>
+        <image name="NavigationBar_edit" width="24" height="24"/>
         <image name="Tabbar_plan" width="20" height="24"/>
         <image name="Tabbar_setting" width="20" height="20"/>
         <image name="Tabbar_today" width="20" height="22"/>

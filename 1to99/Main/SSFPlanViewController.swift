@@ -15,6 +15,14 @@ enum PlanOperation {
     case delete
 }
 
+enum TaskOperation {
+    case add
+    case delete
+    case update([String: Any])
+    case joinToToday
+    case removeFromToday
+}
+
 class SSFPlanViewController: UIViewController {
 
     @IBOutlet weak var planView: SSFMutablePlanView!
@@ -25,7 +33,7 @@ class SSFPlanViewController: UIViewController {
     
     var notificationToken: NotificationToken?
     
-    lazy var tasksForToday = DataManager.sharedDataManager.allTasks().filter(NSPredicate(format: "joinToday == %@", NSNumber(booleanLiteral: true))).sorted(byKeyPath: "isDone", ascending: true)
+    lazy var tasksForToday = DataManager.sharedDataManager.allTasks().filter("joinToday == YES").sorted(byKeyPath: "date", ascending: true)
     
     var tasksForTodayNotificationToken: NotificationToken?
     
@@ -54,7 +62,7 @@ class SSFPlanViewController: UIViewController {
             }
         }
         
-        //receive taskdata update nofitication and update UI
+        //receive today's taskdata update nofitication and update UI
         tasksForTodayNotificationToken = tasksForToday.observe { [unowned self] changes in
             switch changes {
             case .initial:
@@ -69,6 +77,7 @@ class SSFPlanViewController: UIViewController {
             case .error(let error):
                 print(error.localizedDescription)
             }
+            self.blackBoardView.todayProcessLabel.text = "\(self.tasksForToday.filter("isDone == YES").count)/\(self.tasksForToday.count)"
         }
     }
     
@@ -142,7 +151,7 @@ class SSFPlanViewController: UIViewController {
     }
     
     //Interface-driven write for task
-    private func operateTaskForInterfaceDriven(_ operation: PlanOperation, _ planIndex: Int, _ task: Task) {
+    private func operateTaskForInterfaceDriven(_ operation: TaskOperation, _ planIndex: Int, _ task: Task) {
         let realm = try! Realm()
         realm.beginWrite()
         // add or delete or update data
@@ -157,22 +166,25 @@ class SSFPlanViewController: UIViewController {
             realm.delete(task)
         case .update(let dic):
             task.setValuesForKeys(dic)
+        default:
+            try! realm.commitWrite(withoutNotifying: [notificationToken!,tasksForTodayNotificationToken!])
+            return
         }
         //mirror it instantly in the UI
         self.planView.planCollectionView.performBatchUpdates({[unowned self] in
             self.planView.planCollectionView.reloadItems(at: [IndexPath(item: planIndex, section: 0)])
             }, completion: nil)
-        try! realm.commitWrite(withoutNotifying: [notificationToken!,tasksForTodayNotificationToken!])
+        try! realm.commitWrite(withoutNotifying: [notificationToken!])
     }
     
-    //Interface-driven write for today's task
-    private func operateTodayTaskForInterfaceDriven(_ operation: PlanOperation, _ task: Task, repeatAddHandler: () ->Void) {
+    //Interface-driven write for join today's task
+    private func operateTodayTaskForInterfaceDriven(_ operation: TaskOperation, _ task: Task, repeatAddHandler: () ->Void) {
 
         let realm = try! Realm()
         realm.beginWrite()
         // add or delete or update data
         switch operation {
-        case .add:
+        case .joinToToday://加入今天的计划
             if task.joinToday {
                 repeatAddHandler()
                 try! realm.commitWrite(withoutNotifying: [notificationToken!, tasksForTodayNotificationToken!])
@@ -180,7 +192,7 @@ class SSFPlanViewController: UIViewController {
             } else {
                task.joinToday = true
             }
-        case .delete:
+        case .removeFromToday://从今天的计划内移除
             if !task.joinToday {
                 repeatAddHandler()
                 try! realm.commitWrite(withoutNotifying: [notificationToken!, tasksForTodayNotificationToken!])
@@ -189,10 +201,12 @@ class SSFPlanViewController: UIViewController {
                 task.joinToday = false
             }
         default:
-            task.joinToday = true
+            try! realm.commitWrite(withoutNotifying: [notificationToken!,tasksForTodayNotificationToken!])
+            return
         }
         //mirror it instantly in the UI
         self.blackBoardView.collectionView.reloadData()
+        self.blackBoardView.todayProcessLabel.text = "\(self.tasksForToday.filter("isDone == YES").count)/\(self.tasksForToday.count)"
         try! realm.commitWrite(withoutNotifying: [tasksForTodayNotificationToken!])
     }
 }
@@ -236,14 +250,14 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, addTaskTodayAt index: MutablePlanViewIndex) {
         let task = (allPlans[index.0].tasks)[index.1]
-        operateTodayTaskForInterfaceDriven(.add, task) {
+        operateTodayTaskForInterfaceDriven(.joinToToday, task) {
             SwiftNotice.showNoticeWithText(.info, text: "此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
         }
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, removeTaskFromTodayAt index: MutablePlanViewIndex) {
         let task = (allPlans[index.0].tasks)[index.1]
-        operateTodayTaskForInterfaceDriven(.delete, task) {
+        operateTodayTaskForInterfaceDriven(.removeFromToday, task) {
             SwiftNotice.showNoticeWithText(.info, text: "此任务已延后", autoClear: true, autoClearTime: 2)
         }
     }
@@ -298,7 +312,7 @@ extension SSFPlanViewController: SSFBlackBoardViewDatasource {
     }
     
     func blackBoardView(_ blackBoardView: SSFBlackBoardView, updateDataSourceAt index: IndexPath, updateModel: BlackBoardViewUpdateModel, updatedData: Task) {
-        operateTodayTaskForInterfaceDriven(.add, updatedData) {
+        operateTodayTaskForInterfaceDriven(.joinToToday, updatedData) {
             SwiftNotice.showNoticeWithText(.info, text: "此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
         }
     }

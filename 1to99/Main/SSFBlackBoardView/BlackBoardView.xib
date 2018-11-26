@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="collectionView" destination="Dlc-sT-CSB" id="AJc-1a-80F"/>
                 <outlet property="containView" destination="QUz-8O-Rl3" id="L0o-te-XfG"/>
+                <outlet property="todayProcessLabel" destination="G56-ZL-rIX" id="4eZ-1N-gaf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,7 +27,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Dlc-sT-CSB">
-                            <rect key="frame" x="5" y="5" width="365" height="102"/>
+                            <rect key="frame" x="5" y="5" width="325" height="102"/>
                             <color key="backgroundColor" red="0.792156862745098" green="0.87450980392156863" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UVs-db-s8V">
                                 <size key="itemSize" width="30" height="30"/>
@@ -35,11 +36,47 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbT-d8-JuH">
+                            <rect key="frame" x="330" y="5" width="40" height="102"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYE-Xy-rLK">
+                                    <rect key="frame" x="5" y="0.0" width="30" height="68"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="今日进度">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G56-ZL-rIX">
+                                    <rect key="frame" x="0.0" y="76" width="40" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.792156862745098" green="0.87450980392156863" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="G56-ZL-rIX" firstAttribute="top" secondItem="OYE-Xy-rLK" secondAttribute="bottom" constant="8" id="7Pt-tx-Cox"/>
+                                <constraint firstItem="OYE-Xy-rLK" firstAttribute="top" secondItem="SbT-d8-JuH" secondAttribute="top" id="Fhi-gn-LEP"/>
+                                <constraint firstItem="G56-ZL-rIX" firstAttribute="leading" secondItem="SbT-d8-JuH" secondAttribute="leading" id="ZAr-37-cS0"/>
+                                <constraint firstItem="OYE-Xy-rLK" firstAttribute="leading" secondItem="SbT-d8-JuH" secondAttribute="leading" constant="5" id="eJ2-Eh-Vz2"/>
+                                <constraint firstAttribute="trailing" secondItem="G56-ZL-rIX" secondAttribute="trailing" id="q7q-KM-OyK"/>
+                                <constraint firstAttribute="trailing" secondItem="OYE-Xy-rLK" secondAttribute="trailing" constant="5" id="wjG-BB-v43"/>
+                                <constraint firstAttribute="width" constant="40" id="yjl-gJ-XkA"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" name="PlanTableColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Dlc-sT-CSB" secondAttribute="trailing" constant="5" id="Bv3-G2-3RO"/>
+                        <constraint firstItem="SbT-d8-JuH" firstAttribute="leading" secondItem="Dlc-sT-CSB" secondAttribute="trailing" id="8TZ-y1-qfB"/>
+                        <constraint firstAttribute="trailing" secondItem="SbT-d8-JuH" secondAttribute="trailing" constant="5" id="AeH-VG-psH"/>
+                        <constraint firstItem="SbT-d8-JuH" firstAttribute="top" secondItem="umw-QR-L3e" secondAttribute="top" constant="5" id="I9c-pK-auX"/>
                         <constraint firstItem="Dlc-sT-CSB" firstAttribute="leading" secondItem="umw-QR-L3e" secondAttribute="leading" constant="5" id="INo-Gh-gHU"/>
+                        <constraint firstAttribute="bottom" secondItem="SbT-d8-JuH" secondAttribute="bottom" constant="5" id="Khl-oL-ZPe"/>
                         <constraint firstAttribute="bottom" secondItem="Dlc-sT-CSB" secondAttribute="bottom" constant="5" id="wiv-x4-fJu"/>
                         <constraint firstItem="Dlc-sT-CSB" firstAttribute="top" secondItem="umw-QR-L3e" secondAttribute="top" constant="5" id="zzk-HW-B3d"/>
                     </constraints>
