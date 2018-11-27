@@ -251,14 +251,14 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, addTaskTodayAt index: MutablePlanViewIndex) {
         let task = (allPlans[index.0].tasks)[index.1]
         operateTodayTaskForInterfaceDriven(.joinToToday, task) {
-            SwiftNotice.showNoticeWithText(.info, text: "此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
+            self.noticeTop("此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
         }
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, removeTaskFromTodayAt index: MutablePlanViewIndex) {
         let task = (allPlans[index.0].tasks)[index.1]
         operateTodayTaskForInterfaceDriven(.removeFromToday, task) {
-            SwiftNotice.showNoticeWithText(.info, text: "此任务已延后", autoClear: true, autoClearTime: 2)
+            self.noticeTop("此任务已延后", autoClear: true, autoClearTime: 2)
         }
     }
     
@@ -279,7 +279,7 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
                 self.present(alert, animated: true, completion: nil)
             })
         }
-        popoverVC.preferredContentSize = CGSize(width: 200, height: 200)
+        popoverVC.preferredContentSize = CGSize(width: 180, height: 180)
         popoverVC.modalPresentationStyle = .popover
         popoverVC.popoverPresentationController?.delegate = self
         popoverVC.popoverPresentationController?.sourceView = planView
@@ -313,7 +313,7 @@ extension SSFPlanViewController: SSFBlackBoardViewDatasource {
     
     func blackBoardView(_ blackBoardView: SSFBlackBoardView, updateDataSourceAt index: IndexPath, updateModel: BlackBoardViewUpdateModel, updatedData: Task) {
         operateTodayTaskForInterfaceDriven(.joinToToday, updatedData) {
-            SwiftNotice.showNoticeWithText(.info, text: "此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
+            self.noticeTop("此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
         }
     }
     

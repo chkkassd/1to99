@@ -156,7 +156,7 @@ extension SSFTodayViewController: SwipeTableViewCellDelegate {
         //remove from today list
         let removeTodayAction = SwipeAction(style: .default, title: "延后") { (action, index) in
             self.operateTodayTaskForInterfaceDriven(.removeFromToday, indexPath, task, repeatOperationHandler: {
-                SwiftNotice.showNoticeWithText(.info, text: "此任务已延后", autoClear: true, autoClearTime: 2)
+                self.noticeTop("此任务已延后", autoClear: true, autoClearTime: 2)
             })
             cell.hideSwipe(animated: true, completion: nil)
         }

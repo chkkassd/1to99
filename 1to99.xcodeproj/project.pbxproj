@@ -28,7 +28,6 @@
 		91AEF5EB21018E7B00A800F0 /* ScreenShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E321018E7B00A800F0 /* ScreenShot.swift */; };
 		91AEF5EC21018E7B00A800F0 /* DirectoryPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E421018E7B00A800F0 /* DirectoryPath.swift */; };
 		91AEF5ED21018E7B00A800F0 /* FIFOQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E521018E7B00A800F0 /* FIFOQueue.swift */; };
-		91AEF5EE21018E7B00A800F0 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E621018E7B00A800F0 /* SwiftNotice.swift */; };
 		91AEF5EF21018E7B00A800F0 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E721018E7B00A800F0 /* Utility.swift */; };
 		91AEF5F021018E7B00A800F0 /* ResultDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5E821018E7B00A800F0 /* ResultDescription.swift */; };
 		91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AEF5F22101B6C200A800F0 /* PlanTableViewCell.swift */; };
@@ -50,6 +49,7 @@
 		91BB332B21A547D1004CC189 /* BlackBoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB332921A547D1004CC189 /* BlackBoardCollectionViewCell.swift */; };
 		91BB332C21A547D1004CC189 /* BlackBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91BB332A21A547D1004CC189 /* BlackBoardCollectionViewCell.xib */; };
 		91BB332E21A54F55004CC189 /* SSFBlackBoardView+Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB332D21A54F55004CC189 /* SSFBlackBoardView+Drop.swift */; };
+		91BB333021AD2E50004CC189 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB332F21AD2E50004CC189 /* SwiftNotice.swift */; };
 		91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D70E9E20FDD9B800359571 /* AppDelegate.swift */; };
 		91D70EA420FDD9B800359571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA220FDD9B800359571 /* Main.storyboard */; };
 		91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA520FDD9BB00359571 /* Assets.xcassets */; };
@@ -78,7 +78,6 @@
 		91AEF5E321018E7B00A800F0 /* ScreenShot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenShot.swift; sourceTree = "<group>"; };
 		91AEF5E421018E7B00A800F0 /* DirectoryPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryPath.swift; sourceTree = "<group>"; };
 		91AEF5E521018E7B00A800F0 /* FIFOQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIFOQueue.swift; sourceTree = "<group>"; };
-		91AEF5E621018E7B00A800F0 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		91AEF5E721018E7B00A800F0 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		91AEF5E821018E7B00A800F0 /* ResultDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDescription.swift; sourceTree = "<group>"; };
 		91AEF5F121018F5100A800F0 /* 1to99-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "1to99-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -101,6 +100,7 @@
 		91BB332921A547D1004CC189 /* BlackBoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		91BB332A21A547D1004CC189 /* BlackBoardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlackBoardCollectionViewCell.xib; sourceTree = "<group>"; };
 		91BB332D21A54F55004CC189 /* SSFBlackBoardView+Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSFBlackBoardView+Drop.swift"; sourceTree = "<group>"; };
+		91BB332F21AD2E50004CC189 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		91D70E9B20FDD9B800359571 /* 1to99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1to99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D70E9E20FDD9B800359571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D70EA320FDD9B800359571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -220,11 +220,11 @@
 		91AEF5E221018E7B00A800F0 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				91BB332F21AD2E50004CC189 /* SwiftNotice.swift */,
 				91AEF5E721018E7B00A800F0 /* Utility.swift */,
 				91AEF5E321018E7B00A800F0 /* ScreenShot.swift */,
 				91AEF5E421018E7B00A800F0 /* DirectoryPath.swift */,
 				91AEF5E521018E7B00A800F0 /* FIFOQueue.swift */,
-				91AEF5E621018E7B00A800F0 /* SwiftNotice.swift */,
 				91AEF5E821018E7B00A800F0 /* ResultDescription.swift */,
 				91B6DAF421882FBD00318DE8 /* AlertUtility.swift */,
 			);
@@ -413,6 +413,7 @@
 				911E9468213FCB590081A241 /* testViewController.swift in Sources */,
 				91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */,
 				911671D3215B683F008FC4D6 /* TaskCheckTableViewCell.swift in Sources */,
+				91BB333021AD2E50004CC189 /* SwiftNotice.swift in Sources */,
 				91B6DAEB217735EF00318DE8 /* DataModel.swift in Sources */,
 				91AEF5EB21018E7B00A800F0 /* ScreenShot.swift in Sources */,
 				91AEF5F32101B6C200A800F0 /* PlanTableViewCell.swift in Sources */,
@@ -428,7 +429,6 @@
 				91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */,
 				91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */,
 				91B6DAF521882FBD00318DE8 /* AlertUtility.swift in Sources */,
-				91AEF5EE21018E7B00A800F0 /* SwiftNotice.swift in Sources */,
 				91AEF5FD21057C3C00A800F0 /* PlanTableView.swift in Sources */,
 				91AEF5E921018E7B00A800F0 /* Constant.swift in Sources */,
 				91BB331D219C1BF0004CC189 /* SSFMutablePlanView+Drag.swift in Sources */,

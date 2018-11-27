@@ -9,45 +9,58 @@
 import Foundation
 import UIKit
 
+private let sn_topBar: Int = 1001
+
 extension UIResponder {
     /// wait with your own animated images
-    func pleaseWaitWithImages(_ imageNames: Array<UIImage>, timeInterval: Int) {
-        SwiftNotice.wait(imageNames, timeInterval: timeInterval)
+    @discardableResult
+    func pleaseWaitWithImages(_ imageNames: Array<UIImage>, timeInterval: Int) -> UIWindow{
+        return SwiftNotice.wait(imageNames, timeInterval: timeInterval)
     }
     // api changed from v3.3
-    func noticeTop(_ text: String, autoClear: Bool = true, autoClearTime: Int = 1) {
-        SwiftNotice.noticeOnStatusBar(text, autoClear: autoClear, autoClearTime: autoClearTime)
+    @discardableResult
+    func noticeTop(_ text: String, autoClear: Bool = true, autoClearTime: Int = 1) -> UIWindow{
+        return SwiftNotice.noticeOnStatusBar(text, autoClear: autoClear, autoClearTime: autoClearTime)
     }
     
     // new apis from v3.3
-    func noticeSuccess(_ text: String, autoClear: Bool = false, autoClearTime: Int = 3) {
-        SwiftNotice.showNoticeWithText(NoticeType.success, text: text, autoClear: autoClear, autoClearTime: autoClearTime)
+    @discardableResult
+    func noticeSuccess(_ text: String, autoClear: Bool = false, autoClearTime: Int = 3) -> UIWindow{
+        return SwiftNotice.showNoticeWithText(NoticeType.success, text: text, autoClear: autoClear, autoClearTime: autoClearTime)
     }
-    func noticeError(_ text: String, autoClear: Bool = false, autoClearTime: Int = 3) {
-        SwiftNotice.showNoticeWithText(NoticeType.error, text: text, autoClear: autoClear, autoClearTime: autoClearTime)
+    @discardableResult
+    func noticeError(_ text: String, autoClear: Bool = false, autoClearTime: Int = 3) -> UIWindow{
+        return SwiftNotice.showNoticeWithText(NoticeType.error, text: text, autoClear: autoClear, autoClearTime: autoClearTime)
     }
-    func noticeInfo(_ text: String, autoClear: Bool = false, autoClearTime: Int = 3) {
-        SwiftNotice.showNoticeWithText(NoticeType.info, text: text, autoClear: autoClear, autoClearTime: autoClearTime)
+    @discardableResult
+    func noticeInfo(_ text: String, autoClear: Bool = false, autoClearTime: Int = 3) -> UIWindow{
+        return SwiftNotice.showNoticeWithText(NoticeType.info, text: text, autoClear: autoClear, autoClearTime: autoClearTime)
     }
     
     // old apis
-    func successNotice(_ text: String, autoClear: Bool = true) {
-        SwiftNotice.showNoticeWithText(NoticeType.success, text: text, autoClear: autoClear, autoClearTime: 3)
+    @discardableResult
+    func successNotice(_ text: String, autoClear: Bool = true) -> UIWindow{
+        return SwiftNotice.showNoticeWithText(NoticeType.success, text: text, autoClear: autoClear, autoClearTime: 3)
     }
-    func errorNotice(_ text: String, autoClear: Bool = true) {
-        SwiftNotice.showNoticeWithText(NoticeType.error, text: text, autoClear: autoClear, autoClearTime: 3)
+    @discardableResult
+    func errorNotice(_ text: String, autoClear: Bool = true) -> UIWindow{
+        return SwiftNotice.showNoticeWithText(NoticeType.error, text: text, autoClear: autoClear, autoClearTime: 3)
     }
-    func infoNotice(_ text: String, autoClear: Bool = true) {
-        SwiftNotice.showNoticeWithText(NoticeType.info, text: text, autoClear: autoClear, autoClearTime: 3)
+    @discardableResult
+    func infoNotice(_ text: String, autoClear: Bool = true) -> UIWindow{
+        return SwiftNotice.showNoticeWithText(NoticeType.info, text: text, autoClear: autoClear, autoClearTime: 3)
     }
-    func notice(_ text: String, type: NoticeType, autoClear: Bool, autoClearTime: Int = 3) {
-        SwiftNotice.showNoticeWithText(type, text: text, autoClear: autoClear, autoClearTime: autoClearTime)
+    @discardableResult
+    func notice(_ text: String, type: NoticeType, autoClear: Bool, autoClearTime: Int = 3) -> UIWindow{
+        return SwiftNotice.showNoticeWithText(type, text: text, autoClear: autoClear, autoClearTime: autoClearTime)
     }
-    func pleaseWait() {
-        SwiftNotice.wait()
+    @discardableResult
+    func pleaseWait() -> UIWindow{
+        return SwiftNotice.wait()
     }
-    func noticeOnlyText(_ text: String) {
-        SwiftNotice.showText(text)
+    @discardableResult
+    func noticeOnlyText(_ text: String) -> UIWindow{
+        return SwiftNotice.showText(text)
     }
     func clearAllNotice() {
         SwiftNotice.clear()
@@ -63,7 +76,7 @@ enum NoticeType{
 class SwiftNotice: NSObject {
     
     static var windows = Array<UIWindow?>()
-    static let rv = UIApplication.shared.keyWindow?.subviews.first as UIView!
+    static let rv = UIApplication.shared.keyWindow?.subviews.first as UIView?
     static var timer: DispatchSource!
     static var timerTimes = 0
     
@@ -87,14 +100,15 @@ class SwiftNotice: NSObject {
         windows.removeAll(keepingCapacity: false)
     }
     
-    static func noticeOnStatusBar(_ text: String, autoClear: Bool, autoClearTime: Int) {
+    @discardableResult
+    static func noticeOnStatusBar(_ text: String, autoClear: Bool, autoClearTime: Int) -> UIWindow{
         let frame = UIApplication.shared.statusBarFrame
         let window = UIWindow()
         window.backgroundColor = UIColor.clear
         let view = UIView()
         view.backgroundColor = UIColor(red: 0x6a/0x100, green: 0xb4/0x100, blue: 0x9f/0x100, alpha: 1)
         
-        let label = UILabel(frame: frame)
+        let label = UILabel(frame: frame.height > 20 ? CGRect(x: frame.origin.x, y: frame.origin.y + frame.height - 17, width: frame.width, height: 20) : frame)
         label.textAlignment = NSTextAlignment.center
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.white
@@ -124,12 +138,24 @@ class SwiftNotice: NSObject {
         window.addSubview(view)
         windows.append(window)
         
-        if autoClear {
-            let selector = #selector(SwiftNotice.hideNotice(_:))
-            self.perform(selector, with: window, afterDelay: TimeInterval(autoClearTime))
-        }
+        var origPoint = view.frame.origin
+        origPoint.y = -(view.frame.size.height)
+        let destPoint = view.frame.origin
+        view.tag = sn_topBar
+        
+        view.frame = CGRect(origin: origPoint, size: view.frame.size)
+        UIView.animate(withDuration: 0.3, animations: {
+            view.frame = CGRect(origin: destPoint, size: view.frame.size)
+        }, completion: { b in
+            if autoClear {
+                self.perform(.hideNotice, with: window, afterDelay: TimeInterval(autoClearTime))
+            }
+        })
+        return window
     }
-    static func wait(_ imageNames: Array<UIImage> = Array<UIImage>(), timeInterval: Int = 0) {
+    
+    @discardableResult
+    static func wait(_ imageNames: Array<UIImage> = Array<UIImage>(), timeInterval: Int = 0) -> UIWindow {
         let frame = CGRect(x: 0, y: 0, width: 78, height: 78)
         let window = UIWindow()
         window.backgroundColor = UIColor.clear
@@ -143,7 +169,7 @@ class SwiftNotice: NSObject {
                 iv.image = imageNames.first!
                 iv.contentMode = UIView.ContentMode.scaleAspectFit
                 mainView.addSubview(iv)
-                timer = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: DispatchQueue.main) as? DispatchSource
+                timer = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: DispatchQueue.main) as! DispatchSource
                 timer.schedule(deadline: DispatchTime.now(), repeating: DispatchTimeInterval.milliseconds(timeInterval))
                 timer.setEventHandler(handler: { () -> Void in
                     let name = imageNames[timerTimes % imageNames.count]
@@ -175,8 +201,16 @@ class SwiftNotice: NSObject {
         window.isHidden = false
         window.addSubview(mainView)
         windows.append(window)
+        
+        mainView.alpha = 0.0
+        UIView.animate(withDuration: 0.2, animations: {
+            mainView.alpha = 1
+        })
+        return window
     }
-    static func showText(_ text: String) {
+    
+    @discardableResult
+    static func showText(_ text: String, autoClear: Bool=true, autoClearTime: Int=2) -> UIWindow {
         let window = UIWindow()
         window.backgroundColor = UIColor.clear
         let mainView = UIView()
@@ -189,7 +223,8 @@ class SwiftNotice: NSObject {
         label.font = UIFont.systemFont(ofSize: 13)
         label.textAlignment = NSTextAlignment.center
         label.textColor = UIColor.white
-        label.sizeToFit()
+        let size = label.sizeThatFits(CGSize(width: UIScreen.main.bounds.width-82, height: CGFloat.greatestFiniteMagnitude))
+        label.bounds = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         mainView.addSubview(label)
         
         let superFrame = CGRect(x: 0, y: 0, width: label.frame.width + 50 , height: label.frame.height + 30)
@@ -211,9 +246,15 @@ class SwiftNotice: NSObject {
         window.isHidden = false
         window.addSubview(mainView)
         windows.append(window)
+        
+        if autoClear {
+            self.perform(.hideNotice, with: window, afterDelay: TimeInterval(autoClearTime))
+        }
+        return window
     }
     
-    static func showNoticeWithText(_ type: NoticeType,text: String, autoClear: Bool, autoClearTime: Int) {
+    @discardableResult
+    static func showNoticeWithText(_ type: NoticeType,text: String, autoClear: Bool, autoClearTime: Int) -> UIWindow {
         let frame = CGRect(x: 0, y: 0, width: 90, height: 90)
         let window = UIWindow()
         window.backgroundColor = UIColor.clear
@@ -259,21 +300,15 @@ class SwiftNotice: NSObject {
         window.addSubview(mainView)
         windows.append(window)
         
+        mainView.alpha = 0.0
+        UIView.animate(withDuration: 0.2, animations: {
+            mainView.alpha = 1
+        })
+        
         if autoClear {
-            let selector = #selector(SwiftNotice.hideNotice(_:))
-            self.perform(selector, with: window, afterDelay: TimeInterval(autoClearTime))
+            self.perform(.hideNotice, with: window, afterDelay: TimeInterval(autoClearTime))
         }
-    }
-    
-    // fix https://github.com/johnlui/SwiftNotice/issues/2
-    @objc static func hideNotice(_ sender: AnyObject) {
-        if let window = sender as? UIWindow {
-            if let index = windows.index(where: { (item) -> Bool in
-                return item == window
-            }) {
-                windows.remove(at: index)
-            }
-        }
+        return window
     }
     
     // just for iOS 8
@@ -371,4 +406,42 @@ class SwiftNoticeSDK {
         UIGraphicsEndImageContext()
         return Cache.imageOfInfo!
     }
+}
+
+extension UIWindow{
+    func hide(){
+        SwiftNotice.hideNotice(self)
+    }
+}
+
+fileprivate extension Selector {
+    static let hideNotice = #selector(SwiftNotice.hideNotice(_:))
+}
+
+@objc extension SwiftNotice {
+    
+    // fix https://github.com/johnlui/SwiftNotice/issues/2
+    static func hideNotice(_ sender: AnyObject) {
+        if let window = sender as? UIWindow {
+            
+            if let v = window.subviews.first {
+                UIView.animate(withDuration: 0.2, animations: {
+                    
+                    if v.tag == sn_topBar {
+                        v.frame = CGRect(x: 0, y: -v.frame.height, width: v.frame.width, height: v.frame.height)
+                    }
+                    v.alpha = 0
+                }, completion: { b in
+                    
+                    if let index = windows.index(where: { (item) -> Bool in
+                        return item == window
+                    }) {
+                        windows.remove(at: index)
+                    }
+                })
+            }
+            
+        }
+    }
+    
 }
