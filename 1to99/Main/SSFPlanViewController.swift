@@ -316,4 +316,10 @@ extension SSFPlanViewController: SSFBlackBoardViewDatasource {
             SwiftNotice.showNoticeWithText(.info, text: "此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
         }
     }
+    
+    func configureCell(_ collectionViewCell: UICollectionViewCell, cellForItemAt indexPath: IndexPath) {
+        let cell = collectionViewCell as! BlackBoardCollectionViewCell
+        let task = tasksForToday[indexPath.row]
+        cell.taskImageView.image = task.isDone ? UIImage(named: "boardTaskDone") : UIImage(named: "boardTask")
+    }
 }

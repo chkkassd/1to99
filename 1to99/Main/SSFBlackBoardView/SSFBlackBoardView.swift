@@ -56,11 +56,13 @@ extension SSFBlackBoardView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BlackBoardCollectionViewCell", for: indexPath) as! BlackBoardCollectionViewCell
+        self.dataSource?.configureCell(cell, cellForItemAt: indexPath)
         return cell
     }
 }
 
 protocol SSFBlackBoardViewDatasource: AnyObject {
     func numberOfItems(in blackBoardView: SSFBlackBoardView) -> Int
+    func configureCell(_ collectionViewCell: UICollectionViewCell, cellForItemAt indexPath: IndexPath)
     func blackBoardView(_ blackBoardView: SSFBlackBoardView, updateDataSourceAt index: IndexPath, updateModel: BlackBoardViewUpdateModel, updatedData: Task)
 }

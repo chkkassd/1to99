@@ -10,6 +10,8 @@ import UIKit
 
 class BlackBoardCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var taskImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

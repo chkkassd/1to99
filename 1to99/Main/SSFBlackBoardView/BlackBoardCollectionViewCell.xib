@@ -42,6 +42,9 @@
                 <constraint firstAttribute="bottom" secondItem="IoI-MR-5ij" secondAttribute="bottom" id="tb7-vr-D2R"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="taskImageView" destination="2eh-eO-5go" id="mE0-6C-E82"/>
+            </connections>
         </collectionViewCell>
     </objects>
     <resources>

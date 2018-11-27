@@ -18,6 +18,8 @@ class SSFTodayViewController: UIViewController {
     
     var tasksForTodayNotificationToken: NotificationToken?
     
+    var searchResults = List<Task>()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchController()
@@ -49,9 +51,10 @@ class SSFTodayViewController: UIViewController {
     // MARK: - Private methods
     
     private func configureSearchController() {
-        let todaySearchResultsVC = TodaySearchResultsViewController()
-        let search = UISearchController(searchResultsController: todaySearchResultsVC)
+//        let todaySearchResultsVC = TodaySearchResultsViewController()
+        let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
+        search.dimsBackgroundDuringPresentation = false
         self.navigationItem.searchController = search
     }
     
@@ -96,13 +99,23 @@ class SSFTodayViewController: UIViewController {
 
 extension SSFTodayViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasksForToday.count
+        if (self.navigationItem.searchController?.isActive)! {
+            return searchResults.count
+        } else {
+            return tasksForToday.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTableViewCell", for: indexPath) as! TodayTableViewCell
         cell.delegate = self
-        let task = tasksForToday[indexPath.row]
+        
+        var task: Task
+        if (self.navigationItem.searchController?.isActive)! {
+            task = searchResults[indexPath.row]
+        } else {
+            task = tasksForToday[indexPath.row]
+        }
         cell.planTitleLabel.text = task.owner.first?.title
         cell.taskSummaryLabel.text = task.summary
         cell.processLabel.text = "\(task.checkItems.filter("isCheck == YES").count)/\(task.checkItems.count)"
@@ -116,7 +129,16 @@ extension SSFTodayViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension SSFTodayViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        guard let text = searchController.searchBar.text else {return}
+        if searchResults.count > 0 {
+            searchResults.removeAll()
+        }
+        for task in tasksForToday {
+            if task.summary.localizedStandardContains(text) {
+                searchResults.append(task)
+            }
+        }
+        self.tableView.reloadData()
     }
 }
 
