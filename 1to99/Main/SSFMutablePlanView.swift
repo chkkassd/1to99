@@ -173,8 +173,10 @@ extension SSFMutablePlanView: UITableViewDelegate, UITableViewDataSource {
 
 extension SSFMutablePlanView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let result = round(abs(scrollView.contentOffset.x)/scrollView.bounds.width)
-        pageControl.currentPage = Int(result)
+        if scrollView is UICollectionView {
+            let result = round(abs(scrollView.contentOffset.x)/scrollView.bounds.width)
+            pageControl.currentPage = Int(result)
+        }
     }
 }
 extension SSFMutablePlanView: SwipeTableViewCellDelegate {

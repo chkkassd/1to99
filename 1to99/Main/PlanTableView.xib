@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,7 +48,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYO-FU-OyF">
-                        <rect key="frame" x="154.5" y="2" width="66" height="32"/>
+                        <rect key="frame" x="60" y="0.0" width="255" height="36"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="新建任务">
                             <color key="titleColor" name="PrimaryTextColor"/>
@@ -60,10 +60,10 @@
                 </subviews>
                 <color key="backgroundColor" name="PlanTableColor"/>
                 <constraints>
-                    <constraint firstItem="OYO-FU-OyF" firstAttribute="centerX" secondItem="NQA-W0-nzx" secondAttribute="centerX" id="Oig-Pv-qMH"/>
-                    <constraint firstItem="OYO-FU-OyF" firstAttribute="centerY" secondItem="NQA-W0-nzx" secondAttribute="centerY" id="ShO-Mk-jkG"/>
-                    <constraint firstItem="OYO-FU-OyF" firstAttribute="centerX" secondItem="NQA-W0-nzx" secondAttribute="centerX" id="WHd-CV-FGm"/>
-                    <constraint firstItem="OYO-FU-OyF" firstAttribute="centerY" secondItem="NQA-W0-nzx" secondAttribute="centerY" id="WM6-Tu-foC"/>
+                    <constraint firstAttribute="trailing" secondItem="OYO-FU-OyF" secondAttribute="trailing" constant="60" id="8np-uV-Hda"/>
+                    <constraint firstItem="OYO-FU-OyF" firstAttribute="top" secondItem="NQA-W0-nzx" secondAttribute="top" id="LQm-CS-Tm8"/>
+                    <constraint firstItem="OYO-FU-OyF" firstAttribute="leading" secondItem="NQA-W0-nzx" secondAttribute="leading" constant="60" id="cZ3-Y2-WrR"/>
+                    <constraint firstAttribute="bottom" secondItem="OYO-FU-OyF" secondAttribute="bottom" id="hCu-wl-GmB"/>
                 </constraints>
             </view>
             <userDefinedRuntimeAttributes>

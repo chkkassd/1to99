@@ -28,7 +28,7 @@
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Dlc-sT-CSB">
                             <rect key="frame" x="5" y="5" width="325" height="102"/>
-                            <color key="backgroundColor" red="0.792156862745098" green="0.87450980392156863" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="SecondBGColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UVs-db-s8V">
                                 <size key="itemSize" width="30" height="30"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -44,6 +44,7 @@
                                     <attributedString key="attributedText">
                                         <fragment content="今日进度">
                                             <attributes>
+                                                <color key="NSColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -54,11 +55,11 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G56-ZL-rIX">
                                     <rect key="frame" x="0.0" y="76" width="40" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" name="PrimaryTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.792156862745098" green="0.87450980392156863" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" name="SecondBGColor"/>
                             <constraints>
                                 <constraint firstItem="G56-ZL-rIX" firstAttribute="top" secondItem="OYE-Xy-rLK" secondAttribute="bottom" constant="8" id="7Pt-tx-Cox"/>
                                 <constraint firstItem="OYE-Xy-rLK" firstAttribute="top" secondItem="SbT-d8-JuH" secondAttribute="top" id="Fhi-gn-LEP"/>
@@ -153,6 +154,12 @@
         </namedColor>
         <namedColor name="PrimaryBackgroundColor">
             <color red="0.83921568627450982" green="0.87450980392156863" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryTextColor">
+            <color red="0.30588235294117649" green="0.36862745098039218" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondBGColor">
+            <color red="0.792156862745098" green="0.87450980392156863" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
