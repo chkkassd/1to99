@@ -12,11 +12,35 @@ class SSFSettingTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     //MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case 0:
+            if indexPath.row == 0 {
+                currentThemeColor = UIColor.red
+                self.setAppThemeColor()
+            } else if indexPath.row == 1 {
+                
+            }
+        case 1:
+            if indexPath.row == 0 {
+                
+            } else if indexPath.row == 1 {
+                
+            }
+        case 2:
+            if indexPath.row == 0 {
+                
+            } else if indexPath.row == 1 {
+                
+            } else if indexPath.row == 2 {
+                
+            }
+        default:
+            return
+        }
     }
 }

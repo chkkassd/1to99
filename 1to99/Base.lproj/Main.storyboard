@@ -63,6 +63,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="blackBoardView" destination="SRW-jj-MXv" id="Gjc-vO-qLi"/>
+                        <outlet property="creatPlanButton" destination="kRb-Bc-XBg" id="Z1w-hQ-3vz"/>
                         <outlet property="planView" destination="tHh-YU-lmd" id="bc5-jH-ssy"/>
                         <outlet property="rightBarbuttonItem" destination="kRb-Bc-XBg" id="fUg-rR-1gH"/>
                         <segue destination="jep-Yx-Tow" kind="show" identifier="showTaskView" id="ea1-BS-u4H"/>
@@ -495,6 +496,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editeButton" destination="VyB-4n-60G" id="3Mk-Qu-m8S"/>
                         <outlet property="tableView" destination="HDN-g5-xx4" id="IRA-qr-09d"/>
                     </connections>
                 </viewController>

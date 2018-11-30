@@ -12,5 +12,6 @@ class SSFMainTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBar.addToThemeColorPool(propertyName: "tintColor")
     }
 }

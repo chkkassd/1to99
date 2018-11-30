@@ -50,6 +50,8 @@
 		91BB332C21A547D1004CC189 /* BlackBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91BB332A21A547D1004CC189 /* BlackBoardCollectionViewCell.xib */; };
 		91BB332E21A54F55004CC189 /* SSFBlackBoardView+Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB332D21A54F55004CC189 /* SSFBlackBoardView+Drop.swift */; };
 		91BB333021AD2E50004CC189 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB332F21AD2E50004CC189 /* SwiftNotice.swift */; };
+		91BB333221AE86D6004CC189 /* SSFTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB333121AE86D6004CC189 /* SSFTheme.swift */; };
+		91BB333421AFD8DE004CC189 /* WeakRefCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB333321AFD8DE004CC189 /* WeakRefCollection.swift */; };
 		91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D70E9E20FDD9B800359571 /* AppDelegate.swift */; };
 		91D70EA420FDD9B800359571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA220FDD9B800359571 /* Main.storyboard */; };
 		91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA520FDD9BB00359571 /* Assets.xcassets */; };
@@ -101,6 +103,8 @@
 		91BB332A21A547D1004CC189 /* BlackBoardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlackBoardCollectionViewCell.xib; sourceTree = "<group>"; };
 		91BB332D21A54F55004CC189 /* SSFBlackBoardView+Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSFBlackBoardView+Drop.swift"; sourceTree = "<group>"; };
 		91BB332F21AD2E50004CC189 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
+		91BB333121AE86D6004CC189 /* SSFTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFTheme.swift; sourceTree = "<group>"; };
+		91BB333321AFD8DE004CC189 /* WeakRefCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefCollection.swift; sourceTree = "<group>"; };
 		91D70E9B20FDD9B800359571 /* 1to99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1to99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D70E9E20FDD9B800359571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D70EA320FDD9B800359571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 				91AEF5E521018E7B00A800F0 /* FIFOQueue.swift */,
 				91AEF5E821018E7B00A800F0 /* ResultDescription.swift */,
 				91B6DAF421882FBD00318DE8 /* AlertUtility.swift */,
+				91BB333121AE86D6004CC189 /* SSFTheme.swift */,
+				91BB333321AFD8DE004CC189 /* WeakRefCollection.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 				91BB332E21A54F55004CC189 /* SSFBlackBoardView+Drop.swift in Sources */,
 				91AEF5EC21018E7B00A800F0 /* DirectoryPath.swift in Sources */,
 				911E9468213FCB590081A241 /* testViewController.swift in Sources */,
+				91BB333421AFD8DE004CC189 /* WeakRefCollection.swift in Sources */,
 				91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */,
 				911671D3215B683F008FC4D6 /* TaskCheckTableViewCell.swift in Sources */,
 				91BB333021AD2E50004CC189 /* SwiftNotice.swift in Sources */,
@@ -421,6 +428,7 @@
 				91B6DAF32187F18D00318DE8 /* SSFPopoverTableViewController.swift in Sources */,
 				911671E6215E2DEA008FC4D6 /* TodayTableViewCell.swift in Sources */,
 				910A85A62153A67400FBFD83 /* SSFTaskTableViewController.swift in Sources */,
+				91BB333221AE86D6004CC189 /* SSFTheme.swift in Sources */,
 				9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */,
 				91B6DAED2177360100318DE8 /* DataManager.swift in Sources */,
 				911671DD215DD81B008FC4D6 /* SSFTodayViewController.swift in Sources */,

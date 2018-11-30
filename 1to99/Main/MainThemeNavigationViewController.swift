@@ -12,6 +12,7 @@ class MainThemeNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.tintColor = UIColor(named: "PrimaryColor")
+//        self.navigationBar.addToThemeColorPool(propertyName: "barTintColor")
+        self.navigationBar.addToThemeColorPool(propertyName: "tintColor")
     }
 }

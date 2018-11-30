@@ -13,6 +13,11 @@ import SwipeCellKit
 class SSFTodayViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editeButton: UIBarButtonItem! {
+        didSet {
+            editeButton.addToThemeColorPool(propertyName: "tintColor")
+        }
+    }
     
     lazy var tasksForToday = DataManager.sharedDataManager.allTasks().filter("joinToday == YES").sorted(byKeyPath: "date", ascending: true)
     

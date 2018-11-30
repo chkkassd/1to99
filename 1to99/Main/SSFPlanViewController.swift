@@ -28,6 +28,11 @@ class SSFPlanViewController: UIViewController {
     @IBOutlet weak var planView: SSFMutablePlanView!
     @IBOutlet weak var rightBarbuttonItem: UIBarButtonItem!
     @IBOutlet weak var blackBoardView: SSFBlackBoardView!
+    @IBOutlet weak var creatPlanButton: UIBarButtonItem! {
+        didSet {
+            creatPlanButton.addToThemeColorPool(propertyName: "tintColor")
+        }
+    }
     
     lazy var allPlans = DataManager.sharedDataManager.allplans().sorted(byKeyPath: "date", ascending: false)
     
