@@ -20,8 +20,7 @@ class SSFSettingTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
-                currentThemeColor = UIColor.red
-                self.setAppThemeColor()
+                self.performSegue(withIdentifier: "IDForShowSelectThemeColor", sender: self)
             } else if indexPath.row == 1 {
                 
             }

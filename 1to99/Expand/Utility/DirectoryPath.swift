@@ -24,6 +24,33 @@ struct DirectoryPath {
         return NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
     }
     
+    ///Create URL in document compent
+    func urlInDocument(with component: String) -> URL {
+        let filePath = self.pathOfDocuments().appending("/\(component)")
+        if !FileManager.default.fileExists(atPath: filePath) {
+            FileManager.default.createFile(atPath: filePath, contents: nil, attributes: nil)
+        }
+        return URL(fileURLWithPath: filePath)
+    }
+    
+    ///Create URL in temporary compent
+    func urlInTemporary(with component: String) -> URL {
+        let filePath = self.pathOfTemporary().appending("/\(component)")
+        if !FileManager.default.fileExists(atPath: filePath) {
+            FileManager.default.createFile(atPath: filePath, contents: nil, attributes: nil)
+        }
+        return URL(fileURLWithPath: filePath)
+    }
+
+    ///Create URL in cache compent
+    func urlInCache(with component: String) -> URL {
+        let filePath = self.pathOfCache().appending("/\(component)")
+        if !FileManager.default.fileExists(atPath: filePath) {
+            FileManager.default.createFile(atPath: filePath, contents: nil, attributes: nil)
+        }
+        return URL(fileURLWithPath: filePath)
+    }
+
     ///Creat directory path at document directory
     func creatDirectoryPathInDocument(withDirectoryName name: String) -> String {
         let directoryPath = self.pathOfDocuments().appending("/\(name)")

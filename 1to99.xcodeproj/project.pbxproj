@@ -52,6 +52,9 @@
 		91BB333021AD2E50004CC189 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB332F21AD2E50004CC189 /* SwiftNotice.swift */; };
 		91BB333221AE86D6004CC189 /* SSFTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB333121AE86D6004CC189 /* SSFTheme.swift */; };
 		91BB333421AFD8DE004CC189 /* WeakRefCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB333321AFD8DE004CC189 /* WeakRefCollection.swift */; };
+		91BB333821B62BEE004CC189 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB333721B62BEE004CC189 /* ConfigurationManager.swift */; };
+		91BB333A21B65362004CC189 /* ReadWriteFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB333921B65362004CC189 /* ReadWriteFileManager.swift */; };
+		91BB333C21B7AD60004CC189 /* SSFSelectThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB333B21B7AD60004CC189 /* SSFSelectThemeTableViewController.swift */; };
 		91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D70E9E20FDD9B800359571 /* AppDelegate.swift */; };
 		91D70EA420FDD9B800359571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA220FDD9B800359571 /* Main.storyboard */; };
 		91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA520FDD9BB00359571 /* Assets.xcassets */; };
@@ -105,6 +108,9 @@
 		91BB332F21AD2E50004CC189 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		91BB333121AE86D6004CC189 /* SSFTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFTheme.swift; sourceTree = "<group>"; };
 		91BB333321AFD8DE004CC189 /* WeakRefCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefCollection.swift; sourceTree = "<group>"; };
+		91BB333721B62BEE004CC189 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		91BB333921B65362004CC189 /* ReadWriteFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWriteFileManager.swift; sourceTree = "<group>"; };
+		91BB333B21B7AD60004CC189 /* SSFSelectThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFSelectThemeTableViewController.swift; sourceTree = "<group>"; };
 		91D70E9B20FDD9B800359571 /* 1to99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1to99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D70E9E20FDD9B800359571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D70EA320FDD9B800359571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				911671DA215CDCC6008FC4D6 /* SSFSettingTableViewController.swift */,
+				91BB333B21B7AD60004CC189 /* SSFSelectThemeTableViewController.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -233,6 +240,7 @@
 				91B6DAF421882FBD00318DE8 /* AlertUtility.swift */,
 				91BB333121AE86D6004CC189 /* SSFTheme.swift */,
 				91BB333321AFD8DE004CC189 /* WeakRefCollection.swift */,
+				91BB333921B65362004CC189 /* ReadWriteFileManager.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -258,6 +266,7 @@
 			children = (
 				91B6DAEA217735EF00318DE8 /* DataModel.swift */,
 				91B6DAEC2177360100318DE8 /* DataManager.swift */,
+				91BB333721B62BEE004CC189 /* ConfigurationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,8 +440,11 @@
 				91BB333221AE86D6004CC189 /* SSFTheme.swift in Sources */,
 				9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */,
 				91B6DAED2177360100318DE8 /* DataManager.swift in Sources */,
+				91BB333C21B7AD60004CC189 /* SSFSelectThemeTableViewController.swift in Sources */,
 				911671DD215DD81B008FC4D6 /* SSFTodayViewController.swift in Sources */,
+				91BB333A21B65362004CC189 /* ReadWriteFileManager.swift in Sources */,
 				91AEF5ED21018E7B00A800F0 /* FIFOQueue.swift in Sources */,
+				91BB333821B62BEE004CC189 /* ConfigurationManager.swift in Sources */,
 				91BB331B219C1A3B004CC189 /* SSFPlanViewController+Drop.swift in Sources */,
 				91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */,
 				91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */,

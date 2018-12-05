@@ -20,7 +20,7 @@ class DataManager {
     public func setDefaultRealmConfiguration(_ userId: String) {
         var config = Realm.Configuration()
         config.fileURL = config.fileURL?.deletingLastPathComponent().appendingPathComponent("\(userId).realm")
-        print("\n==========\(String(describing: config.fileURL))===========")
+//        print("\n==========\(String(describing: config.fileURL))===========")
         config.shouldCompactOnLaunch = { totalBytes, usedBytes in
             let oneHundredMB = 100 * 1024 * 1024
             return (totalBytes > oneHundredMB) && (Double(usedBytes)/Double(totalBytes) < 0.5)

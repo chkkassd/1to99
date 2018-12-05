@@ -8,7 +8,7 @@
 
 import Foundation
 
-//在array内部若引用对象
+//在array内部弱引用对象
 extension NSPointerArray {
     func addObject(_ object: AnyObject?) {
         guard let strongObject = object else { return }
