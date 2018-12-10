@@ -93,7 +93,7 @@ class SSFPlanViewController: UIViewController {
     
     //MARK: - Action
     @IBAction func creatPlanButtonPressed(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController.presentAlertWithTextField(title: "你好", message: "请输入计划名称") { text in
+        let alert = UIAlertController.presentAlertWithTextField(title: "Hello".SSFLocalizedString, message: "PleaseInputPlanName".SSFLocalizedString) { text in
             let addedPlan = Plan.creatPlan(text)
             self.operatePlanForInterfaceDriven(.add, addedPlan, IndexPath(item: 0, section: 0))
         }
@@ -241,7 +241,7 @@ extension SSFPlanViewController: SSFMutablePlanViewDataSource {
 
 extension SSFPlanViewController: SSFMutablePlanViewDelegate {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, creatTaskAt planIndex: Int) {
-        let alert = UIAlertController.presentAlertWithTextField(title: "你好", message: "请输入任务简述") { [unowned self] text in
+        let alert = UIAlertController.presentAlertWithTextField(title: "Hello".SSFLocalizedString, message: "PleaseInputTaskSummary".SSFLocalizedString) { [unowned self] text in
             let task = Task.creatTask(text)
             self.operateTaskForInterfaceDriven(.add, planIndex, task)
         }
@@ -256,14 +256,14 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, addTaskTodayAt index: MutablePlanViewIndex) {
         let task = (allPlans[index.0].tasks)[index.1]
         operateTodayTaskForInterfaceDriven(.joinToToday, task) {
-            self.noticeTop("此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
+            self.noticeTop("ThisTaskHasBeenInToday'sPlan".SSFLocalizedString, autoClear: true, autoClearTime: 2)
         }
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, removeTaskFromTodayAt index: MutablePlanViewIndex) {
         let task = (allPlans[index.0].tasks)[index.1]
         operateTodayTaskForInterfaceDriven(.removeFromToday, task) {
-            self.noticeTop("此任务已延后", autoClear: true, autoClearTime: 2)
+            self.noticeTop("ThisTaskHasBeenPostponed".SSFLocalizedString, autoClear: true, autoClearTime: 2)
         }
     }
     
@@ -276,7 +276,7 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
             self.dismiss(animated: true, completion: nil)
         }
         popoverVC.rename = { index in
-            let alert = UIAlertController.presentAlertWithTextField(title: "你好", message: "请输入计划名称") { text in
+            let alert = UIAlertController.presentAlertWithTextField(title: "Hello".SSFLocalizedString, message: "PleaseInputPlanName".SSFLocalizedString) { text in
                 let plan = self.allPlans[index]
                 self.operatePlanForInterfaceDriven(.update(["title": text]), plan, IndexPath(item: index, section: 0))
             }
@@ -318,7 +318,7 @@ extension SSFPlanViewController: SSFBlackBoardViewDatasource {
     
     func blackBoardView(_ blackBoardView: SSFBlackBoardView, updateDataSourceAt index: IndexPath, updateModel: BlackBoardViewUpdateModel, updatedData: Task) {
         operateTodayTaskForInterfaceDriven(.joinToToday, updatedData) {
-            self.noticeTop("此任务已在今日计划之列", autoClear: true, autoClearTime: 2)
+            self.noticeTop("ThisTaskHasBeenInToday'sPlan".SSFLocalizedString, autoClear: true, autoClearTime: 2)
         }
     }
     

@@ -55,6 +55,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="viewCornerRadius">
                                         <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocalKey" value="TodayToDo"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>

@@ -53,6 +53,9 @@
                         <state key="normal" title="新建任务">
                             <color key="titleColor" name="PrimaryTextColor"/>
                         </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="xibLocalKey" value="CreateTask"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="creatTaskButtonPressed:" destination="W8s-e1-Qgd" eventType="touchUpInside" id="1qh-M8-INu"/>
                         </connections>

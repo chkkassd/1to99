@@ -1,0 +1,45 @@
+/* 
+  Localizable.strings
+  1to99
+
+  Created by 赛峰 施 on 2018/12/10.
+  Copyright © 2018年 PETER SHI. All rights reserved.
+*/
+
+"DarkGreen" = "DarkGreen";
+"AirBlue" = "AirBlue";
+"ThinRed" = "ThinRed";
+
+"Setting" = "Setting";
+"TodayTasks" = "TodayTasks";
+"MyPlans" = "MyPlans";
+"TaskDetail" = "TaskDetail";
+"AppTheme" = "AppTheme";
+
+"CreatePlan" = "CreatePlan";
+"TaskSummary" = "TaskSummary";
+"Plan" = "Plan";
+"AddCheckItem" = "Add Check Item";
+"Rename" = "Rename";
+"ArchiveFinishedTask" = "Archive Finished Task";
+"ArchiveThePlan" = "Archive The Plan";
+"DeleteThePlan" = "Delete The Plan";
+
+"Theme" = "Theme";
+"Language" = "Language";
+"Review" = "Review";
+"ShareToFriends" = "Share To Friends";
+"Email" = "Email";
+"WeiBo" = "WeiBo";
+
+"TodayToDo" = "Today To Do";
+"CreateTask" = "Create Task";
+"Delete" = "Delete";
+"Postpone" = "Postpone";
+"ThisTaskHasBeenPostponed" = "This Task Has Been Postponed";
+"ThisTaskHasBeenInToday'sPlan" = "This Task Has Been In Today's Plan";
+"Hello" = "Hello";
+"PleaseInputPlanName" = "Please Input Plan Name";
+"PleaseInputTaskSummary" = "Please Input Task Summary";
+"PleaseInputCheckItem" = "Please Input Check Item";
+"Modify" = "Modify";

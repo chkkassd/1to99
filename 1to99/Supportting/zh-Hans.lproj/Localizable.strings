@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  1to99
+
+  Created by 赛峰 施 on 2018/12/10.
+  Copyright © 2018年 PETER SHI. All rights reserved.
+*/
+
+//localize strings in app
+
+"DarkGreen" = "深绿";
+"AirBlue" = "天空蓝";
+"ThinRed" = "薄红";
+
+"Setting" = "设置";
+"TodayTasks" = "今日任务";
+"MyPlans" = "我的计划";
+"TaskDetail" = "任务详情";
+"AppTheme" = "应用主题";
+
+"CreatePlan" = "新建计划";
+"TaskSummary" = "任务简述";
+"Plan" = "计划";
+"AddCheckItem" = "添加检查项";
+"Rename" = "重命名";
+"ArchiveFinishedTask" = "归档已完成任务";
+"ArchiveThePlan" = "归档此计划";
+"DeleteThePlan" = "删除此计划";
+
+"Theme" = "主题";
+"Language" = "语言";
+"Review" = "去评价";
+"ShareToFriends" = "分享给好友";
+"Email" = "邮箱";
+"WeiBo" = "微博";
+
+"TodayToDo" = "今日做";
+"CreateTask" = "新建任务";
+"Delete" = "删除";
+"Postpone" = "延后";
+"ThisTaskHasBeenPostponed" = "此任务已延后";
+"ThisTaskHasBeenInToday'sPlan" = "此任务已在今日计划之列";
+"Hello" = "你好";
+"PleaseInputPlanName" = "请输入计划名称";
+"PleaseInputTaskSummary" = "请输入任务简述";
+"PleaseInputCheckItem" = "请输入检查项";
+"Modify" = "修改";

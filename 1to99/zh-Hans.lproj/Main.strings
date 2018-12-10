@@ -1,0 +1,123 @@
+/*传统的storyboard国际化方法有诸多缺点
+ 1.增加新的UI组件后，本文件无法自动更新
+ 2.可读性差，使用objectID
+ 3.代码国际化和xib国际化使用两份.strings文件，无法复用，实在不合理，有诸多重复
+ 我们使用协议扩展的方法，利用User Defined Runtime Attributes来实现复用Localizable.strings实现国际化
+ */
+
+/* Class = "UINavigationItem"; title = "设置"; ObjectID = "09k-10-BEw"; */
+"09k-10-BEw.title" = "设置";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "2Dd-fd-zKC"; */
+"2Dd-fd-zKC.text" = "Label";
+
+/* Class = "UITextView"; text = "我是大家放松了对飞机上的风景世界的方式对肌肤的水分老师的"; ObjectID = "3aR-lc-Hz6"; */
+"3aR-lc-Hz6.text" = "我是大家放松了对飞机上的风景世界的方式对肌肤的水分老师的";
+
+/* Class = "UILabel"; text = "天空蓝"; ObjectID = "43q-85-1Sf"; */
+"43q-85-1Sf.text" = "天空蓝";
+
+/* Class = "UINavigationItem"; title = "计划"; ObjectID = "4yf-HK-Kmg"; */
+"4yf-HK-Kmg.title" = "计划";
+
+/* Class = "UITableViewSection"; headerTitle = "反馈"; ObjectID = "5RP-lW-HCZ"; */
+"5RP-lW-HCZ.headerTitle" = "反馈";
+
+/* Class = "UINavigationItem"; title = "今日任务"; ObjectID = "7DD-fO-W74"; */
+"7DD-fO-W74.title" = "今日任务";
+
+/* Class = "UITableViewSection"; headerTitle = "关于"; ObjectID = "80l-i3-wRG"; */
+"80l-i3-wRG.headerTitle" = "关于";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Aib-7B-eLb"; */
+"Aib-7B-eLb.text" = "Label";
+
+/* Class = "UILabel"; text = "GitHub"; ObjectID = "CfT-ys-zNm"; */
+"CfT-ys-zNm.text" = "GitHub";
+
+/* Class = "UITabBarItem"; title = "计划"; ObjectID = "Dex-JG-gFL"; */
+"Dex-JG-gFL.title" = "计划";
+
+/* Class = "UILabel"; text = "去评价"; ObjectID = "Fhm-dr-xCB"; */
+"Fhm-dr-xCB.text" = "去评价";
+
+/* Class = "UILabel"; text = "语言"; ObjectID = "HcI-V6-AcH"; */
+"HcI-V6-AcH.text" = "语言";
+
+/* Class = "UITableViewSection"; headerTitle = "设置"; ObjectID = "KI2-1g-T0f"; */
+"KI2-1g-T0f.headerTitle" = "设置";
+
+/* Class = "UINavigationItem"; title = "test"; ObjectID = "Lo6-7A-JBW"; */
+"Lo6-7A-JBW.title" = "test";
+
+/* Class = "UITabBarItem"; title = "今日"; ObjectID = "Mrl-hL-sQI"; */
+"Mrl-hL-sQI.title" = "今日";
+
+/* Class = "UINavigationItem"; title = "任务详情"; ObjectID = "NHD-zj-Qhc"; */
+"NHD-zj-Qhc.title" = "任务详情";
+
+/* Class = "UIButton"; normalTitle = "新建任务"; ObjectID = "RrU-YT-ZW8"; */
+"RrU-YT-ZW8.normalTitle" = "新建任务";
+
+/* Class = "UILabel"; text = "删除此计划"; ObjectID = "SfX-xO-MWg"; */
+"SfX-xO-MWg.text" = "删除此计划";
+
+/* Class = "UILabel"; text = "微博"; ObjectID = "U3u-uN-dAM"; */
+"U3u-uN-dAM.text" = "微博";
+
+/* Class = "UILabel"; text = "分享给其他朋友"; ObjectID = "UiM-RT-iip"; */
+"UiM-RT-iip.text" = "分享给其他朋友";
+
+/* Class = "UILabel"; text = "邮箱"; ObjectID = "VWa-GE-dJm"; */
+"VWa-GE-dJm.text" = "邮箱";
+
+/* Class = "UILabel"; text = "归档此计划"; ObjectID = "Yli-Dl-rjZ"; */
+"Yli-Dl-rjZ.text" = "归档此计划";
+
+/* Class = "UILabel"; text = "添加检查项"; ObjectID = "dgA-Nb-aBh"; */
+"dgA-Nb-aBh.text" = "添加检查项";
+
+/* Class = "UILabel"; text = "1/3"; ObjectID = "dhV-Mn-eju"; */
+"dhV-Mn-eju.text" = "1/3";
+
+/* Class = "UILabel"; text = "peter1990lynn@gmail.com"; ObjectID = "eea-CS-anN"; */
+"eea-CS-anN.text" = "peter1990lynn@gmail.com";
+
+/* Class = "UILabel"; text = "深绿"; ObjectID = "iD5-gv-1Nb"; */
+"iD5-gv-1Nb.text" = "深绿";
+
+/* Class = "UITabBarItem"; title = "设置"; ObjectID = "iQN-vc-dhZ"; */
+"iQN-vc-dhZ.title" = "设置";
+
+/* Class = "UILabel"; text = "计划"; ObjectID = "imd-7V-XL9"; */
+"imd-7V-XL9.text" = "计划";
+
+/* Class = "UILabel"; text = "切换主题"; ObjectID = "inZ-Jn-AwD"; */
+"inZ-Jn-AwD.text" = "切换主题";
+
+/* Class = "UIBarButtonItem"; title = "新建计划"; ObjectID = "kRb-Bc-XBg"; */
+"kRb-Bc-XBg.title" = "新建计划";
+
+/* Class = "UINavigationItem"; title = "应用主题"; ObjectID = "l6G-sS-Abd"; */
+"l6G-sS-Abd.title" = "应用主题";
+
+/* Class = "UILabel"; text = "归档已完成任务"; ObjectID = "o2V-Yb-i6S"; */
+"o2V-Yb-i6S.text" = "归档已完成任务";
+
+/* Class = "UILabel"; text = "薄红"; ObjectID = "t7C-jY-xEY"; */
+"t7C-jY-xEY.text" = "薄红";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "teV-xO-mNX"; */
+"teV-xO-mNX.title" = "Item";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "tyP-HO-l20"; */
+"tyP-HO-l20.text" = "Label";
+
+/* Class = "UILabel"; text = "任务简述"; ObjectID = "uDr-nO-Uv2"; */
+"uDr-nO-Uv2.text" = "任务简述";
+
+/* Class = "UILabel"; text = "重命名"; ObjectID = "vUD-hf-Ich"; */
+"vUD-hf-Ich.text" = "重命名";
+
+/* Class = "UILabel"; text = "@PeterShi"; ObjectID = "xUT-Jw-AXL"; */
+"xUT-Jw-AXL.text" = "@PeterShi";

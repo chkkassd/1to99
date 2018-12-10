@@ -153,15 +153,15 @@ extension SSFTodayViewController: SwipeTableViewCellDelegate {
         let cell = tableView.cellForRow(at: indexPath) as! TodayTableViewCell
         let task = tasksForToday[indexPath.row]
         
-        let deleteAction = SwipeAction(style: .destructive, title: "删除") { (action, index) in
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete".SSFLocalizedString) { (action, index) in
             self.operateTodayTaskForInterfaceDriven(.delete, indexPath, task, repeatOperationHandler: nil)
             cell.hideSwipe(animated: true, completion: nil)
         }
         
         //remove from today list
-        let removeTodayAction = SwipeAction(style: .default, title: "延后") { (action, index) in
+        let removeTodayAction = SwipeAction(style: .default, title: "Postpone".SSFLocalizedString) { (action, index) in
             self.operateTodayTaskForInterfaceDriven(.removeFromToday, indexPath, task, repeatOperationHandler: {
-                self.noticeTop("此任务已延后", autoClear: true, autoClearTime: 2)
+                self.noticeTop("ThisTaskHasBeenPostponed".SSFLocalizedString, autoClear: true, autoClearTime: 2)
             })
             cell.hideSwipe(animated: true, completion: nil)
         }

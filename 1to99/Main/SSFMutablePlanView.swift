@@ -184,21 +184,21 @@ extension SSFMutablePlanView: SwipeTableViewCellDelegate {
         guard orientation == .right else { return nil }
         let planIndex = (tableView as! PlanTableView).planTableIndex
         let cell = tableView.cellForRow(at: indexPath) as! PlanTableViewCell
-        let deleteAction = SwipeAction(style: .destructive, title: "删除") { (action, index) in
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete".SSFLocalizedString) { (action, index) in
             self.delegate?.mutablePlanView(self, deleteTaskAt: (planIndex, index.row))
             cell.hideSwipe(animated: true, completion: nil)
         }
         
         if cell.todayToDoLabel.isHidden {
             //add to today list
-            let addTodayAction = SwipeAction(style: .default, title: "今日做") { (action, index) in
+            let addTodayAction = SwipeAction(style: .default, title: "TodayToDo".SSFLocalizedString) { (action, index) in
                 self.delegate?.mutablePlanView(self, addTaskTodayAt: (planIndex, index.row))
                 cell.hideSwipe(animated: true, completion: nil)
             }
             return [deleteAction, addTodayAction]
         } else {
             //remove from today list
-            let removeTodayAction = SwipeAction(style: .default, title: "延后") { (action, index) in
+            let removeTodayAction = SwipeAction(style: .default, title: "Postpone".SSFLocalizedString) { (action, index) in
                 self.delegate?.mutablePlanView(self, removeTaskFromTodayAt: (planIndex, index.row))
                 cell.hideSwipe(animated: true, completion: nil)
             }

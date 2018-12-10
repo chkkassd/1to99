@@ -72,7 +72,7 @@ class SSFTaskTableViewController: UITableViewController {
     }
     
     @IBAction func addCheckTipsPressed(_ sender: UITapGestureRecognizer) {
-        let alert = UIAlertController.presentAlertWithTextField(title: "你好", message: "请输入检查项") { text in
+        let alert = UIAlertController.presentAlertWithTextField(title: "Hello".SSFLocalizedString, message: "PleaseInputCheckItem".SSFLocalizedString) { text in
             let checkItem = CheckItem.creatCheckItem(text)
             self.operateCheckItemForInterfaceDriven(.add, checkItem, IndexPath(row: self.displayedTask!.checkItems.count, section: TaskSectionType.taskTips.rawValue))
         }
@@ -135,14 +135,14 @@ extension SSFTaskTableViewController: SwipeTableViewCellDelegate {
         guard orientation == .right else { return nil }
         guard let task = displayedTask else { return nil }
         let cell = tableView.cellForRow(at: indexPath) as! TaskCheckTableViewCell
-        let deleteAction = SwipeAction(style: .destructive, title: "删除") { (action, index) in
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete".SSFLocalizedString) { (action, index) in
             let checkItem = task.checkItems[index.row]
             self.operateCheckItemForInterfaceDriven(.delete, checkItem, index)
             cell.hideSwipe(animated: true, completion: nil)
         }
-        let reInputAction = SwipeAction(style: .default, title: "修改") { (action, index) in
+        let reInputAction = SwipeAction(style: .default, title: "Modify".SSFLocalizedString) { (action, index) in
             let checkItem = task.checkItems[index.row]
-            let alert = UIAlertController.presentAlertWithTextField(title: "你好", message: "请输入检查项内容", handler: { text in
+            let alert = UIAlertController.presentAlertWithTextField(title: "Hello".SSFLocalizedString, message: "PleaseInputCheckItem".SSFLocalizedString, handler: { text in
                 self.operateCheckItemForInterfaceDriven(.update(["content": text]), checkItem, index)
             })
             cell.hideSwipe(animated: true, completion: nil)
