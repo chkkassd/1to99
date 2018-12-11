@@ -538,7 +538,7 @@
         <!--Main Tab Bar View Controller-->
         <scene sceneID="ubg-ea-nhf">
             <objects>
-                <tabBarController id="f3U-VV-4fR" customClass="SSFMainTabBarViewController" customModule="_to99" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="SSFMainTabBarViewController" id="f3U-VV-4fR" customClass="SSFMainTabBarViewController" customModule="_to99" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Frg-CC-9D7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

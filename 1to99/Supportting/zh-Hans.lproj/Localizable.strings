@@ -45,3 +45,7 @@
 "PleaseInputTaskSummary" = "请输入任务简述";
 "PleaseInputCheckItem" = "请输入检查项";
 "Modify" = "修改";
+"Please select language" = "请选择语言";
+"English" = "英语";
+"Chinese(Simplified)" = "简体中文";
+"Cancel" = "取消";

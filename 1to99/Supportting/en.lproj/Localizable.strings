@@ -43,3 +43,7 @@
 "PleaseInputTaskSummary" = "Please Input Task Summary";
 "PleaseInputCheckItem" = "Please Input Check Item";
 "Modify" = "Modify";
+"Please select language" = "Please select language";
+"English" = "English";
+"Chinese(Simplified)" = "Chinese(Simplified)";
+"Cancel" = "Cancel";

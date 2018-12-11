@@ -19,7 +19,7 @@
 		911671E6215E2DEA008FC4D6 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911671E5215E2DEA008FC4D6 /* TodayTableViewCell.swift */; };
 		911C67AE21BE183D0033D4BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 911C67B021BE183D0033D4BC /* InfoPlist.strings */; };
 		911C67B421BE3D870033D4BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 911C67B621BE3D870033D4BC /* Localizable.strings */; };
-		911C67B921BE4BED0033D4BC /* LocalizableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C67B821BE4BED0033D4BC /* LocalizableProtocol.swift */; };
+		911C67B921BE4BED0033D4BC /* LocalizableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C67B821BE4BED0033D4BC /* LocalizableHelper.swift */; };
 		9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9162FF6921194858006F0C4C /* SSFGraphKit.framework */; };
 		9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162FF6F21194DFF006F0C4C /* IndicatorView.swift */; };
 		9162FF72211A6E3E006F0C4C /* PlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9162FF71211A6E3E006F0C4C /* PlanTableViewCell.xib */; };
@@ -80,7 +80,7 @@
 		911C67B121BE184A0033D4BC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		911C67B521BE3D870033D4BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		911C67B721BE3D8E0033D4BC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		911C67B821BE4BED0033D4BC /* LocalizableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableProtocol.swift; sourceTree = "<group>"; };
+		911C67B821BE4BED0033D4BC /* LocalizableHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableHelper.swift; sourceTree = "<group>"; };
 		9162FF6921194858006F0C4C /* SSFGraphKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSFGraphKit.framework; path = Carthage/Build/iOS/SSFGraphKit.framework; sourceTree = "<group>"; };
 		9162FF6F21194DFF006F0C4C /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		9162FF71211A6E3E006F0C4C /* PlanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanTableViewCell.xib; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 				91BB333121AE86D6004CC189 /* SSFTheme.swift */,
 				91BB333321AFD8DE004CC189 /* WeakRefCollection.swift */,
 				91BB333921B65362004CC189 /* ReadWriteFileManager.swift */,
-				911C67B821BE4BED0033D4BC /* LocalizableProtocol.swift */,
+				911C67B821BE4BED0033D4BC /* LocalizableHelper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -311,7 +311,6 @@
 		91D70E9D20FDD9B800359571 /* 1to99 */ = {
 			isa = PBXGroup;
 			children = (
-				91D70EA220FDD9B800359571 /* Main.storyboard */,
 				91AEF5DE21018E6600A800F0 /* Main */,
 				91AEF5DF21018E7B00A800F0 /* Expand */,
 				91D70EB020FDDA0700359571 /* Supportting */,
@@ -324,9 +323,10 @@
 			children = (
 				91D70EA520FDD9BB00359571 /* Assets.xcassets */,
 				91D70E9E20FDD9B800359571 /* AppDelegate.swift */,
-				91D70EA720FDD9BB00359571 /* LaunchScreen.storyboard */,
-				91D70EAA20FDD9BB00359571 /* Info.plist */,
 				91AEF5F121018F5100A800F0 /* 1to99-Bridging-Header.h */,
+				91D70EAA20FDD9BB00359571 /* Info.plist */,
+				91D70EA220FDD9B800359571 /* Main.storyboard */,
+				91D70EA720FDD9BB00359571 /* LaunchScreen.storyboard */,
 				911C67B021BE183D0033D4BC /* InfoPlist.strings */,
 				911C67B621BE3D870033D4BC /* Localizable.strings */,
 			);
@@ -439,7 +439,7 @@
 				91BB332E21A54F55004CC189 /* SSFBlackBoardView+Drop.swift in Sources */,
 				91AEF5EC21018E7B00A800F0 /* DirectoryPath.swift in Sources */,
 				91BB333421AFD8DE004CC189 /* WeakRefCollection.swift in Sources */,
-				911C67B921BE4BED0033D4BC /* LocalizableProtocol.swift in Sources */,
+				911C67B921BE4BED0033D4BC /* LocalizableHelper.swift in Sources */,
 				91AEF5DB210186DA00A800F0 /* SSFMainTabBarViewController.swift in Sources */,
 				911671D3215B683F008FC4D6 /* TaskCheckTableViewCell.swift in Sources */,
 				91BB333021AD2E50004CC189 /* SwiftNotice.swift in Sources */,

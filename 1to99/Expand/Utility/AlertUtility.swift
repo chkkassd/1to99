@@ -10,13 +10,14 @@ import Foundation
 import UIKit
 
 extension UIAlertController {
+    
+    //present alert with textfield
     static func presentAlertWithTextField(title: String, message: String, handler: ((String) -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField { textfield in }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) { _ in }
         let okAction = UIAlertAction(title: "确定", style: .default) { _ in
             guard let okHandler = handler else { return }
-            //add a plan,interface-driven write
             let titleText = alert.textFields?.first?.text ?? ""
             okHandler(titleText)
         }
