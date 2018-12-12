@@ -20,6 +20,7 @@
 		911C67AE21BE183D0033D4BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 911C67B021BE183D0033D4BC /* InfoPlist.strings */; };
 		911C67B421BE3D870033D4BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 911C67B621BE3D870033D4BC /* Localizable.strings */; };
 		911C67B921BE4BED0033D4BC /* LocalizableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C67B821BE4BED0033D4BC /* LocalizableHelper.swift */; };
+		9147708421C0EECA00FFCCD3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9147708321C0EECA00FFCCD3 /* MessageUI.framework */; };
 		9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9162FF6921194858006F0C4C /* SSFGraphKit.framework */; };
 		9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162FF6F21194DFF006F0C4C /* IndicatorView.swift */; };
 		9162FF72211A6E3E006F0C4C /* PlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9162FF71211A6E3E006F0C4C /* PlanTableViewCell.xib */; };
@@ -81,6 +82,7 @@
 		911C67B521BE3D870033D4BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		911C67B721BE3D8E0033D4BC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		911C67B821BE4BED0033D4BC /* LocalizableHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableHelper.swift; sourceTree = "<group>"; };
+		9147708321C0EECA00FFCCD3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9162FF6921194858006F0C4C /* SSFGraphKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSFGraphKit.framework; path = Carthage/Build/iOS/SSFGraphKit.framework; sourceTree = "<group>"; };
 		9162FF6F21194DFF006F0C4C /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		9162FF71211A6E3E006F0C4C /* PlanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanTableViewCell.xib; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9147708421C0EECA00FFCCD3 /* MessageUI.framework in Frameworks */,
 				9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */,
 				91B6DAE3216B4FE500318DE8 /* Realm.framework in Frameworks */,
 				91B6DAE5216B4FEB00318DE8 /* RealmSwift.framework in Frameworks */,
@@ -184,6 +187,7 @@
 		9162FF6821194858006F0C4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9147708321C0EECA00FFCCD3 /* MessageUI.framework */,
 				91BB32D4218FEEA9004CC189 /* SwipeCellKit.framework */,
 				91B6DAE4216B4FEA00318DE8 /* RealmSwift.framework */,
 				91B6DAE2216B4FE500318DE8 /* Realm.framework */,

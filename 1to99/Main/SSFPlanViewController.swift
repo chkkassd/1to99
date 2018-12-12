@@ -256,14 +256,14 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, addTaskTodayAt index: MutablePlanViewIndex) {
         let task = (allPlans[index.0].tasks)[index.1]
         operateTodayTaskForInterfaceDriven(.joinToToday, task) {
-            self.noticeTop("ThisTaskHasBeenInToday'sPlan".SSFLocalizedString, autoClear: true, autoClearTime: 2)
+            self.noticeTop("ThisTaskHasBeenInToday'sPlan".SSFLocalizedString, autoClear: true, autoClearTime: 4)
         }
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, removeTaskFromTodayAt index: MutablePlanViewIndex) {
         let task = (allPlans[index.0].tasks)[index.1]
         operateTodayTaskForInterfaceDriven(.removeFromToday, task) {
-            self.noticeTop("ThisTaskHasBeenPostponed".SSFLocalizedString, autoClear: true, autoClearTime: 2)
+            self.noticeTop("ThisTaskHasBeenPostponed".SSFLocalizedString, autoClear: true, autoClearTime: 4)
         }
     }
     
@@ -318,7 +318,7 @@ extension SSFPlanViewController: SSFBlackBoardViewDatasource {
     
     func blackBoardView(_ blackBoardView: SSFBlackBoardView, updateDataSourceAt index: IndexPath, updateModel: BlackBoardViewUpdateModel, updatedData: Task) {
         operateTodayTaskForInterfaceDriven(.joinToToday, updatedData) {
-            self.noticeTop("ThisTaskHasBeenInToday'sPlan".SSFLocalizedString, autoClear: true, autoClearTime: 2)
+            self.noticeTop("ThisTaskHasBeenInToday'sPlan".SSFLocalizedString, autoClear: true, autoClearTime: 4)
         }
     }
     
