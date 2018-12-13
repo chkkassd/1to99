@@ -1,6 +1,6 @@
 //
 //  Utility.swift
-//  WeightAnalysis
+//  
 //
 //  Created by 赛峰 施 on 16/9/21.
 //  Copyright © 2016年 赛峰 施. All rights reserved.

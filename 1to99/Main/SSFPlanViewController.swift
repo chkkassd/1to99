@@ -102,7 +102,7 @@ class SSFPlanViewController: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showTaskView" {
+        if segue.identifier == "planShowTaskView" {
             let taskVC = segue.destination as! SSFTaskTableViewController
             taskVC.displayedTask = selectedTask
         }
@@ -295,7 +295,7 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didSelectTaskAt index: MutablePlanViewIndex) {
         self.selectedTask = allPlans[index.0].tasks[index.1]
-        self.performSegue(withIdentifier: "showTaskView", sender: self)
+        self.performSegue(withIdentifier: "planShowTaskView", sender: self)
     }
     
     func mutablePlanView(_ mutablePlanView: SSFMutablePlanView, didPressTaskCheckAt index: MutablePlanViewIndex, selected: Bool) {

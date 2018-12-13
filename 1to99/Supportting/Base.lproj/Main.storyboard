@@ -71,7 +71,7 @@
                         <outlet property="creatPlanButton" destination="kRb-Bc-XBg" id="Z1w-hQ-3vz"/>
                         <outlet property="planView" destination="tHh-YU-lmd" id="bc5-jH-ssy"/>
                         <outlet property="rightBarbuttonItem" destination="kRb-Bc-XBg" id="fUg-rR-1gH"/>
-                        <segue destination="jep-Yx-Tow" kind="show" identifier="showTaskView" id="ea1-BS-u4H"/>
+                        <segue destination="jep-Yx-Tow" kind="show" identifier="planShowTaskView" id="ea1-BS-u4H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HjJ-cX-PBM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,7 +289,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2060" y="197.45127436281859"/>
+            <point key="canvasLocation" x="2223" y="198"/>
         </scene>
         <!--Popover Table View Controller-->
         <scene sceneID="cgt-EZ-UIq">
@@ -529,11 +529,12 @@
                     <connections>
                         <outlet property="editeButton" destination="VyB-4n-60G" id="3Mk-Qu-m8S"/>
                         <outlet property="tableView" destination="HDN-g5-xx4" id="IRA-qr-09d"/>
+                        <segue destination="jep-Yx-Tow" kind="show" identifier="todayShowTaskView" id="Y64-Gb-oV8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWp-Wg-XqX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352.8" y="-484.40779610194909"/>
+            <point key="canvasLocation" x="1353" y="-579"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="ubg-ea-nhf">
@@ -571,7 +572,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vio-3K-Phc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="598" y="-483"/>
+            <point key="canvasLocation" x="598" y="-578"/>
         </scene>
         <!--Main Theme Navigation View Controller-->
         <scene sceneID="dOc-eg-rlv">
@@ -619,6 +620,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="PrimaryBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="lkf-mR-i8t">
+                            <rect key="frame" x="0.0" y="389" width="375" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWL-8K-U7e">
+                                    <rect key="frame" x="166.5" y="0.5" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" name="PrimaryTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="PrimaryBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="wWL-8K-U7e" firstAttribute="centerY" secondItem="lkf-mR-i8t" secondAttribute="centerY" id="MdZ-i7-LS6"/>
+                                <constraint firstItem="wWL-8K-U7e" firstAttribute="centerX" secondItem="lkf-mR-i8t" secondAttribute="centerX" id="PR7-ef-wYh"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="KI2-1g-T0f">
                                 <cells>
@@ -798,6 +816,7 @@
                         </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <connections>
+                        <outlet property="versionLabel" destination="wWL-8K-U7e" id="LIQ-HC-5Lc"/>
                         <segue destination="hlU-d9-623" kind="show" identifier="IDForShowSelectThemeColor" id="cEp-md-L0C"/>
                     </connections>
                 </tableViewController>
@@ -982,4 +1001,7 @@
             <color red="0.90980392156862744" green="0.47843137254901963" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Y64-Gb-oV8"/>
+    </inferredMetricsTieBreakers>
 </document>

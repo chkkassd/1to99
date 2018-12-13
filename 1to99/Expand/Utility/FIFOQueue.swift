@@ -1,6 +1,6 @@
 //
 //  FIFOQueue.swift
-//  WeightAnalysis
+//  
 //
 //  Created by 赛峰 施 on 2016/11/21.
 //  Copyright © 2016年 赛峰 施. All rights reserved.

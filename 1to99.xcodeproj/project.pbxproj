@@ -21,6 +21,7 @@
 		911C67B421BE3D870033D4BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 911C67B621BE3D870033D4BC /* Localizable.strings */; };
 		911C67B921BE4BED0033D4BC /* LocalizableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C67B821BE4BED0033D4BC /* LocalizableHelper.swift */; };
 		9147708421C0EECA00FFCCD3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9147708321C0EECA00FFCCD3 /* MessageUI.framework */; };
+		9147708621C22C0C00FFCCD3 /* AppInfoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9147708521C22C0C00FFCCD3 /* AppInfoHelper.swift */; };
 		9162FF6A21194859006F0C4C /* SSFGraphKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9162FF6921194858006F0C4C /* SSFGraphKit.framework */; };
 		9162FF7021194DFF006F0C4C /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162FF6F21194DFF006F0C4C /* IndicatorView.swift */; };
 		9162FF72211A6E3E006F0C4C /* PlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9162FF71211A6E3E006F0C4C /* PlanTableViewCell.xib */; };
@@ -83,6 +84,7 @@
 		911C67B721BE3D8E0033D4BC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		911C67B821BE4BED0033D4BC /* LocalizableHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableHelper.swift; sourceTree = "<group>"; };
 		9147708321C0EECA00FFCCD3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9147708521C22C0C00FFCCD3 /* AppInfoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoHelper.swift; sourceTree = "<group>"; };
 		9162FF6921194858006F0C4C /* SSFGraphKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSFGraphKit.framework; path = Carthage/Build/iOS/SSFGraphKit.framework; sourceTree = "<group>"; };
 		9162FF6F21194DFF006F0C4C /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		9162FF71211A6E3E006F0C4C /* PlanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanTableViewCell.xib; sourceTree = "<group>"; };
@@ -242,8 +244,8 @@
 		91AEF5E221018E7B00A800F0 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				91BB332F21AD2E50004CC189 /* SwiftNotice.swift */,
 				91AEF5E721018E7B00A800F0 /* Utility.swift */,
+				91BB332F21AD2E50004CC189 /* SwiftNotice.swift */,
 				91AEF5E321018E7B00A800F0 /* ScreenShot.swift */,
 				91AEF5E421018E7B00A800F0 /* DirectoryPath.swift */,
 				91AEF5E521018E7B00A800F0 /* FIFOQueue.swift */,
@@ -253,6 +255,7 @@
 				91BB333321AFD8DE004CC189 /* WeakRefCollection.swift */,
 				91BB333921B65362004CC189 /* ReadWriteFileManager.swift */,
 				911C67B821BE4BED0033D4BC /* LocalizableHelper.swift */,
+				9147708521C22C0C00FFCCD3 /* AppInfoHelper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				91AEF5DD2101871D00A800F0 /* SSFPlanViewController.swift in Sources */,
 				91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */,
 				91B6DAF521882FBD00318DE8 /* AlertUtility.swift in Sources */,
+				9147708621C22C0C00FFCCD3 /* AppInfoHelper.swift in Sources */,
 				91AEF5FD21057C3C00A800F0 /* PlanTableView.swift in Sources */,
 				91AEF5E921018E7B00A800F0 /* Constant.swift in Sources */,
 				91BB331D219C1BF0004CC189 /* SSFMutablePlanView+Drag.swift in Sources */,

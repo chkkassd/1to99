@@ -24,6 +24,8 @@ class SSFTodayViewController: UIViewController {
     var tasksForTodayNotificationToken: NotificationToken?
     
     var searchResults = List<Task>()
+    
+    var selectedTask: Task?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +54,14 @@ class SSFTodayViewController: UIViewController {
     deinit {
         tasksForTodayNotificationToken?.invalidate()
     }
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "todayShowTaskView" {
+            let vc = segue.destination as! SSFTaskTableViewController
+            vc.displayedTask = selectedTask
+        }
+    }
     
     // MARK: - Private methods
     
@@ -60,6 +70,7 @@ class SSFTodayViewController: UIViewController {
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
         search.dimsBackgroundDuringPresentation = false
+        self.definesPresentationContext = true//false,那么在searchResultsController里点击cell进到下一个页面，导航栏会消失
         self.navigationItem.searchController = search
     }
     
@@ -129,6 +140,16 @@ extension SSFTodayViewController: UITableViewDataSource, UITableViewDelegate {
             self.operateTodayTaskForInterfaceDriven(.update(["isDone": selected]), indexPath, task, repeatOperationHandler: nil)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if (self.navigationItem.searchController?.isActive)! {
+            selectedTask = searchResults[indexPath.row]
+        } else {
+            selectedTask = tasksForToday[indexPath.row]
+        }
+        self.performSegue(withIdentifier: "todayShowTaskView", sender: self)
     }
 }
 

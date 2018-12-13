@@ -11,8 +11,11 @@ import MessageUI
 
 class SSFSettingTableViewController: UITableViewController {
 
+    @IBOutlet weak var versionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        versionLabel.text = "V".appending(AppInfoHelper.appVersion ?? "")
     }
     
     //MARK: - Private methods
