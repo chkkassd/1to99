@@ -53,7 +53,7 @@ class SSFSettingTableViewController: UITableViewController {
     //share
     private func shareToFriends() {
         let sharedText = "Creek To Do List".SSFLocalizedString
-        let sharedImage = UIImage(named: "Target")
+        let sharedImage = UIImage(named: "Creek")
         let sharedURL = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1446548601")
         let activityVC = UIActivityViewController(activityItems: [sharedText,sharedImage!,sharedURL!], applicationActivities: nil)
         activityVC.completionWithItemsHandler = {_, completed, _, activityError in
