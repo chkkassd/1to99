@@ -107,9 +107,25 @@ class SSFTodayViewController: UIViewController {
         try! realm.commitWrite(withoutNotifying: [tasksForTodayNotificationToken!])
     }
     
+    private func removeAllTasksFromToday() {
+        guard tasksForToday.count > 0 else {return}
+        let realm = try! Realm()
+        try! realm.write {
+            tasksForToday.setValue(false, forKeyPath: "joinToday")
+        }
+    }
+    
     // MARK: - Interaction
     
     @IBAction func editBarButtonItemPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Hello".SSFLocalizedString, message: nil, preferredStyle: .actionSheet)
+        let action = UIAlertAction(title: "Postpone All Today's Tasks".SSFLocalizedString, style: .default) { _ in
+            self.removeAllTasksFromToday()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel".SSFLocalizedString, style: .cancel, handler: nil)
+        alert.addAction(action)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

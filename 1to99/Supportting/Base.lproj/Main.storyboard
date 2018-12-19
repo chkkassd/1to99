@@ -521,7 +521,11 @@
                         <viewLayoutGuide key="safeArea" id="NkA-FN-otB"/>
                     </view>
                     <navigationItem key="navigationItem" title="今日任务" id="7DD-fO-W74">
-                        <barButtonItem key="leftBarButtonItem" image="NavigationBar_edit" style="plain" id="VyB-4n-60G"/>
+                        <barButtonItem key="leftBarButtonItem" image="NavigationBar_edit" style="plain" id="VyB-4n-60G">
+                            <connections>
+                                <action selector="editBarButtonItemPressed:" destination="VHT-W0-qF1" id="NPP-9i-M8l"/>
+                            </connections>
+                        </barButtonItem>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocalKey" value="TodayTasks"/>
                         </userDefinedRuntimeAttributes>

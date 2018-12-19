@@ -59,6 +59,8 @@
 		91BB333821B62BEE004CC189 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB333721B62BEE004CC189 /* ConfigurationManager.swift */; };
 		91BB333A21B65362004CC189 /* ReadWriteFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB333921B65362004CC189 /* ReadWriteFileManager.swift */; };
 		91BB333C21B7AD60004CC189 /* SSFSelectThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BB333B21B7AD60004CC189 /* SSFSelectThemeTableViewController.swift */; };
+		91C5EB7C21CA2265000C7377 /* SSFPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C5EB7B21CA2265000C7377 /* SSFPopUpView.swift */; };
+		91C5EB7E21CA2347000C7377 /* SSFPopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C5EB7D21CA2347000C7377 /* SSFPopUpView.xib */; };
 		91D70E9F20FDD9B800359571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D70E9E20FDD9B800359571 /* AppDelegate.swift */; };
 		91D70EA420FDD9B800359571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA220FDD9B800359571 /* Main.storyboard */; };
 		91D70EA620FDD9BB00359571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D70EA520FDD9BB00359571 /* Assets.xcassets */; };
@@ -123,6 +125,8 @@
 		91BB333721B62BEE004CC189 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		91BB333921B65362004CC189 /* ReadWriteFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWriteFileManager.swift; sourceTree = "<group>"; };
 		91BB333B21B7AD60004CC189 /* SSFSelectThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFSelectThemeTableViewController.swift; sourceTree = "<group>"; };
+		91C5EB7B21CA2265000C7377 /* SSFPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFPopUpView.swift; sourceTree = "<group>"; };
+		91C5EB7D21CA2347000C7377 /* SSFPopUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SSFPopUpView.xib; sourceTree = "<group>"; };
 		91D70E9B20FDD9B800359571 /* 1to99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1to99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D70E9E20FDD9B800359571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D70EA320FDD9B800359571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				91BB332821A54770004CC189 /* SSFBlackBoardView */,
 				91AEF5FE2105B57B00A800F0 /* SSFMutablePlanView */,
 				911671E4215E2DB2008FC4D6 /* TableViewCell */,
+				91C5EB7B21CA2265000C7377 /* SSFPopUpView.swift */,
+				91C5EB7D21CA2347000C7377 /* SSFPopUpView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 			files = (
 				91AEF6002105B68600A800F0 /* MainPlanView.xib in Resources */,
 				911C67B421BE3D870033D4BC /* Localizable.strings in Resources */,
+				91C5EB7E21CA2347000C7377 /* SSFPopUpView.xib in Resources */,
 				91BB332721A50EE9004CC189 /* BlackBoardView.xib in Resources */,
 				910A859A2141135900FBFD83 /* PlanCollectionViewCell.xib in Resources */,
 				91AEF5FB210579EF00A800F0 /* PlanTableView.xib in Resources */,
@@ -442,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91C5EB7C21CA2265000C7377 /* SSFPopUpView.swift in Sources */,
 				91AEF5EF21018E7B00A800F0 /* Utility.swift in Sources */,
 				91BB332E21A54F55004CC189 /* SSFBlackBoardView+Drop.swift in Sources */,
 				91AEF5EC21018E7B00A800F0 /* DirectoryPath.swift in Sources */,
