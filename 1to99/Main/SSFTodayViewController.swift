@@ -48,12 +48,16 @@ class SSFTodayViewController: UIViewController {
             case .error(let error):
                 print(error.localizedDescription)
             }
+            if self.checkTodayTasksFinished() {
+                self.showCongratulations()
+            }
         }
     }
     
     deinit {
         tasksForTodayNotificationToken?.invalidate()
     }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,7 +70,6 @@ class SSFTodayViewController: UIViewController {
     // MARK: - Private methods
     
     private func configureSearchController() {
-//        let todaySearchResultsVC = TodaySearchResultsViewController()
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
         search.dimsBackgroundDuringPresentation = false
@@ -105,6 +108,10 @@ class SSFTodayViewController: UIViewController {
             return
         }
         try! realm.commitWrite(withoutNotifying: [tasksForTodayNotificationToken!])
+        
+        if checkTodayTasksFinished() {
+            showCongratulations()
+        }
     }
     
     private func removeAllTasksFromToday() {
@@ -113,6 +120,35 @@ class SSFTodayViewController: UIViewController {
         try! realm.write {
             tasksForToday.setValue(false, forKeyPath: "joinToday")
         }
+    }
+    
+    //check whether today's tasks has finished
+    private func checkTodayTasksFinished() -> Bool {
+        guard tasksForToday.count > 0 else {
+            return false
+        }
+        return !tasksForToday.contains(where: { task -> Bool in
+            return !task.isDone
+        })
+    }
+    
+    //present finish tasks congratulations
+    private func showCongratulations() {
+        let popView = SSFPopUpView.sharedPopUpView
+        popView.detailText = "Finish".SSFLocalizedString + " \(tasksForToday.count) " + "Tasks".SSFLocalizedString
+        //SSFPopUpView(frame: self.view.bounds, details: "Finish".SSFLocalizedString + " \(tasksForToday.count) " + "Tasks".SSFLocalizedString)
+        popView.okButtonCompletion = { [unowned self] in
+            popView.removeFromSuperview()
+            self.removeAllTasksFromToday()
+        }
+        self.view.addSubview(popView)
+        
+//        //Animate the trasition
+//        let originFrame = popView.frame
+//        popView.frame = CGRect(x: popView.center.x, y: popView.center.y, width: 0, height: 0)
+//        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
+//            popView.frame = originFrame
+//        }, completion: nil)
     }
     
     // MARK: - Interaction
