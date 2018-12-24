@@ -12,8 +12,8 @@ class SSFPopoverTableViewController: UITableViewController {
 
     var planIndex: Int = 0
     var rename: ((Int) -> Void)?
-    var archiveFinishedTasks: ((Int) -> Void)?
-    var archivePlan: ((Int) -> Void)?
+    var deleteFinishedTasks: ((Int) -> Void)?
+//    var archivePlan: ((Int) -> Void)?
     var deletePlan: ((Int) -> Void)?
     
     override func viewDidLoad() {
@@ -27,12 +27,9 @@ class SSFPopoverTableViewController: UITableViewController {
             guard let closure = rename else {return}
             closure(planIndex)
         case 1:
-            guard let closure = archiveFinishedTasks else {return}
+            guard let closure = deleteFinishedTasks else {return}
             closure(planIndex)
         case 2:
-            guard let closure = archivePlan else {return}
-            closure(planIndex)
-        case 3:
             guard let closure = deletePlan else {return}
             closure(planIndex)
         default:

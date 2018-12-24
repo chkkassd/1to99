@@ -56,6 +56,8 @@ class SSFTaskTableViewController: UITableViewController {
             checkItem.setValuesForKeys(dic)
             //mirror it instantly in the UI
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        default:
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         try! realm.commitWrite()
     }

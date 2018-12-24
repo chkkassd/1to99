@@ -21,7 +21,7 @@
 "Plan" = "Plan";
 "AddCheckItem" = "Add Check Item";
 "Rename" = "Rename";
-"ArchiveFinishedTask" = "Archive Finished Task";
+"ArchiveFinishedTask" = "Delete Finished Tasks";
 "ArchiveThePlan" = "Archive The Plan";
 "DeleteThePlan" = "Delete The Plan";
 

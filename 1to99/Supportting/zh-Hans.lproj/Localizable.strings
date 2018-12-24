@@ -23,7 +23,7 @@
 "Plan" = "计划";
 "AddCheckItem" = "添加检查项";
 "Rename" = "重命名";
-"ArchiveFinishedTask" = "归档已完成任务";
+"ArchiveFinishedTask" = "删除已完成任务";
 "ArchiveThePlan" = "归档此计划";
 "DeleteThePlan" = "删除此计划";
 

@@ -241,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				91AEF5E021018E7B00A800F0 /* Constant.swift */,
-				91AEF5E121018E7B00A800F0 /* NetWorkResource.swift */,
 				91AEF5E221018E7B00A800F0 /* Utility */,
 			);
 			path = Expand;
@@ -251,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				91AEF5E721018E7B00A800F0 /* Utility.swift */,
+				91AEF5E121018E7B00A800F0 /* NetWorkResource.swift */,
 				91BB332F21AD2E50004CC189 /* SwiftNotice.swift */,
 				91AEF5E321018E7B00A800F0 /* ScreenShot.swift */,
 				91AEF5E421018E7B00A800F0 /* DirectoryPath.swift */,

@@ -13,6 +13,7 @@ enum PlanOperation {
     case add
     case update([String: Any])
     case delete
+    case deleteFinishedTasks
 }
 
 enum TaskOperation {
@@ -134,8 +135,8 @@ class SSFPlanViewController: UIViewController {
             })
         case .delete:
             //cascading delete
-            for task in plan.tasks {
-                realm.delete(task.checkItems)
+            plan.tasks.forEach {
+                realm.delete($0.checkItems)
             }
             realm.delete(plan.tasks)
             realm.delete(plan)
@@ -145,6 +146,16 @@ class SSFPlanViewController: UIViewController {
                 }, completion: { [unowned self] _ in
                     self.planView.pageControl.numberOfPages -= 1
             })
+        case .deleteFinishedTasks:
+            let finishedTasks = plan.tasks.filter("isDone == YES")
+            finishedTasks.forEach {
+                realm.delete($0.checkItems)
+            }
+            realm.delete(finishedTasks)
+            //mirror it instantly in the UI
+            self.planView.planCollectionView.performBatchUpdates({[unowned self] in
+                self.planView.planCollectionView.reloadItems(at: [indexPath])
+                }, completion: nil)
         case .update(let dic):
             plan.setValuesForKeys(dic)
             //mirror it instantly in the UI
@@ -284,7 +295,12 @@ extension SSFPlanViewController: SSFMutablePlanViewDelegate {
                 self.present(alert, animated: true, completion: nil)
             })
         }
-        popoverVC.preferredContentSize = CGSize(width: 180, height: 180)
+        popoverVC.deleteFinishedTasks = { index in
+            let plan = self.allPlans[index]
+            self.operatePlanForInterfaceDriven(.deleteFinishedTasks, plan, IndexPath(item: index, section: 0))
+            self.dismiss(animated: true, completion: nil)
+        }
+        popoverVC.preferredContentSize = CGSize(width: 180, height: 135)
         popoverVC.modalPresentationStyle = .popover
         popoverVC.popoverPresentationController?.delegate = self
         popoverVC.popoverPresentationController?.sourceView = planView
