@@ -1,3 +1,3 @@
-github "SwipeCellKit/SwipeCellKit" "2.5.0"
+github "SwipeCellKit/SwipeCellKit" "2.6.0"
 github "chkkassd/SSFGraph" "v1.0.3"
-github "realm/realm-cocoa" "v3.11.1"
+github "realm/realm-cocoa" "v3.15.0"
